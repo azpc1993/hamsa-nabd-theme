@@ -28,9 +28,12 @@
 
     <style>
         :root{
-            --hn-primary: {{ theme.settings.get('color_primary', '#0B1F3A') }};
-            --hn-accent: {{ theme.settings.get('color_accent', '#C9A24B') }};
-            --hn-dark-bg: {{ theme.settings.get('color_dark_section_bg', '#0B1F3A') }};
+            /* اللون الأساسي يأتي من ميزة "color" في سلة (يختاره التاجر من لوحة التحكم)،
+               وباقي ألوان الهوية ثابتة في ملفات CSS */
+            --hn-primary: {{ theme.color.primary }};
+            --hn-primary-text: {{ theme.color.text }};
+            --hn-accent: #C9A24B;
+            --hn-dark-bg: {{ theme.color.darker(0.35) }};
             --hn-bg: #FFFFFF;
             --hn-font-heading: 'Tajawal', sans-serif;
             --hn-font-body: 'Almarai', sans-serif;

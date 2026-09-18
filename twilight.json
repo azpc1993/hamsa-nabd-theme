@@ -1,131 +1,116 @@
 {
   "name": "همسة نبض",
-  "repository": "https://github.com/your-account/hamsa-nabd-theme",
-  "author_email": "you@hamsa-nabd.com",
+  "repository": "https://github.com/azpc1993/hamsa-nabd-theme",
+  "author_email": "znonstor@gmail.com",
   "support_url": "https://hamsa-nabd.com",
   "description": "ثيم احترافي لمتاجر الملابس والإكسسوارات الرياضية بهوية نيفي/ذهبي",
   "features": [
-    "component-header",
-    "component-footer",
-    "component-enhanced-slider",
-    "component-main-links",
-    "component-featured-products-style1",
-    "component-products-slider",
-    "component-latest-products",
+    "color",
+    "fonts",
+    "breadcrumb",
+    "mega-menu",
+    "filters",
+    "unite-cards-height",
+    "menu-images",
+    "component-featured-products",
     "component-fixed-banner",
+    "component-fixed-products",
+    "component-products-slider",
+    "component-photos-slider",
     "component-square-photos",
-    "component-brands",
     "component-store-features",
-    "component-testimonials"
+    "component-testimonials",
+    "component-parallax-background",
+    "component-youtube"
   ],
   "settings": [
     {
-      "id": "hn_colors",
-      "type": "settings-group",
-      "label": {
-        "ar": "الألوان",
-        "en": "Colors"
-      },
-      "fields": [
-        {
-          "id": "color_primary",
-          "type": "string",
-          "format": "color",
-          "label": "اللون الأساسي (نيفي)",
-          "value": "#0B1F3A"
-        },
-        {
-          "id": "color_accent",
-          "type": "string",
-          "format": "color",
-          "label": "لون التمييز (ذهبي)",
-          "value": "#C9A24B"
-        },
-        {
-          "id": "color_dark_section_bg",
-          "type": "string",
-          "format": "color",
-          "label": "خلفية الأقسام الداكنة",
-          "value": "#0B1F3A"
-        }
-      ]
+      "id": "hn_title_header",
+      "type": "static",
+      "format": "title",
+      "label": "إعدادات الهيدر"
     },
     {
-      "id": "hn_header",
-      "type": "settings-group",
-      "label": {
-        "ar": "الهيدر",
-        "en": "Header"
-      },
-      "fields": [
-        {
-          "id": "show_trust_badges",
-          "type": "boolean",
-          "format": "switch",
-          "label": "إظهار شارات الثقة",
-          "value": true
-        },
-        {
-          "id": "show_bottom_nav",
-          "type": "boolean",
-          "format": "switch",
-          "label": "شريط تنقل سفلي بالجوال",
-          "value": true
-        }
-      ]
+      "id": "show_trust_badges",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار شارات الثقة أسفل الهيدر",
+      "description": null,
+      "icon": "sicon-toggle-off",
+      "required": false,
+      "value": true,
+      "selected": true
     },
     {
-      "id": "hn_product",
-      "type": "settings-group",
-      "label": {
-        "ar": "صفحة المنتج",
-        "en": "Product Page"
-      },
-      "fields": [
-        {
-          "id": "product_show_breadcrumbs",
-          "type": "boolean",
-          "format": "switch",
-          "label": "إظهار مسار التنقل",
-          "value": true
-        },
-        {
-          "id": "show_sticky_cart",
-          "type": "boolean",
-          "format": "switch",
-          "label": "شريط شراء ثابت بالجوال",
-          "value": true
-        }
-      ]
+      "id": "show_bottom_nav",
+      "type": "boolean",
+      "format": "switch",
+      "label": "شريط تنقل سفلي في الجوال",
+      "description": null,
+      "icon": "sicon-toggle-off",
+      "required": false,
+      "value": true,
+      "selected": true
     },
     {
-      "id": "hn_whatsapp",
-      "type": "settings-group",
-      "label": {
-        "ar": "واتساب",
-        "en": "WhatsApp"
-      },
-      "fields": [
-        {
-          "id": "whatsapp_number",
-          "type": "string",
-          "format": "text",
-          "label": "رقم واتساب",
-          "value": null
-        },
-        {
-          "id": "whatsapp_copy_link",
-          "type": "boolean",
-          "format": "switch",
-          "label": "نسخ رابط المنتج تلقائياً",
-          "value": true
-        }
-      ]
+      "id": "hn_line_1",
+      "type": "static",
+      "format": "line"
+    },
+    {
+      "id": "hn_title_product",
+      "type": "static",
+      "format": "title",
+      "label": "صفحة المنتج"
+    },
+    {
+      "id": "product_show_breadcrumbs",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار مسار التنقل",
+      "description": null,
+      "icon": "sicon-toggle-off",
+      "required": false,
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "show_sticky_cart",
+      "type": "boolean",
+      "format": "switch",
+      "label": "شريط شراء ثابت في الجوال",
+      "description": null,
+      "icon": "sicon-toggle-off",
+      "required": false,
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "hn_line_2",
+      "type": "static",
+      "format": "line"
+    },
+    {
+      "id": "hn_title_listing",
+      "type": "static",
+      "format": "title",
+      "label": "صفحة التصنيف"
+    },
+    {
+      "id": "product_index_show_breadcrumbs",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار مسار التنقل",
+      "description": null,
+      "icon": "sicon-toggle-off",
+      "required": false,
+      "value": true,
+      "selected": true
     }
   ],
   "components": [
     {
-      "key": "2a4ac4a7-e2d2-416e-854e-663ad58b5838",
+      "key": "4058f4fb-bb72-46cc-8a39-5d6f91f1366f",
       "title": {
         "ar": "بانر همسة نبض",
         "en": "Hamsa Hero Banner"
@@ -137,55 +122,96 @@
           "id": "slides",
           "type": "collection",
           "format": "collection",
-          "label": "الشرائح",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 10,
+          "label": null,
+          "item_label": "شريحة",
           "value": [],
           "fields": [
             {
-              "id": "image",
               "type": "string",
+              "icon": "sicon-image",
+              "value": null,
+              "id": "slides.image",
+              "label": "صورة البانر (كمبيوتر)",
               "format": "image",
-              "label": "صورة (كمبيوتر)",
-              "required": true
+              "required": true,
+              "placeholder": null,
+              "description": "* المقاس المناسب 1920×700 بكسل"
             },
             {
-              "id": "image_mobile",
               "type": "string",
+              "icon": "sicon-image",
+              "value": null,
+              "id": "slides.image_mobile",
+              "label": "صورة البانر (جوال)",
               "format": "image",
-              "label": "صورة (جوال)"
+              "required": false,
+              "placeholder": null,
+              "description": "* المقاس المناسب 800×900 بكسل"
             },
             {
-              "id": "title",
               "type": "string",
+              "icon": "sicon-format-text-alt",
+              "label": "العنوان الرئيسي",
+              "multilanguage": true,
+              "id": "slides.title",
+              "value": null,
+              "required": false,
               "format": "text",
-              "label": "العنوان",
-              "multilanguage": true
+              "description": null,
+              "placeholder": "أدخل العنوان هنا...",
+              "minLength": 0,
+              "maxLength": 100
             },
             {
-              "id": "subtitle",
               "type": "string",
-              "format": "text",
+              "icon": "sicon-format-text-alt",
               "label": "النص الفرعي",
-              "multilanguage": true
+              "multilanguage": true,
+              "id": "slides.subtitle",
+              "value": null,
+              "required": false,
+              "format": "text",
+              "description": null,
+              "placeholder": "أدخل نصاً فرعياً...",
+              "minLength": 0,
+              "maxLength": 100
             },
             {
-              "id": "url",
               "type": "string",
+              "icon": "sicon-link",
+              "label": "رابط الزر",
+              "id": "slides.url",
+              "value": null,
+              "required": false,
               "format": "text",
-              "label": "الرابط"
+              "description": null,
+              "placeholder": "https://",
+              "minLength": 0,
+              "maxLength": 255
             },
             {
-              "id": "button_text",
               "type": "string",
-              "format": "text",
+              "icon": "sicon-format-text-alt",
               "label": "نص الزر",
-              "multilanguage": true
+              "multilanguage": true,
+              "id": "slides.button_text",
+              "value": null,
+              "required": false,
+              "format": "text",
+              "description": null,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 30
             }
           ]
         }
       ]
     },
     {
-      "key": "854e7eea-4dd5-4bf5-a402-4ecdb3944d4b",
+      "key": "1e4bc631-3c5c-4b3e-b015-06b45c920664",
       "title": {
         "ar": "تصنيفات بأيقونات",
         "en": "Icon Categories"
@@ -194,96 +220,150 @@
       "path": "home.icon-categories",
       "fields": [
         {
-          "id": "title",
           "type": "string",
-          "format": "text",
+          "icon": "sicon-format-text-alt",
           "label": "عنوان القسم",
-          "multilanguage": true
+          "multilanguage": true,
+          "id": "title",
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 100
         },
         {
           "id": "categories",
           "type": "collection",
           "format": "collection",
-          "label": "التصنيفات",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 12,
+          "label": null,
+          "item_label": "تصنيف",
           "value": [],
           "fields": [
             {
-              "id": "icon",
               "type": "string",
+              "icon": "sicon-image",
+              "value": null,
+              "id": "categories.icon",
+              "label": "أيقونة التصنيف",
               "format": "image",
-              "label": "الأيقونة",
-              "required": true
+              "required": true,
+              "placeholder": null,
+              "description": "* يفضّل صورة مربعة بخلفية شفافة"
             },
             {
-              "id": "name",
               "type": "string",
-              "format": "text",
-              "label": "الاسم",
+              "icon": "sicon-format-text-alt",
+              "label": "اسم التصنيف",
               "multilanguage": true,
-              "required": true
+              "id": "categories.name",
+              "value": null,
+              "required": true,
+              "format": "text",
+              "description": null,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 30
             },
             {
-              "id": "url",
               "type": "string",
+              "icon": "sicon-link",
+              "label": "رابط التصنيف",
+              "id": "categories.url",
+              "value": null,
+              "required": true,
               "format": "text",
-              "label": "الرابط",
-              "required": true
+              "description": null,
+              "placeholder": "https://",
+              "minLength": 0,
+              "maxLength": 255
             }
           ]
         }
       ]
     },
     {
-      "key": "e5d49876-6b9d-40d9-825b-8ea919a78cb3",
+      "key": "a446eba9-3b75-4955-ad21-84bcfe98c1cb",
       "title": {
-        "ar": "شبكة ماركات / أندية",
+        "ar": "شبكة ماركات وأندية",
         "en": "Brand & Club Grid"
       },
       "icon": "sicon-grid",
       "path": "home.brand-showcase",
       "fields": [
         {
-          "id": "title",
           "type": "string",
-          "format": "text",
+          "icon": "sicon-format-text-alt",
           "label": "عنوان القسم",
-          "multilanguage": true
+          "multilanguage": true,
+          "id": "title",
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 100
         },
         {
           "id": "tiles",
           "type": "collection",
           "format": "collection",
-          "label": "البطاقات",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 8,
+          "label": null,
+          "item_label": "بطاقة",
           "value": [],
           "fields": [
             {
-              "id": "image",
               "type": "string",
-              "format": "image",
+              "icon": "sicon-image",
+              "value": null,
+              "id": "tiles.image",
               "label": "الصورة",
-              "required": true
+              "format": "image",
+              "required": true,
+              "placeholder": null,
+              "description": "* المقاس المناسب 600×750 بكسل"
             },
             {
-              "id": "name",
               "type": "string",
-              "format": "text",
+              "icon": "sicon-format-text-alt",
               "label": "الاسم",
               "multilanguage": true,
-              "required": true
+              "id": "tiles.name",
+              "value": null,
+              "required": true,
+              "format": "text",
+              "description": null,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 40
             },
             {
-              "id": "url",
               "type": "string",
-              "format": "text",
+              "icon": "sicon-link",
               "label": "الرابط",
-              "required": true
+              "id": "tiles.url",
+              "value": null,
+              "required": true,
+              "format": "text",
+              "description": null,
+              "placeholder": "https://",
+              "minLength": 0,
+              "maxLength": 255
             }
           ]
         }
       ]
     },
     {
-      "key": "12bba01a-7b42-48af-9e02-4c412d8492f5",
+      "key": "b4544780-eca7-48bf-a0e4-baeda25aa63b",
       "title": {
         "ar": "فاصل قسم",
         "en": "Section Divider"
@@ -292,36 +372,50 @@
       "path": "home.section-divider",
       "fields": [
         {
-          "id": "title",
           "type": "string",
-          "format": "text",
+          "icon": "sicon-format-text-alt",
           "label": "العنوان",
           "multilanguage": true,
-          "required": true
+          "id": "title",
+          "value": null,
+          "required": true,
+          "format": "text",
+          "description": null,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 100
         },
         {
-          "id": "subtitle",
           "type": "string",
-          "format": "text",
+          "icon": "sicon-format-text-alt",
           "label": "النص الفرعي",
-          "multilanguage": true
-        },
-        {
-          "id": "link",
-          "type": "string",
+          "multilanguage": true,
+          "id": "subtitle",
+          "value": null,
+          "required": false,
           "format": "text",
-          "label": "رابط (عرض الكل)"
+          "description": null,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 100
         },
         {
-          "id": "countdown_to",
           "type": "string",
-          "format": "date",
-          "label": "عداد تنازلي حتى"
+          "icon": "sicon-link",
+          "label": "رابط (عرض الكل)",
+          "id": "link",
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": "https://",
+          "minLength": 0,
+          "maxLength": 255
         }
       ]
     },
     {
-      "key": "9a27d120-2c84-42cf-8561-8e8f9e771b64",
+      "key": "0f07ac68-a378-4d3b-ba13-aeade4e90932",
       "title": {
         "ar": "شريط عروض متحرك",
         "en": "Announcement Marquee"
@@ -333,29 +427,47 @@
           "id": "messages",
           "type": "collection",
           "format": "collection",
-          "label": "الرسائل",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 6,
+          "label": null,
+          "item_label": "رسالة",
           "value": [],
           "fields": [
             {
-              "id": "text",
               "type": "string",
-              "format": "text",
-              "label": "النص",
+              "icon": "sicon-format-text-alt",
+              "label": "نص الرسالة",
               "multilanguage": true,
-              "required": true
+              "id": "messages.text",
+              "value": null,
+              "required": true,
+              "format": "text",
+              "description": null,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 120
             },
             {
-              "id": "code",
               "type": "string",
+              "icon": "sicon-format-text-alt",
+              "label": "كود الخصم",
+              "multilanguage": false,
+              "id": "messages.code",
+              "value": null,
+              "required": false,
               "format": "text",
-              "label": "كود الخصم"
+              "description": null,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 30
             }
           ]
         }
       ]
     },
     {
-      "key": "b1c63bff-1ae1-4cf2-811c-56742a212a5f",
+      "key": "b4fec118-0107-4965-90e8-b3e4e0fbaabc",
       "title": {
         "ar": "معرض إنستقرام",
         "en": "Instagram Gallery"
@@ -364,43 +476,80 @@
       "path": "home.instagram-gallery",
       "fields": [
         {
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "عنوان القسم",
+          "multilanguage": true,
           "id": "title",
-          "type": "string",
+          "value": null,
+          "required": false,
           "format": "text",
-          "label": "العنوان",
-          "multilanguage": true
+          "description": null,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 100
         },
         {
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "اسم الحساب",
+          "multilanguage": false,
           "id": "handle",
-          "type": "string",
+          "value": null,
+          "required": false,
           "format": "text",
-          "label": "اسم الحساب"
+          "description": null,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 40
         },
         {
-          "id": "profile_url",
           "type": "string",
+          "icon": "sicon-link",
+          "label": "رابط الحساب",
+          "id": "profile_url",
+          "value": null,
+          "required": false,
           "format": "text",
-          "label": "رابط الحساب"
+          "description": null,
+          "placeholder": "https://",
+          "minLength": 0,
+          "maxLength": 255
         },
         {
           "id": "photos",
           "type": "collection",
           "format": "collection",
-          "label": "الصور",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 12,
+          "label": null,
+          "item_label": "صورة",
           "value": [],
           "fields": [
             {
-              "id": "image",
               "type": "string",
-              "format": "image",
+              "icon": "sicon-image",
+              "value": null,
+              "id": "photos.image",
               "label": "الصورة",
-              "required": true
+              "format": "image",
+              "required": true,
+              "placeholder": null,
+              "description": null
             },
             {
-              "id": "url",
               "type": "string",
+              "icon": "sicon-link",
+              "label": "رابط المنشور",
+              "id": "photos.url",
+              "value": null,
+              "required": false,
               "format": "text",
-              "label": "رابط المنشور"
+              "description": null,
+              "placeholder": "https://",
+              "minLength": 0,
+              "maxLength": 255
             }
           ]
         }

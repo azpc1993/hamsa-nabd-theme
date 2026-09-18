@@ -1,10 +1,14 @@
-{% set wa_number = theme.settings.get('whatsapp_number') %}
-{% if wa_number %}
-<a href="https://wa.me/{{ wa_number }}"
+{#
+| Variable                 | Type    | Description                     |
+|--------------------------|---------|---------------------------------|
+| store.contacts.whatsapp  | ?string | رقم/رابط واتساب من إعدادات المتجر |
+#}
+{% if store.contacts.whatsapp %}
+<a href="{{ store.contacts.whatsapp }}"
    class="hn-whatsapp-float"
    target="_blank" rel="noopener"
-   data-hn-copy-link="{{ theme.settings.get('whatsapp_copy_link') ? 'true' : 'false' }}"
-   aria-label="{{ trans('تواصل معنا عبر واتساب') }}">
-    <span class="hn-icon-whatsapp"></span>
+   data-hn-copy-link="true"
+   aria-label="{{ trans('blocks.footer.whatsapp') }}">
+    <i class="sicon-whatsapp"></i>
 </a>
 {% endif %}
