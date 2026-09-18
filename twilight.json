@@ -1,9 +1,15 @@
 {
-  "name": "همسة نبض",
+  "name": {
+    "ar": "همسة نبض",
+    "en": "Hamsa Nabd"
+  },
   "repository": "https://github.com/azpc1993/hamsa-nabd-theme",
   "author_email": "znonstor@gmail.com",
   "support_url": "https://hamsa-nabd.com",
-  "description": "ثيم احترافي لمتاجر الملابس والإكسسوارات الرياضية بهوية نيفي/ذهبي",
+  "description": {
+    "ar": "ثيم احترافي لمتاجر الملابس والإكسسوارات الرياضية بهوية نيفي/ذهبي",
+    "en": "A professional theme for sportswear and accessories stores with a navy/gold identity"
+  },
   "features": [
     "color",
     "fonts",
