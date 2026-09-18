@@ -4,9 +4,12 @@
   "description": "ثيم همسة نبض لمنصة سلة (Twilight)",
   "private": true,
   "scripts": {
-    "preview": "salla theme preview",
-    "watch": "salla theme watch",
-    "build": "salla theme build"
+    "production": "node scripts/build.js",
+    "prod": "node scripts/build.js",
+    "development": "node scripts/build.js",
+    "build": "node scripts/build.js",
+    "watch": "node scripts/build.js",
+    "preview": "salla theme preview"
   },
   "license": "UNLICENSED"
 }
