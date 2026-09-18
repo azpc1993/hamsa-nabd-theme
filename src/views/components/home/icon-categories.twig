@@ -1,0 +1,25 @@
+{#
+| Variable                      | Type   | Description                     |
+|-------------------------------|--------|---------------------------------|
+| component.title               | ?string| عنوان القسم                      |
+| component.categories[].icon   | string | رابط صورة الأيقونة                |
+| component.categories[].name   | string |                                 |
+| component.categories[].url    | string |                                 |
+| position                      | int    |                                 |
+#}
+{% set cats = component.categories|default([]) %}
+{% if cats|length %}
+<section component-id="{{ componentId }}" class="s-block hn-icon-cats-block">
+    {% if component.title %}
+        <div class="s-block__title"><h2>{{ component.title }}</h2></div>
+    {% endif %}
+    <nav class="hn-icon-cats">
+        {% for cat in cats %}
+        <a href="{{ cat.url }}" class="hn-icon-cats__item">
+            <span class="hn-icon-cats__circle"><img src="{{ cat.icon }}" alt="" loading="lazy"></span>
+            <span class="hn-icon-cats__label">{{ cat.name }}</span>
+        </a>
+        {% endfor %}
+    </nav>
+</section>
+{% endif %}

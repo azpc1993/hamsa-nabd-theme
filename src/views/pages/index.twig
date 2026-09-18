@@ -1,0 +1,17 @@
+{#
+| Variable   | Type   | Description    |
+|------------|--------|----------------|
+| page       | object |                |
+| page.title | string | *could be html |
+| page.slug  | string | ex: "cat.show" |
+#}
+{% extends "layouts.master" %}
+{% block content %}
+    {# محتوى الصفحة الرئيسية تُرتّبه التاجرة/التاجر من لوحة تحكم سلة.
+       مكوناتنا المخصصة (home.hero-banner, home.icon-categories ...) مسجّلة
+       في twilight.json وتظهر للتاجر كعناصر قابلة للإضافة والترتيب. #}
+    {% component home %}
+{% endblock %}
+{% block scripts %}
+    <script defer src="{{ 'home.js' | asset }}"></script>
+{% endblock %}

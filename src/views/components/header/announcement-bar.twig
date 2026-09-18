@@ -1,0 +1,11 @@
+{# شريط علوي — النص من إعدادات الثيم (settings) وليس من عنصر الصفحة الرئيسية #}
+{% set msg = theme.settings.get('announcement_text') %}
+{% if msg %}
+<div class="hn-announcement">
+    <div class="hn-announcement__track">
+        {% for i in 1..2 %}
+        <span class="hn-announcement__item" {{ i == 2 ? 'aria-hidden="true"' : '' }}>{{ msg }}</span>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

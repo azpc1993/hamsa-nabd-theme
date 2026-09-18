@@ -1,0 +1,15 @@
+{# نقطة الدخول للهيدر — تحل محل هيدر ثيم رائد بالكامل #}
+<header class="hn-site-header">
+    {% component 'header.announcement-bar' %}
+    {% component 'header.main-header' %}
+
+    {% if theme.settings.get('show_trust_badges', true) %}
+        {% component 'header.trust-badges' %}
+    {% endif %}
+</header>
+
+{% component 'header.mega-menu' %}
+
+{% if theme.settings.get('show_bottom_nav', true) %}
+    {% component 'header.mobile-bottom-nav' %}
+{% endif %}

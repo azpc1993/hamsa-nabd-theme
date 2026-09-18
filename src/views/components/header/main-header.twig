@@ -1,0 +1,38 @@
+{#
+| Variable         | Type   | Description                   |
+|------------------|--------|-------------------------------|
+| cart.items_count | int    |                               |
+| cart.total       | string | مُنسّق مسبقاً ex: "١٠٠ ر.س"     |
+| store.logo       | string |                               |
+| store.name       | string |                               |
+#}
+<div class="hn-header">
+    <button class="hn-header__menu-btn" data-hn-menu-open aria-label="{{ trans('blocks.header.menu') }}">
+        <span></span><span></span><span></span>
+    </button>
+
+    <a href="{{ store.url }}" class="hn-header__logo">
+        {% if store.logo %}
+            <img src="{{ store.logo }}" alt="{{ store.name }}">
+        {% else %}
+            <span class="hn-header__logo-text">{{ store.name }}</span>
+        {% endif %}
+    </a>
+
+    {# بحث سلة الحيّ: اقتراحات فورية ونتائج حقيقية بدون كتابة أي منطق بحث #}
+    <div class="hn-header__search">
+        <salla-search inline-search></salla-search>
+    </div>
+
+    <div class="hn-header__actions">
+        <a href="{{ store.url }}/wishlist" class="hn-header__icon-link" aria-label="{{ trans('blocks.header.wishlist') }}">
+            <i class="sicon-heart"></i>
+            <salla-wishlist-counter></salla-wishlist-counter>
+        </a>
+
+        <salla-user-menu></salla-user-menu>
+
+        {# ملخص السلة الرسمي — يفتح سلة سلة المنزلقة ويحدّث العدّاد تلقائياً #}
+        <salla-cart-summary></salla-cart-summary>
+    </div>
+</div>

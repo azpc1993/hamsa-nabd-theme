@@ -1,0 +1,62 @@
+{#
+| Variable              | Type   | Description                                         |
+|-----------------------|--------|-----------------------------------------------------|
+| store.name/.logo/.url | Store  |                                                     |
+| store.social          | object | instagram, snapchat, twitter, youtube, facebook...  |
+| store.contacts        | object | mobile, phone, email, whatsapp, telegram            |
+| theme.is_rtl          | bool   |                                                     |
+| theme.color.primary   | string |                                                     |
+| theme.settings.get()  | mixed  | قيم قسم settings في twilight.json                    |
+| language.code         | string |                                                     |
+| cart.items_count      | int    |                                                     |
+#}
+<!DOCTYPE html>
+<html lang="{{ language.code }}" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% hook 'head:start' %}
+    {% block head_scripts %}{% endblock %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ 'style.css'|asset }}">
+    <link rel="stylesheet" href="{{ 'components.css'|asset }}">
+
+    <style>
+        :root{
+            --hn-primary: {{ theme.settings.get('color_primary', '#0B1F3A') }};
+            --hn-accent: {{ theme.settings.get('color_accent', '#C9A24B') }};
+            --hn-dark-bg: {{ theme.settings.get('color_dark_section_bg', '#0B1F3A') }};
+            --hn-bg: #FFFFFF;
+            --hn-font-heading: 'Tajawal', sans-serif;
+            --hn-font-body: 'Almarai', sans-serif;
+        }
+    </style>
+
+    {% block styles %}{% endblock %}
+    {% hook 'head' %}
+    {% hook 'head:end' %}
+</head>
+<body class="hn-theme {{ theme.is_rtl ? 'rtl' : 'ltr' }}">
+    {% hook 'body:start' %}
+
+    {% component header %}
+
+    <main id="hn-main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% component footer %}
+    {% component 'footer.whatsapp-float' %}
+
+    {% hook 'body:end' %}
+
+    <script defer src="{{ 'app.js'|asset }}"></script>
+    <script defer src="{{ 'components.js'|asset }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

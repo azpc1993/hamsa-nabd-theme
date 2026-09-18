@@ -1,0 +1,10 @@
+{% set wa_number = theme.settings.get('whatsapp_number') %}
+{% if wa_number %}
+<a href="https://wa.me/{{ wa_number }}"
+   class="hn-whatsapp-float"
+   target="_blank" rel="noopener"
+   data-hn-copy-link="{{ theme.settings.get('whatsapp_copy_link') ? 'true' : 'false' }}"
+   aria-label="{{ trans('تواصل معنا عبر واتساب') }}">
+    <span class="hn-icon-whatsapp"></span>
+</a>
+{% endif %}

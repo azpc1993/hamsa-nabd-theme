@@ -1,0 +1,163 @@
+{#
+| Variable                           | Type     | Description                          |
+|------------------------------------|----------|--------------------------------------|
+| product.id                         | int      |                                      |
+| product.name                       | string   |                                      |
+| product.description                | string   | HTML                                 |
+| product.subtitle                   | ?string  |                                      |
+| product.promotion_title            | ?string  |                                      |
+| product.category.name / .url       | ?Category|                                      |
+| product.rating.stars / .count      | ?Rating  |                                      |
+| product.images[]                   | array    | .url .alt .type .video_url           |
+| product.price / sale_price / regular_price | float |                              |
+| product.is_on_sale                 | bool     |                                      |
+| product.discount_percentage        | ?string  | ex "20%"                             |
+| product.is_available               | bool     |                                      |
+| product.is_out_of_stock            | bool     |                                      |
+| product.is_in_wishlist             | bool     |                                      |
+| product.has_options                | bool     |                                      |
+| product.options                    | Collection| @see partials/product/options.twig  |
+| product.has_size_guide             | bool     |                                      |
+| product.max_quantity               | int      |                                      |
+| product.can_show_remained_quantity | bool     |                                      |
+| product.notify_availability        | ?object  |                                      |
+| product.add_to_cart_label          | string   |                                      |
+#}
+{% extends "layouts.master" %}
+{% block content %}
+
+    {% if theme.settings.get('product_show_breadcrumbs', true) %}
+    <nav class="breadcrumbs container"><salla-breadcrumb></salla-breadcrumb></nav>
+    {% endif %}
+
+    {% hook 'product.single.before_product_info' %}
+
+    <div class="hn-product-page container" id="product-{{ product.id }}">
+
+        <div class="hn-product-page__gallery">
+            {# سلايدر سلة الرسمي: يدعم الصور والفيديو والمصغرات والتكبير تلقائياً #}
+            <salla-slider
+                id="hn-gallery-{{ product.id }}"
+                class="hn-gallery details-slider image-slider"
+                data-images='{{ product.images|json_encode }}'
+                type="thumbs"
+                loop="false"
+                auto-height
+                listen-to-thumbnails-option>
+                {% if product.promotion_title %}
+                    <div class="hn-badge hn-badge--gold">{{ product.promotion_title }}</div>
+                {% endif %}
+            </salla-slider>
+        </div>
+
+        <div class="hn-product-page__info">
+            {% if product.category %}
+            <a href="{{ product.category.url }}" class="hn-product-card__category">{{ product.category.name }}</a>
+            {% endif %}
+
+            <h1 class="hn-product-page__title">{{ product.name }}</h1>
+            {% if product.subtitle %}<p class="hn-product-page__subtitle">{{ product.subtitle }}</p>{% endif %}
+
+            {% if product.rating %}
+            <div class="hn-rating-wrap">
+                <salla-rating-stars value="{{ product.rating.stars }}" readonly></salla-rating-stars>
+                <span class="hn-rating__count">({{ product.rating.count }})</span>
+            </div>
+            {% endif %}
+
+            {% hook 'product:single.form.start' %}
+
+            <salla-add-product-button-wrapper>
+                <form id="hn-product-form" class="hn-product-form">
+                    <input type="hidden" name="id" value="{{ product.id }}">
+
+                    {# السعر #}
+                    <div class="hn-product-page__price">
+                        {% if product.is_on_sale %}
+                            <span class="hn-price hn-price--sale">{{ product.sale_price|money }}</span>
+                            <span class="hn-price hn-price--old">{{ product.regular_price|money }}</span>
+                            {% if product.discount_percentage %}
+                                <span class="hn-badge hn-badge--sale-inline">{{ product.discount_percentage }}</span>
+                            {% endif %}
+                        {% else %}
+                            <span class="hn-price">{{ product.price|money }}</span>
+                        {% endif %}
+                    </div>
+
+                    {% if product.has_size_guide %}
+                        <salla-size-guide product-id="{{ product.id }}"></salla-size-guide>
+                    {% endif %}
+
+                    {# خيارات المنتج (مقاس، لون...) — يتكفّل بها مكوّن سلة الرسمي #}
+                    {% if product.has_options %}
+                        {% include 'pages.partials.product.options' %}
+                    {% endif %}
+
+                    {% if not product.is_hidden_quantity and product.is_available %}
+                    <div class="hn-product-page__option">
+                        <label>{{ trans('pages.products.quantity') }}</label>
+                        <salla-quantity-input
+                            max="{{ product.max_quantity }}"
+                            value="1"
+                            name="quantity"
+                            aria-label="{{ trans('pages.products.quantity') }}">
+                        </salla-quantity-input>
+                    </div>
+                    {% endif %}
+
+                    {% if product.can_show_remained_quantity %}
+                        <p class="hn-product-page__stock">
+                            {{ trans('pages.products.remained_quantity') }}: {{ product.quantity }}
+                        </p>
+                    {% endif %}
+
+                    <salla-add-product-button
+                        class="hn-btn hn-btn--navy hn-btn--block"
+                        data-hn-main-cta
+                        product-id="{{ product.id }}"
+                        product-status="{{ product.status }}"
+                        product-type="{{ product.type }}"
+                        channels="{{ product.notify_availability.channels|json_encode }}"
+                        notify="{{ product.notify_availability ? 'true' : 'false' }}">
+                        {{ product.add_to_cart_label }}
+                    </salla-add-product-button>
+                </form>
+            </salla-add-product-button-wrapper>
+
+            {% hook 'product:single.form.end' %}
+
+            {% if theme.settings.get('show_trust_badges', true) %}
+                {% component 'header.trust-badges' %}
+            {% endif %}
+
+            {% if product.description %}
+            <div class="hn-product-page__tabs" data-hn-tabs>
+                <div class="hn-tabs__nav">
+                    <button class="is-active" data-hn-tab="description">{{ trans('pages.products.description') }}</button>
+                    <button data-hn-tab="reviews">{{ trans('pages.comments.title') }}</button>
+                </div>
+                <div class="hn-tabs__panel is-active" data-hn-tab-panel="description">
+                    {% hook 'product:single.description.start' %}
+                    {{ product.description|raw }}
+                </div>
+                <div class="hn-tabs__panel" data-hn-tab-panel="reviews">
+                    {% component comments %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if theme.settings.get('show_sticky_cart', true) %}
+        {% component 'product.sticky-add-to-cart' %}
+    {% endif %}
+
+    {% component 'product.similar-products' %}
+
+    {% hook 'product.single.after_product_info' %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script defer src="{{ 'product.js' | asset }}"></script>
+{% endblock %}

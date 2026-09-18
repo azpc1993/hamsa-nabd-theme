@@ -1,0 +1,46 @@
+{#
+| Variable                      | Type     | Description                                    |
+|-------------------------------|----------|------------------------------------------------|
+| component                     | object   | إعدادات التاجر من قسم components في twilight.json |
+| component.slides[].image      | string   | رابط الصورة (كمبيوتر)                           |
+| component.slides[].image_mobile | ?string| رابط الصورة (جوال)                              |
+| component.slides[].title      | ?string  |                                                |
+| component.slides[].subtitle   | ?string  |                                                |
+| component.slides[].url        | ?string  |                                                |
+| component.slides[].button_text| ?string  |                                                |
+| position                      | int      | ترتيب العنصر في الصفحة، يبدأ من صفر              |
+#}
+{% set slides = component.slides|default([]) %}
+{% if slides|length %}
+<section component-id="{{ componentId }}" class="s-block hn-hero">
+    <salla-slider
+        id="hn-hero-{{ position }}"
+        auto-play
+        static-when-single
+        {{ slides|length > 1 ? '' : 'show-controls="false"' }}
+        type="fullwidth">
+        <div slot="items">
+            {% for slide in slides %}
+            <div class="swiper-slide hn-hero__slide">
+                <picture>
+                    {% if slide.image_mobile %}
+                    <source media="(max-width: 767px)" srcset="{{ slide.image_mobile }}">
+                    {% endif %}
+                    <img src="{{ slide.image }}" alt="{{ slide.title|default(store.name) }}"
+                         loading="{{ loop.first ? 'eager' : 'lazy' }}">
+                </picture>
+                <div class="hn-hero__content">
+                    {% if slide.title %}<h2 class="hn-hero__title">{{ slide.title }}</h2>{% endif %}
+                    {% if slide.subtitle %}<p class="hn-hero__subtitle">{{ slide.subtitle }}</p>{% endif %}
+                    {% if slide.url %}
+                    <a href="{{ slide.url }}" class="hn-btn hn-btn--gold">
+                        {{ slide.button_text|default(trans('pages.products.shop_now')) }}
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </salla-slider>
+</section>
+{% endif %}

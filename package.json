@@ -1,0 +1,10 @@
+{
+  "name": "hamsa-nabd-theme",
+  "version": "1.0.0",
+  "description": "ثيم همسة نبض المخصص لمنصة سلة (Twilight)",
+  "scripts": {
+    "preview": "salla theme preview",
+    "watch": "salla theme watch"
+  },
+  "license": "UNLICENSED"
+}
