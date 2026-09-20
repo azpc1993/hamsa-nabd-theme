@@ -1,0 +1,9 @@
+{#
+| Variable | Type   | Description                        |
+|----------|--------|-------------------------------------|
+| limit    | ?string| الحد الأقصى لعدد التقييمات المعروضة |
+| sort     | ?string|                                     |
+#}
+<section component-id="{{ componentId }}" class="s-block hn-testimonials container">
+    <salla-reviews display-all-link limit="{{ limit|default(6) }}" sort="{{ sort|default('latest') }}" type="store"></salla-reviews>
+</section>

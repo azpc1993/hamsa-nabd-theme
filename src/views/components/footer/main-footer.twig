@@ -18,6 +18,11 @@
                 {% endif %}
             {% endfor %}
         </div>
+
+        {# السجل التجاري / سجل العمل الحر — يعرضها سلة تلقائياً عند توفرها بالمتجر، بدون أي خيار لإخفائها #}
+        <div class="hn-footer-trust">
+            <salla-trust-badges {% if theme.settings.get('footer_is_dark') %}dark{% endif %}></salla-trust-badges>
+        </div>
     </div>
 
     {# قوائم روابط المتجر الحقيقية التي رتّبها التاجر #}

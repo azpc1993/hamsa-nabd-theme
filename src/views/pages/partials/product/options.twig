@@ -1,0 +1,62 @@
+{#
+| Variable                                        | Type                       | Description                                                                                                 |
+|--------------------------------------------------|----------------------------|-------------------------------------------------------------------------------------------------------------|
+| product.options                                 | ?ProductOption *Collection |                                                                                                               |
+| product.options[].id / .name / .required / .type| int/string/bool/string     | type: single-option, date, datetime, time, image, text, textarea, number, multi-options, color, thumbnail...|
+| product.options[].details[]                     | OptionDetail *Collection   | .id .name .full_name .additional_price .option_value .color .image .is_selected .is_out                    |
+| product.weight                                  | ?string                    |                                                                                                               |
+| product.has_size_guide                          | bool                       |                                                                                                               |
+| product.can_add_note / .can_upload_file         | bool                       |                                                                                                               |
+| product.id                                      | int                        |                                                                                                               |
+#}
+
+{# خيارات المنتج (مقاس، لون...) — مكوّن سلة الرسمي يتكفّل بعرضها والتحقق منها #}
+{% if product.options|length %}
+    <salla-product-options options="{{ product.options }}" product-id="{{ product.id }}"></salla-product-options>
+{% endif %}
+
+{% if product.has_bundle_products %}
+    <salla-multiple-bundle-product bundle-sections='{{ product|json_encode }}'></salla-multiple-bundle-product>
+{% endif %}
+
+{% if product.weight or product.has_size_guide %}
+<section class="hn-product-page__extra">
+    {% if product.weight %}
+    <div class="hn-product-page__row">
+        <b><i class="sicon-luggage-cart"></i> {{ trans('pages.products.weight') }}</b>
+        <span>{{ product.weight }}</span>
+    </div>
+    {% endif %}
+
+    {% if product.has_size_guide %}
+    <div class="hn-product-page__row">
+        <b><i class="sicon-pencil-ruler"></i> {{ trans('pages.products.size_guides') }}</b>
+        <salla-button shape="link" color="primary" onclick="salla.event.dispatch('size-guide::open', '{{ product.id }}')">
+            {{ trans('pages.products.show_size_guides') }}
+        </salla-button>
+    </div>
+    <salla-product-size-guide></salla-product-size-guide>
+    {% endif %}
+</section>
+{% endif %}
+
+{% if product.can_add_note or product.can_upload_file %}
+<section class="hn-product-page__attachments">
+    <b>{{ trans('pages.products.attachments') }}</b>
+    <div class="hn-product-page__attachments-actions">
+        {% if product.can_add_note %}
+        <button type="button" class="hn-btn hn-btn--outline-gold" data-show="note_{{ product.id }}">
+            {{ trans('pages.products.add_note') }}
+        </button>
+        {% endif %}
+        {% if product.can_upload_file %}
+        <salla-file-upload product-id="{{ product.id }}"></salla-file-upload>
+        {% endif %}
+    </div>
+
+    {% if product.can_add_note %}
+    <textarea id="note_{{ product.id }}" name="notes" class="hn-cart-line__note" hidden
+              placeholder="{{ trans('pages.products.write_note') }}"></textarea>
+    {% endif %}
+</section>
+{% endif %}

@@ -30,9 +30,14 @@
     <nav class="breadcrumbs container"><salla-breadcrumb></salla-breadcrumb></nav>
     {% endif %}
 
-    {% hook 'product.single.before_product_info' %}
-
     <div class="hn-product-page container" id="product-{{ product.id }}">
+
+        {#
+            Hook: product.single.before_product_info
+            Fires before the main product info section (gallery + details).
+            Use this hook to inject custom content or components above the product details area.
+        #}
+        <div class="s-blocks-wrapper s-before-product-info">{% hook 'product.single.before_product_info' %}</div>
 
         <div class="hn-product-page__gallery">
             {# سلايدر سلة الرسمي: يدعم الصور والفيديو والمصغرات والتكبير تلقائياً #}
@@ -88,10 +93,8 @@
                         <salla-size-guide product-id="{{ product.id }}"></salla-size-guide>
                     {% endif %}
 
-                    {# خيارات المنتج (مقاس، لون...) — يتكفّل بها مكوّن سلة الرسمي #}
-                    {% if product.has_options %}
-                        {% include 'pages.partials.product.options' %}
-                    {% endif %}
+                    {# خيارات المنتج (مقاس، لون...) — عبر الملف الجزئي الرسمي #}
+                    {% include 'pages.partials.product.options' %}
 
                     {% if not product.is_hidden_quantity and product.is_available %}
                     <div class="hn-product-page__option">
@@ -130,6 +133,13 @@
                 {% component 'header.trust-badges' %}
             {% endif %}
 
+            {#
+                Hook: product.single.before_customer_reviews
+                Fires before the customer reviews block.
+                Use this hook to inject content between the product info and the reviews block.
+            #}
+            <div class="s-blocks-wrapper s-before-reviews">{% hook 'product.single.before_customer_reviews' %}</div>
+
             {% if product.description %}
             <div class="hn-product-page__tabs" data-hn-tabs>
                 <div class="hn-tabs__nav">
@@ -152,9 +162,26 @@
         {% component 'product.sticky-add-to-cart' %}
     {% endif %}
 
-    {% component 'product.similar-products' %}
+    {#
+        Hook: product.single.before_product_recommendations
+        Fires before the similar/related products slider.
+        Use this hook to inject content between the reviews and the recommendations section.
+    #}
+    <div class="s-blocks-wrapper s-before-related">{% hook 'product.single.before_product_recommendations' %}</div>
 
-    {% hook 'product.single.after_product_info' %}
+    {# منتجات مشابهة — مكوّن سلة الرسمي #}
+    <div class="container hn-related-products">
+        <salla-products-slider source="related" source-value="{{ product.id }}"
+                                block-title="{{ trans('pages.products.similar_products') }}"
+                                display-all-url></salla-products-slider>
+    </div>
+
+    {#
+        Hook: product.single.after_product_recommendations
+        Fires after the similar/related products slider, at the very end of the product page content.
+        Use this hook to append content below the recommendations section.
+    #}
+    <div class="s-blocks-wrapper s-after-related">{% hook 'product.single.after_product_recommendations' %}</div>
 
 {% endblock %}
 

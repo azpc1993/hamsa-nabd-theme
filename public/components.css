@@ -335,3 +335,17 @@
     .hn-cart-line--page .hn-cart-line__qty-page,
     .hn-cart-line--page .hn-cart-line__price{ grid-column: 2; }
 }
+
+/* ---------- Footer trust badges (commercial registration) ---------- */
+.hn-footer-trust{ margin-top: 16px; }
+
+/* ---------- Static info page ---------- */
+.hn-page{ padding: 40px 6%; max-width: 900px; margin: 0 auto; }
+.hn-page__title{ font-size: 26px; color: var(--hn-primary); margin: 16px 0 24px; }
+.hn-page__body{ font-size: 15px; line-height: 1.9; color: #333; }
+
+/* ---------- Testimonials section ---------- */
+.hn-testimonials{ padding: 32px 6%; }
+
+/* ---------- Related products on product page ---------- */
+.hn-related-products{ padding: 0 6% 40px; }
