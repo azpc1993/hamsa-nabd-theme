@@ -27,7 +27,8 @@
         "component-store-features",
         "component-testimonials",
         "component-parallax-background",
-        "component-youtube"
+        "component-youtube",
+        "component-random-testimonials"
     ],
     "settings": [
         {
