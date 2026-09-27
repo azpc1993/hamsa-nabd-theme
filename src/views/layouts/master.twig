@@ -44,7 +44,7 @@
     {% hook 'head' %}
     {% hook 'head:end' %}
 </head>
-<body class="hn-theme {{ theme.is_rtl ? 'rtl' : 'ltr' }}{% if theme.settings.get('hn_preset_sports', false) %} hn-preset-sports{% elseif theme.settings.get('hn_preset_fashion', false) %} hn-preset-fashion{% elseif theme.settings.get('hn_preset_gifts', false) %} hn-preset-gifts{% elseif theme.settings.get('hn_preset_electronics', false) %} hn-preset-electronics{% elseif theme.settings.get('hn_preset_beauty', false) %} hn-preset-beauty{% elseif theme.settings.get('hn_preset_kids', false) %} hn-preset-kids{% else %} hn-preset-general{% endif %}">
+<body class="hn-theme {{ theme.is_rtl ? 'rtl' : 'ltr' }}">
     {% hook 'body:start' %}
 
     {% component header %}

@@ -1,65 +1,112 @@
-# ثيم همسة نبض — Salla Twilight Theme (نسخة احترافية مستقلة)
+# ثيم همسة نبض 9.3.0 — Salla Twilight
 
-ثيم مبني على محرك **Twilight** مع واجهة وهوية مخصصة، ويعتمد على مكونات Salla الرسمية في الوظائف الأساسية مثل السلة والبحث والحساب والمنتجات، مع مكونات همسة نبض المخصصة فوقها.
+ثيم **همسة نبض** هو ثيم تجاري لمنصة سلة مبني على Twilight، مع 30 مكوّنًا مخصصًا، إعدادات عامة، تجربة متجاوبة للجوال والكمبيوتر، ومجموعة إعداد موجّهة تساعد التاجر على فهم كل مكوّن وتعبئته من خلال أمثلة جاهزة.
 
-## أبرز الميزات التنافسية
-- **هيدر متقدم**: شريط عروض متحرك (Marquee)، بحث فوري مباشر، قائمة كبيرة (Mega Menu) بملء الشاشة بدل القوائم المنسدلة التقليدية، شارات ثقة، شريط تنقل سفلي مخصص للجوال
-- **سلة منزلقة (Cart Drawer)** بدل صفحة سلة تقليدية، مع شريط تقدّم "شحن مجاني"
-- **بطاقة منتج غنية**: تبديل الصورة عند الهوفر، قلب مفضلة، أزرار إضافة سريعة/معاينة سريعة (Quick View) بدون مغادرة الصفحة، سواتش ألوان، شارات ديناميكية (خصم/جديد/كمية محدودة)
-- **صفحة تصنيف احترافية**: فلاتر جانبية (نطاق سعري بمقبضين، سواتش ألوان، تشيبس مقاسات/ماركات)، شريط فرز وتبديل عرض شبكي/قائمة
-- **صفحة منتج متكاملة**: معرض صور بتكبير (Zoom) وصور مصغرة، دليل مقاسات كنافذة منبثقة، تبويبات (وصف/شحن/تقييمات)، شريط "أضف للسلة" ثابت يظهر في الجوال عند التمرير
-- **أقسام تسويقية**: عرض منتج بارز (Spotlight)، أطقم منتجات (Bundles)، شبكة ماركات/تصنيفات بصور كبيرة، معرض انستقرام، "شاهدته مؤخراً"
-- هوية بصرية نيفي/ذهبي كاملة، خطوط Tajawal/Almarai، كل الألوان والخطوط قابلة للتعديل من إعدادات الثيم بدون كود
+## الإصدار الحالي
 
-## 1. المتطلبات قبل البدء
-1. حساب [Salla Partners Portal](https://salla.partners).
-2. حساب GitHub لمزامنة كود الثيم.
-3. [Node.js](https://nodejs.org) (LTS) + تثبيت Salla CLI:
-   ```bash
-   npm install -g @salla.sa/cli
-   salla login
-   ```
+**9.3.0 — Guided Merchant Setup**
 
-## 2. المعاينة المحلية
+### أهم ما يتضمنه الإصدار
+
+- 30 مكوّنًا مخصصًا للصفحة الرئيسية.
+- إعدادات عامة للهوية والألوان والخطوط والمزايا.
+- أمثلة عربية جاهزة داخل حقول المكونات.
+- Collections تحتوي على بيانات مثال قابلة للتعديل.
+- إرشادات عملية لمقاسات الصور.
+- معاينة/إرشاد لكل مكوّن عبر بيانات `twilight.json`.
+- صور مثال أصلية داخل `src/assets/images/`.
+- تكاملات Twilight الأساسية في القوالب.
+- صفحات رئيسية للمتجر، التصنيف، المنتج، السلة، الحساب، الولاء، المدونة، العلامات التجارية وغيرها.
+- ملفات JavaScript وCSS المصدرية مع نسخة `public/` الجاهزة للنشر.
+- دليل إعداد ودليل استخدام وتقارير QA.
+
+## بنية المستودع
+
+```text
+.
+├── twilight.json
+├── package.json
+├── README.md
+├── UPLOAD-GUIDE.md
+├── VARIABLES.md
+├── V9.3-USER-GUIDE.md
+├── V9.3-GUIDED-SETUP.md
+├── V9.3-QA.md
+├── V9.3-CHANGELOG.md
+├── scripts/
+│   └── build.js
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   ├── js/
+│   │   └── styles/
+│   ├── locales/
+│   └── views/
+└── public/
+    ├── images/
+    ├── *.js
+    └── *.css
+```
+
+## أهم ملف في الثيم
+
+`twilight.json` موجود مباشرة في جذر المستودع، ويحتوي على معلومات الثيم والإعدادات والمزايا والمكونات المخصصة. هذا هو المكان الذي تعتمد عليه Salla Partners Portal لمزامنة إعدادات الثيم. 
+
+## تشغيل البناء
+
+بعد تعديل أي ملف داخل `src/assets/` شغّل:
+
 ```bash
-npm install
+npm run production
+```
+
+وسيتم تحديث ملفات `public/` من ملفات المصدر.
+
+## المعاينة
+
+إذا كانت Salla CLI مثبتة لديك:
+
+```bash
+salla login
 salla theme preview
 ```
 
-## 3. الرفع والنشر
-1. ارفع محتوى هذا المجلد إلى مستودع GitHub خاص بك.
-2. من لوحة الشركاء: My Themes → Create New Theme → اربط المستودع.
-3. بعد الاختبار: My Themes → اختر الثيم → Submit for Review لإرساله لمراجعة فريق سلة (سواء للنشر العام في متجر الثيمات أو للاستخدام الخاص فقط بمتجرك).
+## GitHub + Salla
 
-## 4. مهم جداً — ربط بيانات المتجر الحقيقية
-كل المكونات مبنية بمتغيرات عامة (`product`, `home.banners`, `category.products`...) لتكون مرنة وقابلة لإعادة الاستخدام. **قبل النشر تحتاج تربطها بمتغيرات Twilight الفعلية** التي توفرها سلة لكل صفحة (متوفرة في وثائق [docs.salla.dev](https://docs.salla.dev) الخاصة بكل صفحة: الرئيسية، المنتج، التصنيف، السلة) — لأن أسماء المتغيرات الحقيقية للمنتجات/العروض/السلة تُحدَّد من Twilight نفسه وقد تختلف قليلاً حسب إصدار المنصة.
+ارفع محتويات هذا المستودع كما هي إلى **جذر مستودع GitHub** المرتبط بحساب Salla Partners.
 
-وظائف البحث والمفضلة والسلة تعتمد على مكونات Salla/Twilight الرسمية عند توفرها، بينما "شاهدته مؤخراً" يحفظ معرفات المنتجات محلياً في جلسة المتصفح، ولا يستبدل بيانات المنتجات الرسمية من سلة.
+يجب أن يكون `twilight.json` بهذا الشكل:
 
-## هيكل الملفات
-```
-twilight.json
-src/views/layouts/master.twig      → القالب المشترك (هوكس + CSS/JS متغيرات)
-src/views/pages/
-  index.twig                       → الرئيسية
-  category.twig                    → صفحة التصنيف
-  product.twig                     → صفحة المنتج
-src/views/components/
-  header/   → header, announcement-bar, main-header, mega-menu, trust-badges, mobile-bottom-nav
-  footer/   → footer, newsletter, main-footer
-  home/     → hero-banner, section-divider, best-seller-spotlight, bundle-section,
-              icon-categories, brand-showcase, instagram-gallery, recently-viewed
-  product/  → product-card, quick-view-modal, image-gallery, sticky-add-to-cart, size-guide-modal
-  category/ → filters-sidebar, toolbar
-  cart/     → cart-drawer
-  shared/   → rating-stars, wishlist-button
-src/assets/styles/style.css        → المتغيرات + عناصر الصفحة الرئيسية الأصلية
-src/assets/styles/components.css   → تنسيق كل المكونات المتقدمة الجديدة
-src/assets/js/app.js               → سلايدر الهيرو، بوب أب، عداد تنازلي
-src/assets/js/components.js        → مينيو، سلة منزلقة، معاينة سريعة، فلاتر، معرض صور، تبويبات...
-src/locales/ar.json, en.json
+```text
+GitHub Repository/
+├── twilight.json
+├── package.json
+├── src/
+├── public/
+└── scripts/
 ```
 
+لا تضع ملفات الثيم داخل مجلد فرعي إضافي.
 
-## V10 Presets
-V10 preserves V9.3 and adds six optional visual presets: Sports, Fashion, Gifts, Electronics, Beauty, Kids. General is the default when none is enabled. If multiple presets are enabled, priority is Sports → Fashion → Gifts → Electronics → Beauty → Kids.
+## بيانات الربط الحالية
+
+- Theme name: `همسة نبض`
+- Version: `9.3.0`
+- Repository: `https://github.com/azpc1993/hamsa-nabd-theme`
+- Support URL: `https://hamsa-nabd.com`
+- Author email: `znonstor@gmail.com`
+
+> إذا كنت ستستخدم مستودع GitHub مختلفًا، عدّل `repo_url` داخل `twilight.json` قبل المزامنة.
+
+## المراجع والملفات المساعدة
+
+- `UPLOAD-GUIDE.md` — خطوات الرفع والنشر.
+- `V9.3-GUIDED-SETUP.md` — نظام الإعداد الموجّه.
+- `V9.3-USER-GUIDE.md` — دليل استخدام التاجر.
+- `V9.3-QA.md` — تقرير فحص الإصدار.
+- `V9.3-CHANGELOG.md` — سجل تغييرات الإصدار.
+- `VARIABLES.md` — مرجع المتغيرات المستخدمة في الثيم.
+
+## ملاحظة مهمة قبل إعادة النشر
+
+بعد ربط المستودع في Salla Partners Portal، راجع **Theme Preview** وتأكد بصريًا من ظهور صور المعاينة داخل إعدادات المكونات. الصور المحلية الموجودة في `src/assets/images/` تم تجهيزها ضمن الثيم، لكن التحقق النهائي من طريقة عرضها داخل بوابة الشركاء يجب أن يتم من داخل Salla نفسها.

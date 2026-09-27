@@ -1,8 +1,38 @@
-{% if component.box_options|length and component.item_options|length %}
-<section component-id="{{ componentId }}" class="s-block hn-smart-box" data-hn-smart-box>
- <div class="hn-smart-box__head"><span class="hn-badge hn-badge--gold">Smart Box 2.0</span><h2>{{ component.title|default(trans('hn.v93.box_title')) }}</h2>{% if component.subtitle %}<p>{{ component.subtitle }}</p>{% endif %}</div>
- <div class="hn-smart-box__layout"><div><h3>{{ trans('hn.v93.choose_box') }}</h3><div class="hn-smart-box__grid">{% for x in component.box_options %}<label class="hn-smart-box__choice"><input type="radio" name="hnbox-{{ componentId }}" value="{{ x.value|default(loop.index) }}" data-price-label="{{ x.price }}"><span>{% if x.image %}<img src="{{ x.image }}" alt="">{% endif %}<strong>{{ x.name }}</strong><small>{{ x.price }}</small></span></label>{% endfor %}</div></div>
- <div><h3>{{ trans('hn.v93.choose_items') }}</h3><div class="hn-smart-box__grid">{% for x in component.item_options %}<label class="hn-smart-box__choice"><input type="checkbox" value="{{ x.value|default(loop.index) }}" data-price-label="{{ x.price }}"><span>{% if x.image %}<img src="{{ x.image }}" alt="">{% endif %}<strong>{{ x.name }}</strong><small>{{ x.price }}</small></span></label>{% endfor %}</div></div>
- {% if component.extra_options|length %}<div><h3>{{ trans('hn.v93.choose_extras') }}</h3><div class="hn-smart-box__extras">{% for x in component.extra_options %}<label><input type="checkbox" value="{{ x.value|default(loop.index) }}"><span>{{ x.name }}</span><small>{{ x.price }}</small></label>{% endfor %}</div></div>{% endif %}
- </div><div class="hn-smart-box__summary"><strong>{{ trans('hn.v93.box_summary') }}</strong><span data-hn-smart-box-count>0</span><span data-hn-smart-box-note>{{ trans('hn.v93.box_select_hint') }}</span>{% if component.url %}<a href="{{ component.url }}" class="hn-btn hn-btn--navy">{{ component.button_text|default(trans('hn.v93.complete_box')) }}</a>{% endif %}</div>
-</section>{% endif %}
+{#
+| Variable                     | Type    | Description                                  |
+|-------------------------------|---------|------------------------------------------------|
+| component.title              | ?string |                                                |
+| component.subtitle           | ?string |                                                |
+| component.steps[].icon        | string  |                                                |
+| component.steps[].label       | string  | مثال: "اختر الصندوق"، "اختر المحتوى"، "أضف بطاقة تهنئة" |
+| component.image              | string  | صورة تعريفية لصندوق الهدايا                     |
+| component.url                | string  | رابط لصفحة/تصنيف صناديق الهدايا                 |
+| component.button_text        | ?string |                                                |
+| position                     | int     |                                                |
+#}
+{% if component.steps|length %}
+<section component-id="{{ componentId }}" class="s-block hn-build-box">
+    <div class="hn-build-box__media">
+        <img src="{{ component.image }}" alt="{{ component.title }}" loading="lazy">
+    </div>
+    <div class="hn-build-box__body">
+        <span class="hn-badge hn-badge--gold">{{ trans('common.actions.exclusive') }}</span>
+        <h2>{{ component.title|default(trans('hn.components.box_title')) }}</h2>
+        {% if component.subtitle %}<p>{{ component.subtitle }}</p>{% endif %}
+
+        <ol class="hn-build-box__steps">
+            {% for step in component.steps %}
+            <li>
+                <span class="hn-build-box__step-num">{{ loop.index }}</span>
+                {% if step.icon %}<img src="{{ step.icon }}" alt="">{% endif %}
+                <span>{{ step.label }}</span>
+            </li>
+            {% endfor %}
+        </ol>
+
+        <a href="{{ component.url }}" class="hn-btn hn-btn--navy">
+            {{ component.button_text|default(trans('hn.components.box_button')) }}
+        </a>
+    </div>
+</section>
+{% endif %}

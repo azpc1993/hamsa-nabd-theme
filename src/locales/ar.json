@@ -240,23 +240,6 @@
       "compare_title": "قارن المنتجات",
       "compare_hint": "اختر من 2 إلى 4 منتجات للمقارنة",
       "compare_action": "عرض المقارنة"
-    },
-    "v93": {
-      "gift_finder_title": "مساعد اختيار الهدية 2.0",
-      "gift_step_recipient": "لمن الهدية؟",
-      "gift_step_occasion": "ما المناسبة؟",
-      "gift_step_budget": "ما الميزانية؟",
-      "gift_match": "اقتراح مناسب لك",
-      "box_title": "كوّن صندوقك بذكاء",
-      "choose_box": "اختر الصندوق",
-      "choose_items": "اختر المحتويات",
-      "choose_extras": "إضافات اختيارية",
-      "box_summary": "ملخص الصندوق",
-      "box_select_hint": "اختر الصندوق والمحتويات",
-      "complete_box": "أكمل الصندوق",
-      "bundle_title": "البكجات الذكية",
-      "view_bundle": "عرض البكج",
-      "campaign_code": "كود الخصم:"
     }
   }
 }

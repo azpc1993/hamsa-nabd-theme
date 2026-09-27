@@ -240,23 +240,6 @@
       "compare_title": "Compare products",
       "compare_hint": "Choose 2 to 4 products to compare",
       "compare_action": "View comparison"
-    },
-    "v93": {
-      "gift_finder_title": "Gift Finder 2.0",
-      "gift_step_recipient": "Who is the gift for?",
-      "gift_step_occasion": "What is the occasion?",
-      "gift_step_budget": "What is the budget?",
-      "gift_match": "Your recommended gift",
-      "box_title": "Build your box smarter",
-      "choose_box": "Choose a box",
-      "choose_items": "Choose contents",
-      "choose_extras": "Optional extras",
-      "box_summary": "Box summary",
-      "box_select_hint": "Choose a box and contents",
-      "complete_box": "Complete the box",
-      "bundle_title": "Smart Bundles",
-      "view_bundle": "View bundle",
-      "campaign_code": "Promo code:"
     }
   }
 }
