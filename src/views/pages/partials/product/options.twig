@@ -31,7 +31,7 @@
     {% if product.has_size_guide %}
     <div class="hn-product-page__row">
         <b><i class="sicon-pencil-ruler"></i> {{ trans('pages.products.size_guides') }}</b>
-        <salla-button shape="link" color="primary" onclick="salla.event.dispatch('size-guide::open', '{{ product.id }}')">
+        <salla-button shape="link" color="primary" data-hn-size-guide="{{ product.id }}">
             {{ trans('pages.products.show_size_guides') }}
         </salla-button>
     </div>

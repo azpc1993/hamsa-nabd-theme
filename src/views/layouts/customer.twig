@@ -1,0 +1,14 @@
+{% extends "layouts.master" %}
+{% block content %}
+<div class="hn-customer-hero"><div class="container"><nav class="breadcrumbs"><salla-breadcrumb></salla-breadcrumb></nav></div></div>
+<div class="container hn-customer-layout">
+  <aside class="hn-customer-sidebar" aria-label="{{ trans('hn.accessibility.customer_navigation') }}">
+    {% if is_page('customer.profile') %}<div class="hn-customer-avatar"><salla-file-upload profile-image value="{{ user.avatar }}"><span class="sicon-user"></span></salla-file-upload></div>{% endif %}
+    <salla-user-menu inline data-testid="store-sidebar-user-menu"></salla-user-menu>
+  </aside>
+  <section class="hn-customer-content">
+    {% block inner_title %}<h1 class="hn-page__title">{{ page.title }}</h1>{% endblock %}
+    {% block inner_content %}{% endblock %}
+  </section>
+</div>
+{% endblock %}

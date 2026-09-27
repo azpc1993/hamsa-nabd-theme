@@ -34,7 +34,7 @@
                     {% if slide.subtitle %}<p class="hn-hero__subtitle">{{ slide.subtitle }}</p>{% endif %}
                     {% if slide.url %}
                     <a href="{{ slide.url }}" class="hn-btn hn-btn--gold">
-                        {{ slide.button_text|default(trans('pages.products.shop_now')) }}
+                        {{ slide.button_text|default(trans('hn.components.shop_now')) }}
                     </a>
                     {% endif %}
                 </div>

@@ -44,7 +44,7 @@
     {% hook 'head' %}
     {% hook 'head:end' %}
 </head>
-<body class="hn-theme {{ theme.is_rtl ? 'rtl' : 'ltr' }}">
+<body class="hn-theme {{ theme.is_rtl ? 'rtl' : 'ltr' }}{% if theme.settings.get('hn_preset_sports', false) %} hn-preset-sports{% elseif theme.settings.get('hn_preset_fashion', false) %} hn-preset-fashion{% elseif theme.settings.get('hn_preset_gifts', false) %} hn-preset-gifts{% elseif theme.settings.get('hn_preset_electronics', false) %} hn-preset-electronics{% elseif theme.settings.get('hn_preset_beauty', false) %} hn-preset-beauty{% elseif theme.settings.get('hn_preset_kids', false) %} hn-preset-kids{% else %} hn-preset-general{% endif %}">
     {% hook 'body:start' %}
 
     {% component header %}
@@ -58,8 +58,25 @@
 
     {% hook 'body:end' %}
 
+    {% if theme.settings.get('hn_enable_promo_popup', false) %}
+        {% component 'home.promo-popup' %}
+    {% endif %}
+
+    {% if theme.settings.get('enable_add_product_toast', true) %}
+        <salla-add-product-toast data-testid="store-add-product-toast"></salla-add-product-toast>
+    {% endif %}
+
     <script defer src="{{ 'app.js'|asset }}"></script>
     <script defer src="{{ 'components.js'|asset }}"></script>
+
+    {# Twilight Components #}
+    <salla-offer-modal data-testid="store-offer-modal"></salla-offer-modal>
+    <salla-search data-testid="store-search-modal"></salla-search>
+    <salla-login-modal data-testid="store-login-modal"></salla-login-modal>
+    {% if store.scope %}
+        <salla-scopes data-testid="store-scopes" selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
+    {% endif %}
+
     {% block scripts %}{% endblock %}
 </body>
 </html>

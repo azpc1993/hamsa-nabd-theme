@@ -1,1 +1,2 @@
-/* همسة نبض — سلوكيات خاصة بصفحة category (محجوزة للتوسع) */
+/* Hamsa Nabd category-page progressive enhancements. */
+(function(){'use strict';})();

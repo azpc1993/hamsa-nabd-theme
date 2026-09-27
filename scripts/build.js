@@ -39,19 +39,15 @@ sharedFiles.forEach(([from, to]) => {
     if (fs.existsSync(src)) copyFile(src, path.join(OUT, to));
 });
 
-// ملفات جافاسكربت خاصة بكل صفحة (home.js, category.js, product.js)
-// إن لم توجد بعد في src/assets/js/pages، تُنشأ فارغة حتى لا يفشل asset()
+// ملفات JavaScript الخاصة بالصفحات — يجب أن تكون موجودة في المصدر حتى لا ننشر placeholder صامتاً.
 const pageEntries = ['home.js', 'category.js', 'product.js'];
 pageEntries.forEach((name) => {
     const src = path.join(SRC, 'js', 'pages', name);
     const dest = path.join(OUT, name);
-    if (fs.existsSync(src)) {
-        copyFile(src, dest);
-    } else {
-        ensureDir(path.dirname(dest));
-        fs.writeFileSync(dest, `/* همسة نبض — سلوكيات خاصة بصفحة ${name.replace('.js','')} (محجوزة للتوسع) */\n`);
-        console.log('  ✓', path.relative(ROOT, dest), '(placeholder)');
+    if (!fs.existsSync(src)) {
+        throw new Error(`Missing required page asset: ${src}`);
     }
+    copyFile(src, dest);
 });
 
 // نسخ أي صور موجودة في src/assets/images إلى public/images

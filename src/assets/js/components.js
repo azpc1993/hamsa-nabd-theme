@@ -1,217 +1,140 @@
-/* همسة نبض — سلوكيات المكونات المتقدمة */
+/* Hamsa Nabd 9.1 — progressive enhancement layer around native Salla/Twilight components. */
+(function () {
+  'use strict';
+  function ready(fn){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',fn,{once:true}); else fn(); }
+  function safe(fn){ try{fn();}catch(e){} }
+  ready(function(){
+    /* Mobile menu */
+    function menu(open){var el=document.querySelector('#hn-mega-menu'); if(!el)return; el.classList.toggle('is-open',!!open); el.setAttribute('aria-hidden',open?'false':'true'); document.body.classList.toggle('hn-no-scroll',!!open);}
+    document.querySelectorAll('[data-hn-menu-open]').forEach(function(b){b.addEventListener('click',function(){menu(true);});});
+    document.querySelectorAll('[data-hn-menu-close]').forEach(function(b){b.addEventListener('click',function(){menu(false);});});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')menu(false);});
+
+    /* Product tabs */
+    document.querySelectorAll('[data-hn-tabs]').forEach(function(root){
+      root.querySelectorAll('[data-hn-tab]').forEach(function(tab){tab.addEventListener('click',function(){var id=tab.getAttribute('data-hn-tab'); root.querySelectorAll('[data-hn-tab]').forEach(function(t){t.classList.toggle('is-active',t===tab);t.setAttribute('aria-selected',t===tab?'true':'false');}); root.querySelectorAll('[data-hn-tab-panel]').forEach(function(p){p.classList.toggle('is-active',p.getAttribute('data-hn-tab-panel')===id);});});});
+    });
+
+    /* Wishlist */
+    document.querySelectorAll('[data-hn-wishlist]').forEach(function(btn){btn.addEventListener('click',function(){var id=String(btn.getAttribute('data-hn-wishlist')); safe(function(){if(window.salla&&salla.wishlist&&typeof salla.wishlist.toggle==='function')salla.wishlist.toggle(id);});});});
+
+    /* Product note toggles */
+    document.querySelectorAll('[data-show]').forEach(function(btn){btn.addEventListener('click',function(){var id=btn.getAttribute('data-show');var field=document.getElementById(id);if(field){field.hidden=!field.hidden;if(!field.hidden)field.focus();}});});
+
+    /* Cart actions. Quantity inputs emit the native change flow; these handlers only bridge our custom buttons/forms. */
+    document.querySelectorAll('[data-hn-cart-form]').forEach(function(form){form.addEventListener('change',function(event){safe(function(){if(window.salla&&salla.form&&typeof salla.form.onChange==='function')salla.form.onChange('cart.updateItem',event);});});});
+    document.querySelectorAll('[data-hn-cart-delete]').forEach(function(btn){btn.addEventListener('click',function(){var id=String(btn.getAttribute('data-hn-cart-delete'));safe(function(){if(window.salla&&salla.cart&&typeof salla.cart.deleteItem==='function'){var p=salla.cart.deleteItem(id);if(p&&typeof p.then==='function')p.then(function(){var row=document.getElementById('item-'+id);if(row)row.remove();});}});});});
+    document.querySelectorAll('[data-hn-cart-submit]').forEach(function(btn){btn.addEventListener('click',function(){safe(function(){if(window.salla&&salla.cart&&typeof salla.cart.submit==='function')salla.cart.submit();});});});
+
+    /* Customer profile */
+    document.querySelectorAll('[data-hn-profile-form]').forEach(function(form){form.addEventListener('submit',function(event){safe(function(){if(window.salla&&salla.form&&typeof salla.form.onSubmit==='function'){event.preventDefault();salla.form.onSubmit('profile.update',event);}});});});
+
+    /* Commerce event bridge — does not replace Salla analytics. */
+    document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('[data-hn-main-cta],[data-hn-cart-submit],[data-hn-wishlist]');if(el)window.dispatchEvent(new CustomEvent('hn:commerce:interaction',{detail:{productId:el.getAttribute('product-id')||el.getAttribute('data-hn-wishlist')||null,type:el.hasAttribute('data-hn-wishlist')?'wishlist':'cta'}}));});
+
+    /* Recently viewed IDs only; native Salla recommendations remain the source of product data. */
+    safe(function(){var root=document.querySelector('[data-hn-current-product]');if(!root)return;var key='hn_recently_viewed';var id=String(root.getAttribute('data-hn-current-product'));var ids=JSON.parse(sessionStorage.getItem(key)||'[]').filter(function(x){return String(x)!==id;});ids.unshift(id);sessionStorage.setItem(key,JSON.stringify(ids.slice(0,8)));});
+  });
+})();
+/* همسة نبض — سلوكيات المكونات الجديدة (متعددة الأقسام) */
 document.addEventListener('DOMContentLoaded', function () {
 
-    function openOverlay(el) { if (el) { el.classList.add('is-open'); el.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; } }
-    function closeOverlay(el) { if (el) { el.classList.remove('is-open'); el.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; } }
-
-    /* ---------- Mega menu ---------- */
-    var megaMenu = document.getElementById('hn-mega-menu');
-    document.querySelectorAll('[data-hn-menu-open]').forEach(function (btn) {
-        btn.addEventListener('click', function () { openOverlay(megaMenu); });
-    });
-    document.querySelectorAll('[data-hn-menu-close]').forEach(function (btn) {
-        btn.addEventListener('click', function () { closeOverlay(megaMenu); });
-    });
-    if (megaMenu) {
-        megaMenu.addEventListener('click', function (e) {
-            if (e.target === megaMenu) closeOverlay(megaMenu);
-        });
-    }
-
-    /* ---------- Cart drawer ---------- */
-    var cartDrawer = document.getElementById('hn-cart-drawer');
-    document.querySelectorAll('[data-hn-cart-open]').forEach(function (btn) {
-        btn.addEventListener('click', function () { openOverlay(cartDrawer); });
-    });
-    document.querySelectorAll('[data-hn-cart-close]').forEach(function (btn) {
-        btn.addEventListener('click', function () { closeOverlay(cartDrawer); });
-    });
-    if (cartDrawer) {
-        cartDrawer.addEventListener('click', function (e) {
-            if (e.target === cartDrawer) closeOverlay(cartDrawer);
-        });
-    }
-
-    /* ---------- Quick view ---------- */
-    var quickView = document.getElementById('hn-quick-view');
-    document.querySelectorAll('[data-hn-quick-view]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            openOverlay(quickView);
-            /*
-             * ملاحظة للمطور: هنا يتم جلب بيانات المنتج الفعلية عبر Salla Storefront API
-             * باستخدام معرّف المنتج btn.dataset.hnQuickView، ثم تعبئة
-             * [data-hn-quick-view-content] بمحتوى حقيقي (صورة، سعر، خيارات، زر إضافة للسلة)
-             */
-        });
-    });
-    document.querySelectorAll('[data-hn-quick-view-close]').forEach(function (btn) {
-        btn.addEventListener('click', function () { closeOverlay(quickView); });
-    });
-    if (quickView) {
-        quickView.addEventListener('click', function (e) {
-            if (e.target === quickView) closeOverlay(quickView);
-        });
-    }
-
-    /* ---------- Wishlist toggle ---------- */
-    document.querySelectorAll('[data-hn-wishlist-toggle]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            btn.classList.toggle('is-active');
-            var pressed = btn.classList.contains('is-active');
-            btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
-            var countEl = document.querySelector('[data-hn-wishlist-count]');
-            if (countEl) {
-                var current = parseInt(countEl.textContent || '0', 10);
-                countEl.textContent = pressed ? current + 1 : Math.max(0, current - 1);
-            }
-            /* ملاحظة: يستدعي هذا الحدث Salla API الخاص بالمفضلة لحفظ الحالة فعلياً */
-        });
-    });
-
-    /* ---------- Filters sidebar (mobile open/close) ---------- */
-    var filters = document.querySelector('[data-hn-filters]');
-    document.querySelectorAll('[data-hn-filters-open]').forEach(function (btn) {
-        btn.addEventListener('click', function () { filters && filters.classList.add('is-open'); });
-    });
-    document.querySelectorAll('[data-hn-filters-clear]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            if (!filters) return;
-            filters.querySelectorAll('input[type="checkbox"]').forEach(function (cb) { cb.checked = false; });
-        });
-    });
-
-    /* ---------- Price range dual slider ---------- */
-    document.querySelectorAll('[data-hn-price-range="min"]').forEach(function (minInput) {
-        var wrap = minInput.closest('.hn-filter-group');
-        var maxInput = wrap ? wrap.querySelector('[data-hn-price-range="max"]') : null;
-        var minLabel = wrap ? wrap.querySelector('[data-hn-price-label="min"]') : null;
-        var maxLabel = wrap ? wrap.querySelector('[data-hn-price-label="max"]') : null;
-
-        function update() {
-            if (parseInt(minInput.value, 10) > parseInt(maxInput.value, 10)) {
-                minInput.value = maxInput.value;
-            }
-            if (minLabel) minLabel.textContent = minInput.value;
-            if (maxLabel) maxLabel.textContent = maxInput.value;
-        }
-        minInput.addEventListener('input', update);
-        if (maxInput) maxInput.addEventListener('input', update);
-    });
-
-    /* ---------- Category view toggle (grid/list) ---------- */
-    document.querySelectorAll('[data-hn-view]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            var grid = document.querySelector('[data-hn-product-grid]');
-            document.querySelectorAll('[data-hn-view]').forEach(function (b) { b.classList.remove('is-active'); });
-            btn.classList.add('is-active');
-            if (grid) grid.classList.toggle('hn-product-grid--list', btn.dataset.hnView === 'list');
-        });
-    });
-
-    /* ---------- Product gallery ---------- */
-    document.querySelectorAll('[data-hn-gallery]').forEach(function (gallery) {
-        var mainImg = gallery.querySelector('[data-hn-gallery-active-img]');
-        var thumbs = gallery.querySelectorAll('[data-hn-gallery-thumb]');
-        thumbs.forEach(function (thumb) {
-            thumb.addEventListener('click', function () {
-                thumbs.forEach(function (t) { t.classList.remove('is-active'); });
-                thumb.classList.add('is-active');
-                if (mainImg) mainImg.src = thumb.dataset.src;
-            });
-        });
-        var prev = gallery.querySelector('[data-hn-gallery-prev]');
-        var next = gallery.querySelector('[data-hn-gallery-next]');
-        function go(dir) {
-            var arr = Array.prototype.slice.call(thumbs);
-            var activeIndex = arr.findIndex(function (t) { return t.classList.contains('is-active'); });
-            var nextIndex = (activeIndex + dir + arr.length) % arr.length;
-            arr[nextIndex] && arr[nextIndex].click();
-        }
-        if (prev) prev.addEventListener('click', function () { go(-1); });
-        if (next) next.addEventListener('click', function () { go(1); });
-
-        /* Zoom on hover (desktop) */
-        var zoomWrap = gallery.querySelector('[data-hn-zoom]');
-        if (zoomWrap && mainImg) {
-            zoomWrap.addEventListener('mousemove', function (e) {
-                var rect = zoomWrap.getBoundingClientRect();
-                var x = ((e.clientX - rect.left) / rect.width) * 100;
-                var y = ((e.clientY - rect.top) / rect.height) * 100;
-                mainImg.style.transformOrigin = x + '% ' + y + '%';
-                mainImg.style.transform = 'scale(1.6)';
-            });
-            zoomWrap.addEventListener('mouseleave', function () {
-                mainImg.style.transform = 'scale(1)';
-            });
-        }
-    });
-
-    /* ---------- Product tabs ---------- */
-    document.querySelectorAll('[data-hn-tabs]').forEach(function (tabsWrap) {
-        var buttons = tabsWrap.querySelectorAll('[data-hn-tab]');
-        var panels = tabsWrap.querySelectorAll('[data-hn-tab-panel]');
-        buttons.forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                buttons.forEach(function (b) { b.classList.remove('is-active'); });
+    /* ---------- Season / Occasion Switcher ---------- */
+    document.querySelectorAll('[data-hn-season-switcher]').forEach(function (block) {
+        var tabs = block.querySelectorAll('[data-hn-season-tab]');
+        var panels = block.querySelectorAll('[data-hn-season-panel]');
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                var index = tab.dataset.hnSeasonTab;
+                tabs.forEach(function (t) { t.classList.remove('is-active'); });
                 panels.forEach(function (p) { p.classList.remove('is-active'); });
-                btn.classList.add('is-active');
-                var panel = tabsWrap.querySelector('[data-hn-tab-panel="' + btn.dataset.hnTab + '"]');
+                tab.classList.add('is-active');
+                var panel = block.querySelector('[data-hn-season-panel="' + index + '"]');
                 if (panel) panel.classList.add('is-active');
             });
         });
     });
 
-    /* ---------- Sticky add to cart (mobile) ---------- */
-    var stickyCart = document.querySelector('[data-hn-sticky-cart]');
-    var mainCta = document.querySelector('[data-hn-main-cta]');
-    if (stickyCart && mainCta && 'IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                stickyCart.classList.toggle('is-visible', !entry.isIntersecting && window.innerWidth <= 900);
+    /* ---------- Gift Finder Wizard ---------- */
+    document.querySelectorAll('[data-hn-gift-finder]').forEach(function (widget) {
+        var results = [];
+        try { results = JSON.parse(widget.dataset.results || '[]'); } catch (e) { results = []; }
+
+        var state = { recipient: null, occasion: null };
+        var step0 = widget.querySelector('[data-hn-gf-step="0"]');
+        var step1 = widget.querySelector('[data-hn-gf-step="1"]');
+        var resultBox = widget.querySelector('[data-hn-gf-result]');
+
+        function showStep(el) {
+            widget.querySelectorAll('[data-hn-gf-step]').forEach(function (s) { s.classList.remove('is-active'); });
+            resultBox.hidden = true;
+            if (el) el.classList.add('is-active');
+        }
+
+        widget.querySelectorAll('[data-hn-gf-recipient]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                state.recipient = btn.dataset.hnGfRecipient;
+                showStep(step1);
             });
-        }, { threshold: 0 });
-        observer.observe(mainCta);
-    }
-
-    /* ---------- Recently viewed (session-based, no personal data stored) ---------- */
-    try {
-        var STORAGE_KEY = 'hn_recently_viewed';
-        var currentProduct = document.body.dataset.hnCurrentProduct;
-        var list = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '[]');
-
-        if (currentProduct) {
-            list = list.filter(function (id) { return id !== currentProduct; });
-            list.unshift(currentProduct);
-            list = list.slice(0, 8);
-            sessionStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-        }
-
-        var rvSection = document.querySelector('[data-hn-recently-viewed]');
-        var rvTrack = document.querySelector('[data-hn-recently-viewed-track]');
-        if (rvSection && rvTrack && list.length) {
-            rvSection.hidden = false;
-            /* ملاحظة: يجب جلب بيانات هذه المنتجات (list) من Salla API وعرضها كبطاقات product-card */
-        }
-    } catch (e) { /* sessionStorage غير متاح */ }
-
-    /* ---------- Live search (placeholder wiring) ---------- */
-    var searchInput = document.querySelector('[data-hn-live-search]');
-    var searchResults = document.querySelector('[data-hn-search-results]');
-    if (searchInput && searchResults) {
-        var debounceTimer;
-        searchInput.addEventListener('input', function () {
-            clearTimeout(debounceTimer);
-            var query = searchInput.value.trim();
-            if (!query) { searchResults.hidden = true; return; }
-            debounceTimer = setTimeout(function () {
-                /* ملاحظة: استدعاء فعلي لـ Salla Search API هنا بدل المحاكاة */
-                searchResults.hidden = false;
-            }, 300);
         });
-        document.addEventListener('click', function (e) {
-            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.hidden = true;
-            }
+
+        widget.querySelectorAll('[data-hn-gf-occasion]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                state.occasion = btn.dataset.hnGfOccasion;
+                var match = results.find(function (r) {
+                    return r.recipient === state.recipient && r.occasion === state.occasion;
+                }) || results.find(function (r) { return r.recipient === state.recipient; });
+
+                widget.querySelectorAll('[data-hn-gf-step]').forEach(function (s) { s.classList.remove('is-active'); });
+                if (match) {
+                    widget.querySelector('[data-hn-gf-result-img]').src = match.image || '';
+                    widget.querySelector('[data-hn-gf-result-title]').textContent = match.title || '';
+                    widget.querySelector('[data-hn-gf-result-link]').href = match.url || '#';
+                }
+                resultBox.hidden = false;
+            });
         });
-    }
+
+        var backBtn = widget.querySelector('[data-hn-gf-back]');
+        if (backBtn) backBtn.addEventListener('click', function () { showStep(step0); });
+
+        var restartBtn = widget.querySelector('[data-hn-gf-restart]');
+        if (restartBtn) restartBtn.addEventListener('click', function () {
+            state = { recipient: null, occasion: null };
+            showStep(step0);
+        });
+    });
+
+    /* ---------- Lookbook hotspots (toggle on tap for mobile) ---------- */
+    document.querySelectorAll('[data-hn-hotspot]').forEach(function (spot) {
+        spot.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = spot.classList.contains('is-open');
+            document.querySelectorAll('[data-hn-hotspot].is-open').forEach(function (s) { s.classList.remove('is-open'); });
+            if (!isOpen) spot.classList.add('is-open');
+        });
+    });
+    document.addEventListener('click', function () {
+        document.querySelectorAll('[data-hn-hotspot].is-open').forEach(function (s) { s.classList.remove('is-open'); });
+    });
 });
+
+(function(){document.querySelectorAll('[data-hn-compare]').forEach(function(root){var boxes=root.querySelectorAll('[data-hn-compare-item]'),btn=root.querySelector('[data-hn-compare-open]'),out=root.querySelector('[data-hn-compare-result]');function clear(){while(out.firstChild)out.removeChild(out.firstChild);}function sync(){var checked=[].filter.call(boxes,function(x){return x.checked});btn.disabled=checked.length<2||checked.length>4;if(checked.length===0){out.hidden=true;clear();}else{out.hidden=false;clear();var count=document.createElement('div');count.className='hn-compare__count';count.textContent=checked.length+' '+(checked.length===1?'item':'items');out.appendChild(count);}}boxes.forEach(function(x){x.addEventListener('change',sync)});btn.addEventListener('click',function(){var checked=[].filter.call(boxes,function(x){return x.checked});if(checked.length<2||checked.length>4)return;clear();out.hidden=false;var wrap=document.createElement('div');wrap.className='hn-compare__selected';checked.forEach(function(x){var card=x.closest('.hn-compare-card'),span=document.createElement('span');span.textContent=card.querySelector('strong').textContent;wrap.appendChild(span);});out.appendChild(wrap);});});})();
+
+/* V9.3 — Smart Commerce interactions (presentation/configuration only; no undocumented Salla APIs). */
+(function(){
+  'use strict';
+  function each(sel,fn){document.querySelectorAll(sel).forEach(fn);}
+  each('[data-hn-gift-finder-v2]',function(widget){
+    var results=[]; try{results=JSON.parse(widget.getAttribute('data-results')||'[]');}catch(e){results=[];}
+    var state={recipient:null,occasion:null,budget:null};
+    function step(n){widget.querySelectorAll('[data-hn-gf2-step]').forEach(function(x){x.classList.toggle('is-active',x.getAttribute('data-hn-gf2-step')===String(n));});var r=widget.querySelector('[data-hn-gf2-result]');if(r)r.hidden=true;}
+    widget.querySelectorAll('[data-hn-gf2-recipient]').forEach(function(b){b.addEventListener('click',function(){state.recipient=b.getAttribute('data-hn-gf2-recipient');step(1);});});
+    widget.querySelectorAll('[data-hn-gf2-occasion]').forEach(function(b){b.addEventListener('click',function(){state.occasion=b.getAttribute('data-hn-gf2-occasion');step(2);});});
+    widget.querySelectorAll('[data-hn-gf2-budget]').forEach(function(b){b.addEventListener('click',function(){state.budget=b.getAttribute('data-hn-gf2-budget');var scored=results.map(function(r){var s=0;if(r.recipient===state.recipient)s+=4;if(r.occasion===state.occasion)s+=3;if(r.budget&&r.budget===state.budget)s+=3;return {r:r,s:s};}).sort(function(a,b){return b.s-a.s;});var m=scored.length?scored[0].r:null;var box=widget.querySelector('[data-hn-gf2-result]');if(m){widget.querySelector('[data-hn-gf2-img]').src=m.image||'';widget.querySelector('[data-hn-gf2-title]').textContent=m.title||'';widget.querySelector('[data-hn-gf2-reason]').textContent=m.reason||'';widget.querySelector('[data-hn-gf2-link]').href=m.url||'#';}if(box)box.hidden=false;widget.querySelectorAll('[data-hn-gf2-step]').forEach(function(x){x.classList.remove('is-active');});});});
+    widget.querySelectorAll('[data-hn-gf2-back]').forEach(function(b){b.addEventListener('click',function(){var current=Array.prototype.findIndex.call(widget.querySelectorAll('[data-hn-gf2-step]'),function(x){return x.classList.contains('is-active');});step(Math.max(0,current-1));});});
+    var restart=widget.querySelector('[data-hn-gf2-restart]');if(restart)restart.addEventListener('click',function(){state={recipient:null,occasion:null,budget:null};step(0);});
+  });
+  each('[data-hn-smart-box]',function(root){var count=root.querySelector('[data-hn-smart-box-count]'),inputs=root.querySelectorAll('input[type="checkbox"]');function sync(){var selected=root.querySelectorAll('input[type="checkbox"]:checked').length+(root.querySelector('input[type="radio"]:checked')?1:0);if(count)count.textContent=String(selected); }root.querySelectorAll('input').forEach(function(x){x.addEventListener('change',sync);});sync();});
+  each('[data-hn-recommendations]',function(root){var tabs=root.querySelectorAll('[data-hn-rec-tab]'),items=root.querySelectorAll('[data-hn-rec-item]');tabs.forEach(function(t){t.addEventListener('click',function(){var v=t.getAttribute('data-hn-rec-tab');tabs.forEach(function(x){x.classList.toggle('is-active',x===t);});items.forEach(function(i){i.hidden=v!=='all'&&i.getAttribute('data-hn-rec-item')!==v;});});});});
+})();

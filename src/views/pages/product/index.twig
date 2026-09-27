@@ -39,12 +39,12 @@
 
         <div class="hn-category-page__main">
             <div class="hn-category-toolbar">
-                <h1 class="hn-category-toolbar__title">{{ page.title|raw }}</h1>
+                <h1 class="hn-category-toolbar__title">{{ page.title }}</h1>
 
                 <div class="hn-category-toolbar__right">
                     {% if filters %}
                     <a href="#filters-menu" class="hn-category-toolbar__filters-btn filters-trigger">
-                        <i class="sicon-filter"></i> {{ trans('pages.categories.filter') }}
+                        <i class="sicon-filter"></i> تصفية
                     </a>
                     {% endif %}
 

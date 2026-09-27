@@ -100,3 +100,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+/* ---------- V9.1 promotion popup ---------- */
+(function(){
+    var popups=document.querySelectorAll('[data-hn-promo-popup]');
+    popups.forEach(function(popup){
+        var delay=Math.max(0,parseInt(popup.dataset.delay||'4',10))*1000;
+        var key='hn-promo-seen';
+        if(!sessionStorage.getItem(key)){
+            setTimeout(function(){ popup.classList.add('is-open'); popup.setAttribute('aria-hidden','false'); sessionStorage.setItem(key,'1'); },delay);
+        }
+        popup.querySelectorAll('[data-hn-promo-close]').forEach(function(btn){btn.addEventListener('click',function(){popup.classList.remove('is-open');popup.setAttribute('aria-hidden','true');});});
+    });
+})();

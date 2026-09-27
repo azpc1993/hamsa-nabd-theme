@@ -1,0 +1,19 @@
+{% extends "layouts.customer" %}
+{% block inner_content %}
+<form class="hn-profile-form" data-hn-profile-form>
+  {% hook 'customer:profile.form.start' %}
+  <div class="hn-profile-grid">
+    {% hook 'customer:profile.form.fields.start' %}
+    <label>{{ trans('pages.profile.first_name') }}<input name="first_name" value="{{ user.first_name }}" required autocomplete="given-name"></label>
+    <label>{{ trans('pages.profile.last_name') }}<input name="last_name" value="{{ user.last_name }}" required autocomplete="family-name"></label>
+    <label>{{ trans('pages.profile.birthday') }}<salla-datetime-picker dateFormat="Y-m-d" value="{{ user.birthday }}" name="birthday"></salla-datetime-picker></label>
+    <label>{{ trans('pages.profile.gender') }}<select name="gender"><option value="">{{ trans('pages.profile.gender_placeholder') }}</option><option value="male" {{ user.gender=='male'?'selected':'' }}>{{ trans('pages.profile.male') }}</option><option value="female" {{ user.gender=='female'?'selected':'' }}>{{ trans('pages.profile.female') }}</option></select></label>
+    <label>{{ trans('common.elements.email') }}<input type="email" name="email" value="{{ user.email }}" required autocomplete="email"></label>
+    <label>{{ trans('common.elements.mobile') }}<salla-tel-input phone="{{ user.mobile }}"></salla-tel-input></label>
+    {% for field in custom_fields %}<label>{{ field.label }}{% if field.type == 'photo' %}<salla-file-upload instant-upload value="{{ field.value }}" url="{{ store.url|trim('/'~user.language_code) }}/upload-image" name="custom_fields[{{ field.id }}]" payload-name="image"></salla-file-upload><input type="hidden" name="custom_fields[{{ field.id }}]" value="{{ field.value }}">{% else %}<input type="{{ field.type }}" name="custom_fields[{{ field.id }}]" value="{{ field.value }}" {{ field.required?'required':'' }}>{% endif %}</label>{% endfor %}
+    {% hook 'customer:profile.form.fields.end' %}
+  </div>
+  {% hook 'customer:profile.form.submit.start' %}<salla-button type="submit" loader-position="end" class="hn-btn hn-btn--navy">{{ trans('common.actions.save_changes') }}</salla-button>{% hook 'customer:profile.form.submit.end' %}
+</form>
+<salla-verify></salla-verify><salla-user-settings {{ user.is_notifiable?'is-notifiable':0 }}></salla-user-settings>
+{% endblock %}

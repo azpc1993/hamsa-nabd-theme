@@ -7,7 +7,7 @@
 | store.name       | string |                               |
 #}
 <div class="hn-header">
-    <button class="hn-header__menu-btn" data-hn-menu-open aria-label="{{ trans('blocks.header.menu') }}">
+    <button class="hn-header__menu-btn" data-hn-menu-open aria-label="{{ trans('hn.accessibility.menu') }}">
         <span></span><span></span><span></span>
     </button>
 
@@ -21,13 +21,13 @@
 
     {# بحث سلة الحيّ: اقتراحات فورية ونتائج حقيقية بدون كتابة أي منطق بحث #}
     <div class="hn-header__search">
-        <salla-search inline-search></salla-search>
+        <salla-search inline oval height="48"></salla-search>
     </div>
 
     <div class="hn-header__actions">
-        <a href="{{ store.url }}/wishlist" class="hn-header__icon-link" aria-label="{{ trans('blocks.header.wishlist') }}">
+        <a href="{{ store.url }}/wishlist" class="hn-header__icon-link" aria-label="{{ trans('hn.accessibility.wishlist') }}">
             <i class="sicon-heart"></i>
-            <salla-wishlist-counter></salla-wishlist-counter>
+            <salla-wishlist-summary></salla-wishlist-summary>
         </a>
 
         <salla-user-menu></salla-user-menu>
