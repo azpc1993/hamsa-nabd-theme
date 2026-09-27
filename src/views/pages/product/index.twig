@@ -48,7 +48,7 @@
                     </a>
                     {% endif %}
 
-                    {% if sort_options|length %}
+                    {% if theme.settings.get('hn_listing_show_sort', true) and sort_options|length %}
                     <select id="product-filter" class="hn-select">
                         {% for sort in sort_options %}
                         <option value="{{ sort.id }}" {{ sort.is_selected ? 'selected' : '' }}>{{ sort.name }}</option>
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            {% if category.sub_categories|length %}
+            {% if theme.settings.get('hn_listing_show_subcategories', true) and category.sub_categories|length %}
             <nav class="hn-subcats">
                 {% for sub in category.sub_categories %}
                 <a href="{{ sub.url }}" class="hn-subcats__chip">{{ sub.name }}</a>

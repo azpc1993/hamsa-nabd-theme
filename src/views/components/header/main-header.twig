@@ -6,7 +6,7 @@
 | store.logo       | string |                               |
 | store.name       | string |                               |
 #}
-<div class="hn-header">
+<div class="hn-header {{ theme.settings.get('hn_header_sticky', true) ? 'is-sticky' : '' }}">
     <button class="hn-header__menu-btn" data-hn-menu-open aria-label="{{ trans('hn.accessibility.menu') }}">
         <span></span><span></span><span></span>
     </button>
@@ -20,17 +20,17 @@
     </a>
 
     {# بحث سلة الحيّ: اقتراحات فورية ونتائج حقيقية بدون كتابة أي منطق بحث #}
-    <div class="hn-header__search">
+    {% if theme.settings.get('hn_show_header_search', true) %}<div class="hn-header__search">
         <salla-search inline oval height="48"></salla-search>
-    </div>
+    </div>{% endif %}
 
     <div class="hn-header__actions">
-        <a href="{{ store.url }}/wishlist" class="hn-header__icon-link" aria-label="{{ trans('hn.accessibility.wishlist') }}">
+        {% if theme.settings.get('hn_show_header_wishlist', true) %}<a href="{{ store.url }}/wishlist" class="hn-header__icon-link" aria-label="{{ trans('hn.accessibility.wishlist') }}">
             <i class="sicon-heart"></i>
             <salla-wishlist-summary></salla-wishlist-summary>
-        </a>
+        </a>{% endif %}
 
-        <salla-user-menu></salla-user-menu>
+        {% if theme.settings.get('hn_show_header_account', true) %}<salla-user-menu></salla-user-menu>{% endif %}
 
         {# ملخص السلة الرسمي — يفتح سلة سلة المنزلقة ويحدّث العدّاد تلقائياً #}
         <salla-cart-summary></salla-cart-summary>

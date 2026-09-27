@@ -166,3 +166,16 @@ body.hn-theme{
 @media(max-width:900px){.hn-product-page{grid-template-columns:1fr;gap:24px}.hn-product-page__gallery{position:relative;top:auto}.hn-gallery [slot=items]{min-height:380px}.hn-customer-layout,.hn-blog-layout{grid-template-columns:1fr}.hn-customer-sidebar{position:relative;top:auto}.hn-brand-grid{grid-template-columns:repeat(3,1fr)}.hn-loyalty-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.hn-product-page__title{font-size:25px}.hn-price{font-size:23px}.hn-profile-grid,.hn-blog-grid{grid-template-columns:1fr}.hn-brand-grid{grid-template-columns:repeat(2,1fr)}.hn-order-item{grid-template-columns:64px 1fr}.hn-order-item>strong{grid-column:2}.hn-gallery [slot=items]{min-height:320px}.hn-blog-feature{min-height:280px}.hn-loyalty-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ===== V9.4 Merchant controls ===== */
+.hn-theme.wide .container,.hn-theme.standard .container,.hn-theme.compact .container{max-width:var(--hn-container-width)}
+.hn-theme.spacious .s-block{margin-block:var(--hn-section-gap)}
+.hn-theme.standard .s-block{margin-block:calc(var(--hn-section-gap) * .65)}
+.hn-theme.compact .s-block{margin-block:calc(var(--hn-section-gap) * .45)}
+.hn-theme.soft .hn-product-card__media,.hn-theme.soft .hn-brand-card,.hn-theme.soft .hn-dept-card,.hn-theme.rounded .hn-product-card__media,.hn-theme.rounded .hn-brand-card,.hn-theme.rounded .hn-dept-card{border-radius:var(--hn-card-radius)}
+.hn-theme.soft .hn-product-card,.hn-theme.soft .hn-dept-card,.hn-theme.soft .hn-brand-card{box-shadow:0 6px 22px rgba(11,31,58,.07)}
+.hn-theme.strong .hn-product-card,.hn-theme.strong .hn-dept-card,.hn-theme.strong .hn-brand-card{box-shadow:0 10px 28px rgba(11,31,58,.14)}
+.hn-theme.none .hn-product-card,.hn-theme.none .hn-dept-card,.hn-theme.none .hn-brand-card{box-shadow:none}
+.hn-theme.cover .hn-product-card__img{object-fit:cover}
+.hn-theme.contain .hn-product-card__img{object-fit:contain}
+.hn-reduce-motion *, .hn-reduce-motion *::before, .hn-reduce-motion *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}

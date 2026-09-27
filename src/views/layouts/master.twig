@@ -37,6 +37,10 @@
             --hn-bg: #FFFFFF;
             --hn-font-heading: 'Tajawal', sans-serif;
             --hn-font-body: 'Almarai', sans-serif;
+            --hn-container-width: {{ theme.settings.get('hn_home_container_width','wide') == 'compact' ? '1120px' : (theme.settings.get('hn_home_container_width','wide') == 'standard' ? '1240px' : '1440px') }};
+            --hn-section-gap: {{ theme.settings.get('hn_section_spacing','standard') == 'compact' ? '24px' : (theme.settings.get('hn_section_spacing','standard') == 'spacious' ? '64px' : '40px') }};
+            --hn-card-radius: {{ theme.settings.get('hn_card_radius','soft') == 'sharp' ? '6px' : (theme.settings.get('hn_card_radius','soft') == 'rounded' ? '20px' : '12px') }};
+            --hn-button-radius: {{ theme.settings.get('hn_button_radius','soft') == 'sharp' ? '6px' : (theme.settings.get('hn_button_radius','soft') == 'pill' ? '999px' : '10px') }};
         }
     </style>
 
@@ -44,9 +48,10 @@
     {% hook 'head' %}
     {% hook 'head:end' %}
 </head>
-<body class="hn-theme {{ theme.is_rtl ? 'rtl' : 'ltr' }}">
+<body class="hn-theme {{ theme.is_rtl ? 'rtl' : 'ltr' }} {{ theme.settings.get('hn_home_container_width','wide') }} {{ theme.settings.get('hn_section_spacing','standard') }} {{ theme.settings.get('hn_card_radius','soft') }} {{ theme.settings.get('hn_card_shadow','soft') }} {{ theme.settings.get('hn_button_radius','soft') }} {{ theme.settings.get('hn_product_image_fit','cover') }}{% if theme.settings.get('hn_reduce_motion', false) %} hn-reduce-motion{% endif %}>
     {% hook 'body:start' %}
 
+    {% if theme.settings.get('hn_show_announcement', true) %}{% component 'header.announcement-bar' %}{% endif %}
     {% component header %}
 
     <main id="hn-main-content">
@@ -54,7 +59,7 @@
     </main>
 
     {% component footer %}
-    {% component 'footer.whatsapp-float' %}
+    {% if theme.settings.get('hn_enable_whatsapp_float', true) %}{% component 'footer.whatsapp-float' %}{% endif %}
 
     {% hook 'body:end' %}
 
