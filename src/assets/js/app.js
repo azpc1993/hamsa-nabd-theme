@@ -65,7 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ---------- Countdown timers ---------- */
     document.querySelectorAll('[data-hn-countdown]').forEach(function (box) {
-        var target = new Date(box.dataset.hnCountdown).getTime();
+        var target = new Date(box.dataset.hnCountdown || '').getTime();
+        if (!Number.isFinite(target)) return;
         var daysEl = box.querySelector('[data-unit="days"]');
         var hoursEl = box.querySelector('[data-unit="hours"]');
         var minsEl = box.querySelector('[data-unit="minutes"]');

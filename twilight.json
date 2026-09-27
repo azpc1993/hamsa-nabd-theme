@@ -1,7 +1,7 @@
 {
   "author_email": "znonstor@gmail.com",
   "support_url": "https://hamsa-nabd.com",
-  "description": "ثيم همسة نبض 9.4.0 — إصدار تجاري متقدم لمنصة سلة Twilight مع إعدادات واسعة، معاينات قابلة للوصول، أمثلة جاهزة وتحكم شامل بالثيم.",
+  "description": "ثيم همسة نبض 9.5.0 — تجربة متجر متكاملة مع إعدادات موسعة ومكونات منزلية قابلة للتخصيص ومعاينات وإرشادات.",
   "features": [
     "color",
     "fonts",
@@ -987,7 +987,7 @@
         }
       ],
       "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-square.jpg",
-      "is_default": true
+      "is_default": false
     },
     {
       "key": "a446eba9-3b75-4955-ad21-84bcfe98c1cb",
@@ -1208,6 +1208,16 @@
           "minLength": 0,
           "maxLength": 255,
           "inputType": "url"
+        },
+        {
+          "id": "countdown_to",
+          "type": "string",
+          "format": "date",
+          "label": "موعد العد التنازلي (اختياري)",
+          "required": false,
+          "value": "",
+          "placeholder": "YYYY-MM-DD HH:mm",
+          "description": "اختياري. اتركه فارغًا إذا لم تكن بحاجة إلى عد تنازلي."
         }
       ],
       "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-card.jpg",
@@ -1287,7 +1297,7 @@
         }
       ],
       "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-card.jpg",
-      "is_default": false
+      "is_default": true
     },
     {
       "key": "b4fec118-0107-4965-90e8-b3e4e0fbaabc",
@@ -2857,6 +2867,18 @@
           "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
         },
         {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان القسم",
+          "multilanguage": true,
+          "required": false,
+          "value": "منتجات تستحق التجربة",
+          "placeholder": "منتجات تستحق التجربة",
+          "maxLength": 100,
+          "description": "عنوان اختياري يظهر أعلى ريلز المنتجات."
+        },
+        {
           "id": "show_button",
           "type": "boolean",
           "format": "switch",
@@ -2889,7 +2911,7 @@
           "item_label": "مقطع",
           "value": [
             {
-              "media": "/categories",
+              "media": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-video.jpg",
               "poster": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-video.jpg",
               "product_name": "منتجات مميزة",
               "caption": "اختيارات مميزة بتجربة تسوق سهلة",
@@ -2898,7 +2920,7 @@
               "price": "149 ر.س"
             },
             {
-              "media": "/categories",
+              "media": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-video.jpg",
               "poster": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-video.jpg",
               "product_name": "منتجات مميزة",
               "caption": "اختيارات مميزة بتجربة تسوق سهلة",
@@ -2907,7 +2929,7 @@
               "price": "179 ر.س"
             },
             {
-              "media": "/categories",
+              "media": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-video.jpg",
               "poster": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-video.jpg",
               "product_name": "منتجات مميزة",
               "caption": "اختيارات مميزة بتجربة تسوق سهلة",
@@ -3774,7 +3796,7 @@
           "item_label": "شريحة",
           "value": [
             {
-              "video": "/categories",
+              "video": "",
               "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-square.jpg",
               "poster": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-video.jpg",
               "eyebrow": "اكتشف تشكيلتنا الجديدة",
@@ -3784,7 +3806,7 @@
               "url": "/categories"
             },
             {
-              "video": "/categories",
+              "video": "",
               "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-square.jpg",
               "poster": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-video.jpg",
               "eyebrow": "اكتشف تشكيلتنا الجديدة",
@@ -3794,7 +3816,7 @@
               "url": "/categories"
             },
             {
-              "video": "/categories",
+              "video": "",
               "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-square.jpg",
               "poster": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-video.jpg",
               "eyebrow": "اكتشف تشكيلتنا الجديدة",
@@ -4106,7 +4128,7 @@
           "item_label": "مقطع",
           "value": [
             {
-              "video": "/categories",
+              "video": "",
               "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-square.jpg",
               "poster": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-video.jpg",
               "name": "تجربة المنتج",
@@ -4115,7 +4137,7 @@
               "title": "تجربة المنتج"
             },
             {
-              "video": "/categories",
+              "video": "",
               "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-square.jpg",
               "poster": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-video.jpg",
               "name": "طريقة الاستخدام",
@@ -4616,7 +4638,7 @@
         }
       ],
       "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/guide-card.jpg",
-      "is_default": true
+      "is_default": false
     },
     {
       "key": "748a7f83-85a4-4e10-a833-6b03b5b3cd9c",
@@ -4728,7 +4750,7 @@
     "ar": "همسة نبض",
     "en": "Hamsa Nabd"
   },
-  "version": "9.4.0",
+  "version": "9.5.0",
   "theme_name": "همسة نبض",
   "repo_url": "https://github.com/azpc1993/hamsa-nabd-theme"
 }
