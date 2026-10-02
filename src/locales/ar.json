@@ -240,6 +240,32 @@
       "compare_title": "قارن المنتجات",
       "compare_hint": "اختر من 2 إلى 4 منتجات للمقارنة",
       "compare_action": "عرض المقارنة"
+    },
+    "actions": {
+      "checkout": "إتمام الطلب",
+      "continue_shopping": "متابعة التسوق",
+      "exclusive": "حصري",
+      "order_details": "تفاصيل الطلب",
+      "pay_now": "ادفع الآن",
+      "save_changes": "حفظ التغييرات",
+      "track_shipment": "تتبع الشحنة",
+      "view_all": "عرض الكل"
+    },
+    "elements": {
+      "description": "الوصف",
+      "reviews": "التقييمات",
+      "tax_included": "شامل الضريبة",
+      "whatsapp": "واتساب"
+    },
+    "navigation": {
+      "account": "حسابي",
+      "home": "الرئيسية",
+      "menu": "القائمة",
+      "wishlist": "المفضلة"
+    },
+    "titles": {
+      "contact_us": "تواصل معنا",
+      "support": "الدعم والمساعدة"
     }
   }
 }

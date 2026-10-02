@@ -240,6 +240,32 @@
       "compare_title": "Compare products",
       "compare_hint": "Choose 2 to 4 products to compare",
       "compare_action": "View comparison"
+    },
+    "actions": {
+      "checkout": "Checkout",
+      "continue_shopping": "Continue shopping",
+      "exclusive": "Exclusive",
+      "order_details": "Order details",
+      "pay_now": "Pay now",
+      "save_changes": "Save changes",
+      "track_shipment": "Track shipment",
+      "view_all": "View all"
+    },
+    "elements": {
+      "description": "Description",
+      "reviews": "Reviews",
+      "tax_included": "Tax included",
+      "whatsapp": "WhatsApp"
+    },
+    "navigation": {
+      "account": "Account",
+      "home": "Home",
+      "menu": "Menu",
+      "wishlist": "Wishlist"
+    },
+    "titles": {
+      "contact_us": "Contact us",
+      "support": "Support"
     }
   }
 }

@@ -23,7 +23,7 @@
       {% if cart.options|length %}{% for product_option in cart.options %}<form data-hn-cart-form id="item-{{ product_option.id }}"><input type="hidden" name="id" value="{{ product_option.id }}"><input type="hidden" name="quantity" value="{{ product_option.quantity }}">{% include 'pages.partials.product.options' with {product: product_option} %}</form>{% endfor %}{% endif %}
       <salla-offer data-testid="store-cart-offer"></salla-offer>
       {% hook 'cart:items.end' %}
-      <a href="{{ link('/') }}" class="hn-cart-page__continue">{{ trans('common.actions.continue_shopping') }}</a>
+      <a href="{{ link('/') }}" class="hn-cart-page__continue">{{ trans('hn.actions.continue_shopping') }}</a>
     </div>
     {% hook 'cart:summary.start' %}
     <aside class="hn-cart-page__summary">
@@ -39,8 +39,7 @@
       <salla-cart-summary-card data-testid="store-cart-summary"></salla-cart-summary-card>
       {% hook 'cart:summary-card.end' %}
       <salla-tiered-offer data-testid="store-cart-tiered-offer"></salla-tiered-offer>
-      {% if cart.taxes and cart.taxes.included %}<p class="hn-tax-note">{{ trans('common.elements.tax_included') }}</p>{% elseif cart.is_tax_included %}<p class="hn-tax-note">{{ trans('common.elements.tax_included') }}</p>{% endif %}
-      <salla-button class="hn-btn hn-btn--navy hn-btn--block" data-hn-cart-submit type="button">{{ trans('common.actions.checkout') }}</salla-button>
+      {% if cart.taxes and cart.taxes.included %}<p class="hn-tax-note">{{ trans('hn.elements.tax_included') }}</p>{% elseif cart.is_tax_included %}<p class="hn-tax-note">{{ trans('hn.elements.tax_included') }}</p>{% endif %}
     </aside>
     {% hook 'cart:summary.end' %}
   </div>

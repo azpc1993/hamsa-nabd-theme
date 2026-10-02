@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-/* ---------- Promotion popup ---------- */
+/* ---------- V9.1 promotion popup ---------- */
 (function(){
     var popups=document.querySelectorAll('[data-hn-promo-popup]');
     popups.forEach(function(popup){
