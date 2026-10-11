@@ -1,7 +1,7 @@
 {
   "name": "hamsa-nabd-theme",
-  "version": "9.5.2",
-  "description": "ثيم همسة نبض 9.5.2 لمنصة سلة (Twilight) — إصلاح معاينة Salla، صور المكونات، واستقرار العرض الأول.",
+  "version": "9.5.4",
+  "description": "ثيم همسة نبض 9.5.3 لمنصة سلة (Twilight) — إصلاح معاينة Salla، صور المكونات، واستقرار العرض الأول، مع تحسين عرض الثيم.",
   "private": true,
   "scripts": {
     "production": "node scripts/build.js",
