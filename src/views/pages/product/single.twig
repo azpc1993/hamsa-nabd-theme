@@ -39,7 +39,7 @@
     {% if product.subtitle %}<p class="hn-product-page__subtitle">{{ product.subtitle }}</p>{% endif %}
     {% if product.rating %}<div class="hn-rating-wrap"><salla-rating-stars value="{{ product.rating.stars }}" reviews="{{ product.rating.count }}" readonly></salla-rating-stars><span>({{ product.rating.count }})</span></div>{% endif %}
     {% if theme.settings.get('product_show_reviews', true) %}<salla-reviews-summary item-id="{{ product.id }}" class="hn-product-reviews-summary"></salla-reviews-summary>{% endif %}
-    {% if product.is_taxable %}<small class="hn-tax-note">{{ trans('hn.elements.tax_included') }}</small>{% endif %}
+    {% if product.is_taxable %}<small class="hn-tax-note">{{ trans('common.elements.tax_included') }}</small>{% endif %}
 
     <div class="hn-product-page__price">
       {% if product.is_on_sale %}<span class="hn-price hn-price--sale">{{ product.sale_price|money }}</span><span class="hn-price hn-price--old">{{ product.regular_price|money }}</span>{% if product.discount_percentage %}<span class="hn-badge hn-badge--sale-inline">{{ product.discount_percentage }}</span>{% endif %}
@@ -81,7 +81,7 @@
 
     <div class="s-blocks-wrapper s-before-reviews">{% hook 'product.single.before_customer_reviews' %}</div>
     <div class="hn-product-page__tabs" data-hn-tabs>
-      <div class="hn-tabs__nav" role="tablist"><button type="button" class="is-active" data-hn-tab="description" role="tab">{{ trans('hn.elements.description') }}</button><button type="button" data-hn-tab="reviews" role="tab">{{ trans('hn.elements.reviews') }}</button></div>
+      <div class="hn-tabs__nav" role="tablist"><button type="button" class="is-active" data-hn-tab="description" role="tab">{{ trans('common.elements.description') }}</button><button type="button" data-hn-tab="reviews" role="tab">{{ trans('common.elements.reviews') }}</button></div>
       <div class="hn-tabs__panel is-active" data-hn-tab-panel="description">{% hook 'product:single.description.start' %}{{ product.description|default('')|raw }}{% hook 'product:single.description.end' %}</div>
       <div class="hn-tabs__panel" data-hn-tab-panel="reviews"><salla-comments item-id="{{ product.id }}" type="product"></salla-comments></div>
     </div>

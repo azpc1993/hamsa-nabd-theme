@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% hook 'head:start' %}
-    {% block head_scripts %}{% endblock %}
+    {% block head %}{% endblock %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,13 +52,13 @@
     {% hook 'body:start' %}
 
     {% if theme.settings.get('hn_show_announcement', true) %}{% component 'header.announcement-bar' %}{% endif %}
-    {% component header %}
+    {% component 'header.header' %}
 
     <main id="hn-main-content">
         {% block content %}{% endblock %}
     </main>
 
-    {% component footer %}
+    {% component 'footer.footer' %}
     {% if theme.settings.get('hn_enable_whatsapp_float', true) %}{% component 'footer.whatsapp-float' %}{% endif %}
 
     {% hook 'body:end' %}

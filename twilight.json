@@ -1,7 +1,7 @@
 {
   "author_email": "znonstor@gmail.com",
   "support_url": "https://hamsa-nabd.com",
-  "description": "ثيم همسة نبض 9.5.4 لمنصة سلة (Twilight) — صور معاينة أصلية للمكونات مبنية على تصميم الثيم نفسه، باستخدام محتوى بصري من متجر همسة نبض.",
+  "description": "ثيم همسة نبض 10.0.3 — ثيم سلة Twilight بواجهة عربية قابلة للتخصيص ومكونات مخصصة.",
   "features": [
     "color",
     "fonts",
@@ -22,13 +22,6 @@
     "component-youtube"
   ],
   "settings": [
-    {
-      "id": "hn_title_header",
-      "type": "static",
-      "format": "title",
-      "label": "إعدادات الهيدر والتنقل",
-      "variant": "h6"
-    },
     {
       "id": "show_trust_badges",
       "type": "boolean",
@@ -52,18 +45,6 @@
       "selected": true
     },
     {
-      "id": "hn_line_1",
-      "type": "static",
-      "format": "line"
-    },
-    {
-      "id": "hn_title_product",
-      "type": "static",
-      "format": "title",
-      "label": "إعدادات صفحة المنتج",
-      "variant": "h6"
-    },
-    {
       "id": "product_show_breadcrumbs",
       "type": "boolean",
       "format": "switch",
@@ -84,18 +65,6 @@
       "required": false,
       "value": true,
       "selected": true
-    },
-    {
-      "id": "hn_line_2",
-      "type": "static",
-      "format": "line"
-    },
-    {
-      "id": "hn_title_listing",
-      "type": "static",
-      "format": "title",
-      "label": "إعدادات صفحات الأقسام والبحث",
-      "variant": "h6"
     },
     {
       "id": "product_index_show_breadcrumbs",
@@ -293,13 +262,6 @@
       "required": false,
       "value": true,
       "selected": true
-    },
-    {
-      "id": "hn_title_design",
-      "type": "static",
-      "format": "title",
-      "label": "إعدادات التصميم العامة",
-      "variant": "h6"
     },
     {
       "id": "hn_home_container_width",
@@ -534,13 +496,6 @@
       "selected": true
     },
     {
-      "id": "hn_title_performance",
-      "type": "static",
-      "format": "title",
-      "label": "الأداء والتوافق",
-      "variant": "h6"
-    },
-    {
       "id": "enable_add_product_toast",
       "type": "boolean",
       "format": "switch",
@@ -561,13 +516,6 @@
       "required": false,
       "value": true,
       "selected": true
-    },
-    {
-      "id": "hn_title_footer",
-      "type": "static",
-      "format": "title",
-      "label": "إعدادات الفوتر",
-      "variant": "h6"
     },
     {
       "id": "footer_is_dark",
@@ -591,18 +539,6 @@
       "icon": "sicon-image",
       "path": "home.hero-banner",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/01-hero-banner.jpg' alt='معاينة بانر همسة نبض' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "id": "hero_overlay",
           "type": "boolean",
@@ -704,27 +640,27 @@
           "item_label": "شريحة",
           "value": [
             {
-              "image": "https://cdn.salla.sa/qQEzZY/7fb242dc-5cb5-41ff-bcd0-c76cbcdfc370-1000x1000-na5MylevEMq7F4xFhEuBevxbE8zr9CYrpqkQA5Qx.png",
-              "image_mobile": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
-              "title": "تشكيلتك الجديدة",
-              "subtitle": "وصلت أحدث المنتجات",
-              "url": "/categories",
-              "button_text": "تسوق الآن"
+              "slides.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-hero.jpg",
+              "slides.image_mobile": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-wide.jpg",
+              "slides.title": "تشكيلتك الجديدة",
+              "slides.subtitle": "وصلت أحدث المنتجات",
+              "slides.url": "/categories",
+              "slides.button_text": "تسوق الآن"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/5b9bb365-5abf-45c9-82b7-7f70838ab1d2-1000x1000-TCX1xuyTchLKHad5PYfZh0T3fPO1owU09yWPrjFo.png",
-              "image_mobile": "https://cdn.salla.sa/qQEzZY/7ecac762-7ec1-4ed2-97ea-fe24845ee115-1000x1000-LHyfMRHcKbFrYkvsNzwQYMrzN4iHjh5w6ZLm6Et6.png",
-              "title": "عرض الموسم",
-              "subtitle": "خصومات مختارة لفترة محدودة",
-              "url": "/offers",
-              "button_text": "اكتشف العرض"
+              "slides.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-hero.jpg",
+              "slides.image_mobile": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-wide.jpg",
+              "slides.title": "عرض الموسم",
+              "slides.subtitle": "خصومات مختارة لفترة محدودة",
+              "slides.url": "/offers",
+              "slides.button_text": "اكتشف العرض"
             }
           ],
           "fields": [
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-hero.jpg",
               "id": "slides.image",
               "label": "صورة البانر (كمبيوتر)",
               "format": "image",
@@ -739,7 +675,7 @@
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-wide.jpg",
               "id": "slides.image_mobile",
               "label": "صورة البانر (جوال)",
               "format": "image",
@@ -811,8 +747,9 @@
           "description": "مثال جاهز: تمت إضافة 2 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/01-hero-banner.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-hero.jpg",
+      "is_default": true,
+      "name": "hero-banner"
     },
     {
       "key": "1e4bc631-3c5c-4b3e-b015-06b45c920664",
@@ -823,18 +760,6 @@
       "icon": "sicon-layout-grid-rearrange",
       "path": "home.icon-categories",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/02-icon-categories.jpg' alt='معاينة تصنيفات بأيقونات' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "id": "image_shape",
           "type": "items",
@@ -923,26 +848,26 @@
           "item_label": "تصنيف",
           "value": [
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/0b93d3eb-8b8d-4180-bb30-c6ae9c27d57f-1000x1000-ssROcMXILwOjMOfR0yWXdqeXlFZ8oxd5H0eJfmZ5.png",
-              "name": "ملابس رجالية",
-              "url": "/categories"
+              "categories.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "categories.name": "ملابس رجالية",
+              "categories.url": "/categories"
             },
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/21ee84de-d14a-4583-8080-bcb4a99cbac6-1000x1000-nsjIlplzEAlCsZCGZegIYCtb2jkyFoM8EdTvEbKw.png",
-              "name": "هدايا",
-              "url": "/categories"
+              "categories.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "categories.name": "هدايا",
+              "categories.url": "/categories"
             },
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/57207193-7604-423a-af5e-70ec5383d037-1000x1000-jaeggDypbaYu1usqZnH2RchUzJZZRFezd27MMNU3.png",
-              "name": "إكسسوارات",
-              "url": "/categories"
+              "categories.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "categories.name": "إكسسوارات",
+              "categories.url": "/categories"
             }
           ],
           "fields": [
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "id": "categories.icon",
               "label": "أيقونة التصنيف",
               "format": "image",
@@ -986,8 +911,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/02-icon-categories.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+      "is_default": false,
+      "name": "icon-categories"
     },
     {
       "key": "a446eba9-3b75-4955-ad21-84bcfe98c1cb",
@@ -998,18 +924,6 @@
       "icon": "sicon-grid",
       "path": "home.brand-showcase",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/03-brand-showcase.jpg' alt='معاينة شبكة ماركات وأندية' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "id": "show_names",
           "type": "boolean",
@@ -1080,26 +994,26 @@
           "item_label": "بطاقة",
           "value": [
             {
-              "image": "https://cdn.salla.sa/qQEzZY/50f8922a-d2ce-4f87-90a0-e0c208972c56-1000x1000-rRjliGh4DPkVgLk4My2AOYbqT6QIN7jRnfBG2pil.png",
-              "name": "المجموعة الجديدة",
-              "url": "/categories"
+              "tiles.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "tiles.name": "المجموعة الجديدة",
+              "tiles.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/85f2d663-a2ad-4e2a-a8a2-22b2a8f04381-1000x1000-07jZDeIIlnnU0fIaIYSdS55YljSk3sxiQP6QKbHj.png",
-              "name": "الأكثر مبيعًا",
-              "url": "/categories"
+              "tiles.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "tiles.name": "الأكثر مبيعًا",
+              "tiles.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/45ec8e77-045e-4625-9f1e-6d0cb329e12d-1000x1000-bTCUyZLMDAJ708fXzt0GdeWtVlCRt7enS30I0oTa.png",
-              "name": "الهدايا",
-              "url": "/categories"
+              "tiles.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "tiles.name": "الهدايا",
+              "tiles.url": "/categories"
             }
           ],
           "fields": [
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "id": "tiles.image",
               "label": "الصورة",
               "format": "image",
@@ -1143,8 +1057,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/03-brand-showcase.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+      "is_default": true,
+      "name": "brand-showcase"
     },
     {
       "key": "b4544780-eca7-48bf-a0e4-baeda25aa63b",
@@ -1155,18 +1070,6 @@
       "icon": "sicon-minus",
       "path": "home.section-divider",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/04-section-divider.jpg' alt='معاينة فاصل قسم' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "icon": "sicon-format-text-alt",
@@ -1220,8 +1123,9 @@
           "description": "اختياري. اتركه فارغًا إذا لم تكن بحاجة إلى عد تنازلي."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/04-section-divider.jpg",
-      "is_default": true
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": true,
+      "name": "section-divider"
     },
     {
       "key": "0f07ac68-a378-4d3b-ba13-aeade4e90932",
@@ -1233,18 +1137,6 @@
       "path": "home.announcement-strip",
       "fields": [
         {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/05-announcement-strip.jpg' alt='معاينة شريط عروض متحرك' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
-        {
           "id": "messages",
           "type": "collection",
           "format": "collection",
@@ -1255,12 +1147,12 @@
           "item_label": "رسالة",
           "value": [
             {
-              "text": "شحن مجاني للطلبات فوق 199 ر.س",
-              "code": "WELCOME15"
+              "messages.text": "شحن مجاني للطلبات فوق 199 ر.س",
+              "messages.code": "WELCOME15"
             },
             {
-              "text": "خصم 15% لفترة محدودة",
-              "code": "SAVE15"
+              "messages.text": "خصم 15% لفترة محدودة",
+              "messages.code": "SAVE15"
             }
           ],
           "fields": [
@@ -1296,8 +1188,9 @@
           "description": "مثال جاهز: تمت إضافة 2 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/05-announcement-strip.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": true,
+      "name": "announcement-strip"
     },
     {
       "key": "b4fec118-0107-4965-90e8-b3e4e0fbaabc",
@@ -1308,18 +1201,6 @@
       "icon": "sicon-instagram",
       "path": "home.instagram-gallery",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/06-instagram-gallery.jpg' alt='معاينة معرض إنستقرام' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "icon": "sicon-format-text-alt",
@@ -1373,23 +1254,23 @@
           "item_label": "صورة",
           "value": [
             {
-              "image": "https://cdn.salla.sa/qQEzZY/16d83187-26b5-45f1-a03d-c6dabd476a88-1000x1000-g4AvinCuBnNlgstBPJNbj7ZiHDnPrWdeOwBdNWi6.png",
-              "url": "/categories"
+              "photos.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "photos.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/750bc255-3564-4ae0-927a-743042f60161-1000x1000-aut7BZ9rSKrZ5EaiPjdMtHlXqnnJhgd1tuHPU7OQ.png",
-              "url": "/categories"
+              "photos.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "photos.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/e5c592d9-3366-409e-8725-791f9697c2d2-1000x1000-tkNTzc39GhJGsFeJvrb8dtt26wyKWQ5243Bxttnb.png",
-              "url": "/categories"
+              "photos.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "photos.url": "/categories"
             }
           ],
           "fields": [
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "id": "photos.image",
               "label": "الصورة",
               "format": "image",
@@ -1419,8 +1300,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/06-instagram-gallery.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-story.jpg",
+      "is_default": false,
+      "name": "instagram-gallery"
     },
     {
       "key": "872a294e-976b-40cd-b7ca-ca8e02e622ba",
@@ -1431,18 +1313,6 @@
       },
       "path": "home.department-grid",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/07-department-grid.jpg' alt='معاينة شبكة الأقسام الكبرى' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "id": "image_fit",
           "type": "items",
@@ -1531,29 +1401,29 @@
           "item_label": "قسم",
           "value": [
             {
-              "image": "https://cdn.salla.sa/qQEzZY/a96bfca7-fd63-45e2-a833-5114419168e6-1000x1000-MBCltGZvwVH6VdYJGnpa82no6j7vTFzMhRacT1DE.png",
-              "name": "الرجال",
-              "tag": "جديد",
-              "url": "/categories"
+              "departments.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "departments.name": "الرجال",
+              "departments.tag": "جديد",
+              "departments.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/7fb242dc-5cb5-41ff-bcd0-c76cbcdfc370-1000x1000-na5MylevEMq7F4xFhEuBevxbE8zr9CYrpqkQA5Qx.png",
-              "name": "النساء",
-              "tag": "الأكثر طلبًا",
-              "url": "/categories"
+              "departments.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "departments.name": "النساء",
+              "departments.tag": "الأكثر طلبًا",
+              "departments.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
-              "name": "الأطفال",
-              "tag": "جديد",
-              "url": "/categories"
+              "departments.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "departments.name": "الأطفال",
+              "departments.tag": "جديد",
+              "departments.url": "/categories"
             }
           ],
           "fields": [
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "id": "departments.image",
               "label": "صورة القسم",
               "format": "image",
@@ -1611,8 +1481,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/07-department-grid.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-wide.jpg",
+      "is_default": true,
+      "name": "department-grid"
     },
     {
       "key": "c21bda95-b4aa-4c2f-aa25-7ef5f48b19a1",
@@ -1624,18 +1495,6 @@
       "path": "home.season-switcher",
       "fields": [
         {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/08-season-switcher.jpg' alt='معاينة متبدّل المواسم والمناسبات' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
-        {
           "id": "tabs",
           "type": "collection",
           "format": "collection",
@@ -1646,20 +1505,20 @@
           "item_label": "تبويب",
           "value": [
             {
-              "label": "الجديد",
-              "image": "https://cdn.salla.sa/qQEzZY/5b9bb365-5abf-45c9-82b7-7f70838ab1d2-1000x1000-TCX1xuyTchLKHad5PYfZh0T3fPO1owU09yWPrjFo.png",
-              "title": "وصل حديثًا",
-              "subtitle": "اكتشف تشكيلتنا الجديدة",
-              "url": "/categories",
-              "button_text": "تسوق الآن"
+              "tabs.label": "الجديد",
+              "tabs.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-hero.jpg",
+              "tabs.title": "وصل حديثًا",
+              "tabs.subtitle": "اكتشف تشكيلتنا الجديدة",
+              "tabs.url": "/categories",
+              "tabs.button_text": "تسوق الآن"
             },
             {
-              "label": "العروض",
-              "image": "https://cdn.salla.sa/qQEzZY/7ecac762-7ec1-4ed2-97ea-fe24845ee115-1000x1000-LHyfMRHcKbFrYkvsNzwQYMrzN4iHjh5w6ZLm6Et6.png",
-              "title": "أفضل العروض",
-              "subtitle": "اكتشف تشكيلتنا الجديدة",
-              "url": "/categories",
-              "button_text": "اكتشف العروض"
+              "tabs.label": "العروض",
+              "tabs.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-hero.jpg",
+              "tabs.title": "أفضل العروض",
+              "tabs.subtitle": "اكتشف تشكيلتنا الجديدة",
+              "tabs.url": "/categories",
+              "tabs.button_text": "اكتشف العروض"
             }
           ],
           "fields": [
@@ -1680,7 +1539,7 @@
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-hero.jpg",
               "id": "tabs.image",
               "label": "صورة الخلفية",
               "format": "image",
@@ -1752,8 +1611,9 @@
           "description": "مثال جاهز: تمت إضافة 2 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/08-season-switcher.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "season-switcher"
     },
     {
       "key": "8c0180ee-8d31-4a43-8cbf-a94aeb067595",
@@ -1764,18 +1624,6 @@
       },
       "path": "home.gift-finder",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/09-gift-finder.jpg' alt='معاينة مساعد اختيار الهدية' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "icon": "sicon-format-text-alt",
@@ -1815,23 +1663,23 @@
           "item_label": "فئة",
           "value": [
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/0b93d3eb-8b8d-4180-bb30-c6ae9c27d57f-1000x1000-ssROcMXILwOjMOfR0yWXdqeXlFZ8oxd5H0eJfmZ5.png",
-              "label": "للأب"
+              "recipients.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "recipients.label": "للأب"
             },
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/21ee84de-d14a-4583-8080-bcb4a99cbac6-1000x1000-nsjIlplzEAlCsZCGZegIYCtb2jkyFoM8EdTvEbKw.png",
-              "label": "للأخ"
+              "recipients.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "recipients.label": "للأخ"
             },
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/57207193-7604-423a-af5e-70ec5383d037-1000x1000-jaeggDypbaYu1usqZnH2RchUzJZZRFezd27MMNU3.png",
-              "label": "للصديق"
+              "recipients.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "recipients.label": "للصديق"
             }
           ],
           "fields": [
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "id": "recipients.icon",
               "label": "أيقونة",
               "format": "image",
@@ -1871,23 +1719,23 @@
           "item_label": "مناسبة",
           "value": [
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/50f8922a-d2ce-4f87-90a0-e0c208972c56-1000x1000-rRjliGh4DPkVgLk4My2AOYbqT6QIN7jRnfBG2pil.png",
-              "label": "عيد ميلاد"
+              "occasions.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "occasions.label": "عيد ميلاد"
             },
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/85f2d663-a2ad-4e2a-a8a2-22b2a8f04381-1000x1000-07jZDeIIlnnU0fIaIYSdS55YljSk3sxiQP6QKbHj.png",
-              "label": "تخرج"
+              "occasions.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "occasions.label": "تخرج"
             },
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/45ec8e77-045e-4625-9f1e-6d0cb329e12d-1000x1000-bTCUyZLMDAJ708fXzt0GdeWtVlCRt7enS30I0oTa.png",
-              "label": "مناسبة خاصة"
+              "occasions.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "occasions.label": "مناسبة خاصة"
             }
           ],
           "fields": [
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "id": "occasions.icon",
               "label": "أيقونة",
               "format": "image",
@@ -1927,18 +1775,18 @@
           "item_label": "اقتراح",
           "value": [
             {
-              "recipient": "للأخ",
-              "occasion": "عيد ميلاد",
-              "title": "بوكس هدية فاخر",
-              "image": "https://cdn.salla.sa/qQEzZY/16d83187-26b5-45f1-a03d-c6dabd476a88-1000x1000-g4AvinCuBnNlgstBPJNbj7ZiHDnPrWdeOwBdNWi6.png",
-              "url": "/categories"
+              "results.recipient": "للأخ",
+              "results.occasion": "عيد ميلاد",
+              "results.title": "بوكس هدية فاخر",
+              "results.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "results.url": "/categories"
             },
             {
-              "recipient": "للأب",
-              "occasion": "مناسبة خاصة",
-              "title": "مجموعة هدايا رجالية",
-              "image": "https://cdn.salla.sa/qQEzZY/750bc255-3564-4ae0-927a-743042f60161-1000x1000-aut7BZ9rSKrZ5EaiPjdMtHlXqnnJhgd1tuHPU7OQ.png",
-              "url": "/categories"
+              "results.recipient": "للأب",
+              "results.occasion": "مناسبة خاصة",
+              "results.title": "مجموعة هدايا رجالية",
+              "results.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "results.url": "/categories"
             }
           ],
           "fields": [
@@ -1987,7 +1835,7 @@
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "id": "results.image",
               "label": "صورة الاقتراح",
               "format": "image",
@@ -2017,8 +1865,9 @@
           "description": "مثال جاهز: تمت إضافة 2 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/09-gift-finder.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "gift-finder"
     },
     {
       "key": "6cd53f11-25c7-4122-a86c-e02eb99de405",
@@ -2029,18 +1878,6 @@
       },
       "path": "home.build-a-box",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/10-build-a-box.jpg' alt='معاينة كوّن صندوق هديتك' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "icon": "sicon-format-text-alt",
@@ -2072,7 +1909,7 @@
         {
           "type": "string",
           "icon": "sicon-image",
-          "value": "https://cdn.salla.sa/qQEzZY/e5c592d9-3366-409e-8725-791f9697c2d2-1000x1000-tkNTzc39GhJGsFeJvrb8dtt26wyKWQ5243Bxttnb.png",
+          "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
           "id": "image",
           "label": "صورة تعريفية",
           "format": "image",
@@ -2095,23 +1932,23 @@
           "item_label": "خطوة",
           "value": [
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/a96bfca7-fd63-45e2-a833-5114419168e6-1000x1000-MBCltGZvwVH6VdYJGnpa82no6j7vTFzMhRacT1DE.png",
-              "label": "اختر المنتجات"
+              "steps.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "steps.label": "اختر المنتجات"
             },
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/7fb242dc-5cb5-41ff-bcd0-c76cbcdfc370-1000x1000-na5MylevEMq7F4xFhEuBevxbE8zr9CYrpqkQA5Qx.png",
-              "label": "خصص الصندوق"
+              "steps.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "steps.label": "خصص الصندوق"
             },
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
-              "label": "أكمل الطلب"
+              "steps.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "steps.label": "أكمل الطلب"
             }
           ],
           "fields": [
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "id": "steps.icon",
               "label": "أيقونة",
               "format": "image",
@@ -2169,8 +2006,9 @@
           "maxLength": 30
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/10-build-a-box.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "build-a-box"
     },
     {
       "key": "533dc3ce-80ec-4d47-ab9c-03a87b792d3e",
@@ -2181,18 +2019,6 @@
       },
       "path": "home.lookbook",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/11-lookbook.jpg' alt='معاينة قصص الأزياء (Lookbook)' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "id": "show_prices",
           "type": "boolean",
@@ -2229,49 +2055,49 @@
           "item_label": "إطلالة",
           "value": [
             {
-              "image": "https://cdn.salla.sa/qQEzZY/5b9bb365-5abf-45c9-82b7-7f70838ab1d2-1000x1000-TCX1xuyTchLKHad5PYfZh0T3fPO1owU09yWPrjFo.png",
-              "caption": "إطلالة الموسم",
-              "hotspot1_name": "تيشيرت أساسي",
-              "hotspot1_price": "149 ر.س",
-              "hotspot1_x": "42",
-              "hotspot1_y": "50",
-              "hotspot1_url": "/products",
-              "hotspot2_name": "منتجات مميزة",
-              "hotspot2_price": "149 ر.س",
-              "hotspot2_x": "50",
-              "hotspot2_y": "55",
-              "hotspot2_url": "/categories",
-              "hotspot3_name": "منتجات مميزة",
-              "hotspot3_price": "149 ر.س",
-              "hotspot3_x": "50",
-              "hotspot3_y": "55",
-              "hotspot3_url": "/categories"
+              "looks.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "looks.caption": "إطلالة الموسم",
+              "looks.hotspot1_name": "تيشيرت أساسي",
+              "looks.hotspot1_price": "149 ر.س",
+              "looks.hotspot1_x": "42",
+              "looks.hotspot1_y": "50",
+              "looks.hotspot1_url": "/products",
+              "looks.hotspot2_name": "منتجات مميزة",
+              "looks.hotspot2_price": "149 ر.س",
+              "looks.hotspot2_x": "50",
+              "looks.hotspot2_y": "55",
+              "looks.hotspot2_url": "/categories",
+              "looks.hotspot3_name": "منتجات مميزة",
+              "looks.hotspot3_price": "149 ر.س",
+              "looks.hotspot3_x": "50",
+              "looks.hotspot3_y": "55",
+              "looks.hotspot3_url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/7ecac762-7ec1-4ed2-97ea-fe24845ee115-1000x1000-LHyfMRHcKbFrYkvsNzwQYMrzN4iHjh5w6ZLm6Et6.png",
-              "caption": "إطلالة يومية",
-              "hotspot1_name": "منتجات مميزة",
-              "hotspot1_price": "149 ر.س",
-              "hotspot1_x": "50",
-              "hotspot1_y": "55",
-              "hotspot1_url": "/categories",
-              "hotspot2_name": "منتجات مميزة",
-              "hotspot2_price": "149 ر.س",
-              "hotspot2_x": "50",
-              "hotspot2_y": "55",
-              "hotspot2_url": "/categories",
-              "hotspot3_name": "منتجات مميزة",
-              "hotspot3_price": "149 ر.س",
-              "hotspot3_x": "50",
-              "hotspot3_y": "55",
-              "hotspot3_url": "/categories"
+              "looks.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "looks.caption": "إطلالة يومية",
+              "looks.hotspot1_name": "منتجات مميزة",
+              "looks.hotspot1_price": "149 ر.س",
+              "looks.hotspot1_x": "50",
+              "looks.hotspot1_y": "55",
+              "looks.hotspot1_url": "/categories",
+              "looks.hotspot2_name": "منتجات مميزة",
+              "looks.hotspot2_price": "149 ر.س",
+              "looks.hotspot2_x": "50",
+              "looks.hotspot2_y": "55",
+              "looks.hotspot2_url": "/categories",
+              "looks.hotspot3_name": "منتجات مميزة",
+              "looks.hotspot3_price": "149 ر.س",
+              "looks.hotspot3_x": "50",
+              "looks.hotspot3_y": "55",
+              "looks.hotspot3_url": "/categories"
             }
           ],
           "fields": [
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "id": "looks.image",
               "label": "صورة الإطلالة الكاملة",
               "format": "image",
@@ -2511,8 +2337,9 @@
           "description": "مثال جاهز: تمت إضافة 2 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/11-lookbook.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-wide.jpg",
+      "is_default": false,
+      "name": "lookbook"
     },
     {
       "key": "db40cd8d-d809-4df4-900e-7236e72faf4a",
@@ -2523,18 +2350,6 @@
       },
       "path": "home.kids-zone",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/12-kids-zone.jpg' alt='معاينة ركن الأطفال' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "icon": "sicon-format-text-alt",
@@ -2552,7 +2367,7 @@
         {
           "type": "string",
           "icon": "sicon-image",
-          "value": "https://cdn.salla.sa/qQEzZY/0b93d3eb-8b8d-4180-bb30-c6ae9c27d57f-1000x1000-ssROcMXILwOjMOfR0yWXdqeXlFZ8oxd5H0eJfmZ5.png",
+          "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-hero.jpg",
           "id": "banner_image",
           "label": "صورة البانر",
           "format": "image",
@@ -2575,16 +2390,16 @@
           "item_label": "فئة عمرية",
           "value": [
             {
-              "label": "3–5 سنوات",
-              "url": "/categories"
+              "age_ranges.label": "3–5 سنوات",
+              "age_ranges.url": "/categories"
             },
             {
-              "label": "6–9 سنوات",
-              "url": "/categories"
+              "age_ranges.label": "6–9 سنوات",
+              "age_ranges.url": "/categories"
             },
             {
-              "label": "10–14 سنة",
-              "url": "/categories"
+              "age_ranges.label": "10–14 سنة",
+              "age_ranges.url": "/categories"
             }
           ],
           "fields": [
@@ -2620,8 +2435,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/12-kids-zone.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "kids-zone"
     },
     {
       "key": "798ba751-0c03-4e1c-a515-dbd5bdd47f74",
@@ -2632,18 +2448,6 @@
       },
       "path": "home.vip-banner",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/13-vip-banner.jpg' alt='معاينة بانر VIP وبرنامج الولاء' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "icon": "sicon-format-text-alt",
@@ -2675,7 +2479,7 @@
         {
           "type": "string",
           "icon": "sicon-image",
-          "value": "https://cdn.salla.sa/qQEzZY/21ee84de-d14a-4583-8080-bcb4a99cbac6-1000x1000-nsjIlplzEAlCsZCGZegIYCtb2jkyFoM8EdTvEbKw.png",
+          "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-hero.jpg",
           "id": "background",
           "label": "صورة خلفية",
           "format": "image",
@@ -2716,8 +2520,9 @@
           "maxLength": 25
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/13-vip-banner.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-wide.jpg",
+      "is_default": false,
+      "name": "vip-banner"
     },
     {
       "key": "27b35fec-ec11-4050-a627-0bbef569b466",
@@ -2728,18 +2533,6 @@
       },
       "path": "home.value-props",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/14-value-props.jpg' alt='معاينة شريط مزايا الثقة' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "id": "show_icons",
           "type": "boolean",
@@ -2796,23 +2589,23 @@
           "item_label": "ميزة",
           "value": [
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/57207193-7604-423a-af5e-70ec5383d037-1000x1000-jaeggDypbaYu1usqZnH2RchUzJZZRFezd27MMNU3.png",
-              "label": "اختيارات مميزة بتجربة تسوق سهلة"
+              "items.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.label": "اختيارات مميزة بتجربة تسوق سهلة"
             },
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/50f8922a-d2ce-4f87-90a0-e0c208972c56-1000x1000-rRjliGh4DPkVgLk4My2AOYbqT6QIN7jRnfBG2pil.png",
-              "label": "اختيارات مميزة بتجربة تسوق سهلة"
+              "items.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.label": "اختيارات مميزة بتجربة تسوق سهلة"
             },
             {
-              "icon": "https://cdn.salla.sa/qQEzZY/85f2d663-a2ad-4e2a-a8a2-22b2a8f04381-1000x1000-07jZDeIIlnnU0fIaIYSdS55YljSk3sxiQP6QKbHj.png",
-              "label": "اختيارات مميزة بتجربة تسوق سهلة"
+              "items.icon": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.label": "اختيارات مميزة بتجربة تسوق سهلة"
             }
           ],
           "fields": [
             {
               "type": "string",
               "icon": "sicon-image",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "id": "items.icon",
               "label": "أيقونة",
               "format": "image",
@@ -2842,8 +2635,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/14-value-props.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": true,
+      "name": "value-props"
     },
     {
       "key": "95734bf6-c962-431d-8557-2566ab951a7d",
@@ -2854,18 +2648,6 @@
       "icon": "sicon-video",
       "path": "home.product-reels",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/15-product-reels.jpg' alt='معاينة ريلز المنتجات' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "id": "title",
           "type": "string",
@@ -2911,31 +2693,25 @@
           "item_label": "مقطع",
           "value": [
             {
-              "media": "https://cdn.salla.sa/qQEzZY/45ec8e77-045e-4625-9f1e-6d0cb329e12d-1000x1000-bTCUyZLMDAJ708fXzt0GdeWtVlCRt7enS30I0oTa.png",
-              "poster": "https://cdn.salla.sa/qQEzZY/16d83187-26b5-45f1-a03d-c6dabd476a88-1000x1000-g4AvinCuBnNlgstBPJNbj7ZiHDnPrWdeOwBdNWi6.png",
-              "product_name": "منتجات مميزة",
-              "caption": "اختيارات مميزة بتجربة تسوق سهلة",
-              "url": "/categories",
-              "name": "منتج مميز",
-              "price": "149 ر.س"
+              "items.media": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+              "items.poster": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+              "items.product_name": "منتجات مميزة",
+              "items.caption": "اختيارات مميزة بتجربة تسوق سهلة",
+              "items.url": "/categories"
             },
             {
-              "media": "https://cdn.salla.sa/qQEzZY/750bc255-3564-4ae0-927a-743042f60161-1000x1000-aut7BZ9rSKrZ5EaiPjdMtHlXqnnJhgd1tuHPU7OQ.png",
-              "poster": "https://cdn.salla.sa/qQEzZY/e5c592d9-3366-409e-8725-791f9697c2d2-1000x1000-tkNTzc39GhJGsFeJvrb8dtt26wyKWQ5243Bxttnb.png",
-              "product_name": "منتجات مميزة",
-              "caption": "اختيارات مميزة بتجربة تسوق سهلة",
-              "url": "/categories",
-              "name": "منتج جديد",
-              "price": "179 ر.س"
+              "items.media": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+              "items.poster": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+              "items.product_name": "منتجات مميزة",
+              "items.caption": "اختيارات مميزة بتجربة تسوق سهلة",
+              "items.url": "/categories"
             },
             {
-              "media": "https://cdn.salla.sa/qQEzZY/a96bfca7-fd63-45e2-a833-5114419168e6-1000x1000-MBCltGZvwVH6VdYJGnpa82no6j7vTFzMhRacT1DE.png",
-              "poster": "https://cdn.salla.sa/qQEzZY/7fb242dc-5cb5-41ff-bcd0-c76cbcdfc370-1000x1000-na5MylevEMq7F4xFhEuBevxbE8zr9CYrpqkQA5Qx.png",
-              "product_name": "منتجات مميزة",
-              "caption": "اختيارات مميزة بتجربة تسوق سهلة",
-              "url": "/categories",
-              "name": "الأكثر مبيعًا",
-              "price": "129 ر.س"
+              "items.media": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+              "items.poster": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+              "items.product_name": "منتجات مميزة",
+              "items.caption": "اختيارات مميزة بتجربة تسوق سهلة",
+              "items.url": "/categories"
             }
           ],
           "fields": [
@@ -2956,7 +2732,7 @@
               "format": "image",
               "id": "items.poster",
               "label": "صورة الغلاف",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
               "required": false,
               "maxLength": 500,
               "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -3005,8 +2781,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/15-product-reels.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "product-reels"
     },
     {
       "key": "39ec646f-46f9-4a7c-b2c3-a18fe75cfe7f",
@@ -3017,18 +2794,6 @@
       "icon": "sicon-shopping-bag",
       "path": "home.buy-together",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/16-buy-together.jpg' alt='معاينة اشترِ معًا' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "format": "text",
@@ -3064,22 +2829,22 @@
           "item_label": "منتج",
           "value": [
             {
-              "image": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
-              "name": "منتج مميز",
-              "price": "149 ر.س",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "منتج مميز",
+              "items.price": "149 ر.س",
+              "items.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/5b9bb365-5abf-45c9-82b7-7f70838ab1d2-1000x1000-TCX1xuyTchLKHad5PYfZh0T3fPO1owU09yWPrjFo.png",
-              "name": "منتج جديد",
-              "price": "179 ر.س",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "منتج جديد",
+              "items.price": "179 ر.س",
+              "items.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/7ecac762-7ec1-4ed2-97ea-fe24845ee115-1000x1000-LHyfMRHcKbFrYkvsNzwQYMrzN4iHjh5w6ZLm6Et6.png",
-              "name": "الأكثر مبيعًا",
-              "price": "129 ر.س",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "الأكثر مبيعًا",
+              "items.price": "129 ر.س",
+              "items.url": "/categories"
             }
           ],
           "fields": [
@@ -3088,7 +2853,7 @@
               "format": "image",
               "id": "items.image",
               "label": "صورة المنتج",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "required": true,
               "maxLength": 500,
               "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -3160,8 +2925,9 @@
           "description": "مثال: /categories — استبدله برابط القسم أو المنتج المطلوب."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/16-buy-together.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "buy-together"
     },
     {
       "key": "23a24e73-7637-44f6-a97c-309a5948d56e",
@@ -3172,18 +2938,6 @@
       "icon": "sicon-timer",
       "path": "home.campaign-countdown",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/17-campaign-countdown.jpg' alt='معاينة عداد الحملة' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "format": "text",
@@ -3244,8 +2998,9 @@
           "description": "مثال جاهز أمامك للتوضيح — عدّل القيمة كما تريد، ولن يؤثر المثال على تصميمك بعد التعديل."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/17-campaign-countdown.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "campaign-countdown"
     },
     {
       "key": "d3aee482-e449-4ba7-b524-1ff407b16dea",
@@ -3257,23 +3012,11 @@
       "path": "home.promo-popup",
       "fields": [
         {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/18-promo-popup.jpg' alt='معاينة نافذة العرض' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
-        {
           "type": "string",
           "format": "image",
           "id": "image",
           "label": "الصورة",
-          "value": "https://cdn.salla.sa/qQEzZY/0b93d3eb-8b8d-4180-bb30-c6ae9c27d57f-1000x1000-ssROcMXILwOjMOfR0yWXdqeXlFZ8oxd5H0eJfmZ5.png",
+          "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
           "required": false,
           "maxLength": 500,
           "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -3353,8 +3096,9 @@
           "description": "مثال جاهز: 3. عدّل الرقم حسب احتياجك."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/18-promo-popup.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "promo-popup"
     },
     {
       "key": "5c001607-2d63-43f6-b772-f9349aeac333",
@@ -3365,18 +3109,6 @@
       "icon": "sicon-video",
       "path": "home.tiktok-gallery",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/19-tiktok-gallery.jpg' alt='معاينة معرض TikTok' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "format": "text",
@@ -3400,16 +3132,14 @@
           "item_label": "مقطع",
           "value": [
             {
-              "thumbnail": "https://cdn.salla.sa/qQEzZY/21ee84de-d14a-4583-8080-bcb4a99cbac6-1000x1000-nsjIlplzEAlCsZCGZegIYCtb2jkyFoM8EdTvEbKw.png",
-              "url": "/categories",
-              "title": "تجربة المنتج",
-              "name": "تجربة المنتج"
+              "items.thumbnail": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.url": "/categories",
+              "items.title": "تجربة المنتج"
             },
             {
-              "thumbnail": "https://cdn.salla.sa/qQEzZY/57207193-7604-423a-af5e-70ec5383d037-1000x1000-jaeggDypbaYu1usqZnH2RchUzJZZRFezd27MMNU3.png",
-              "url": "/categories",
-              "title": "شاهد التفاصيل",
-              "name": "طريقة الاستخدام"
+              "items.thumbnail": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.url": "/categories",
+              "items.title": "شاهد التفاصيل"
             }
           ],
           "fields": [
@@ -3418,7 +3148,7 @@
               "format": "image",
               "id": "items.thumbnail",
               "label": "الصورة المصغرة",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "required": true,
               "maxLength": 500,
               "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -3455,8 +3185,9 @@
           "description": "مثال جاهز: تمت إضافة 2 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/19-tiktok-gallery.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-story.jpg",
+      "is_default": false,
+      "name": "tiktok-gallery"
     },
     {
       "key": "38f78625-ce9a-466b-be4f-9baf2bdbaa1b",
@@ -3467,18 +3198,6 @@
       "icon": "sicon-help",
       "path": "home.faq",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/20-faq.jpg' alt='معاينة الأسئلة الشائعة' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "id": "open_first",
           "type": "boolean",
@@ -3513,12 +3232,12 @@
           "item_label": "سؤال",
           "value": [
             {
-              "question": "كيف أتابع طلبي؟",
-              "answer": "من حسابك أو من رابط التتبع المرسل لك."
+              "items.question": "كيف أتابع طلبي؟",
+              "items.answer": "من حسابك أو من رابط التتبع المرسل لك."
             },
             {
-              "question": "ما مدة الشحن؟",
-              "answer": "تختلف حسب المدينة وطريقة الشحن وتظهر عند إتمام الطلب."
+              "items.question": "ما مدة الشحن؟",
+              "items.answer": "تختلف حسب المدينة وطريقة الشحن وتظهر عند إتمام الطلب."
             }
           ],
           "fields": [
@@ -3550,8 +3269,9 @@
           "description": "مثال جاهز: تمت إضافة 2 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/20-faq.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "faq"
     },
     {
       "key": "284dcb7b-16c8-4d54-971a-63e6b7030e88",
@@ -3562,18 +3282,6 @@
       "icon": "sicon-tag",
       "path": "home.animated-brands",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/21-animated-brands.jpg' alt='معاينة ماركات متحركة' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "format": "text",
@@ -3597,19 +3305,19 @@
           "item_label": "ماركة",
           "value": [
             {
-              "image": "https://cdn.salla.sa/qQEzZY/50f8922a-d2ce-4f87-90a0-e0c208972c56-1000x1000-rRjliGh4DPkVgLk4My2AOYbqT6QIN7jRnfBG2pil.png",
-              "name": "علامة مميزة",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "علامة مميزة",
+              "items.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/85f2d663-a2ad-4e2a-a8a2-22b2a8f04381-1000x1000-07jZDeIIlnnU0fIaIYSdS55YljSk3sxiQP6QKbHj.png",
-              "name": "علامة جديدة",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "علامة جديدة",
+              "items.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/45ec8e77-045e-4625-9f1e-6d0cb329e12d-1000x1000-bTCUyZLMDAJ708fXzt0GdeWtVlCRt7enS30I0oTa.png",
-              "name": "علامة مختارة",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "علامة مختارة",
+              "items.url": "/categories"
             }
           ],
           "fields": [
@@ -3618,7 +3326,7 @@
               "format": "image",
               "id": "items.image",
               "label": "الشعار",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "required": true,
               "maxLength": 500,
               "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -3655,8 +3363,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/21-animated-brands.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+      "is_default": false,
+      "name": "animated-brands"
     },
     {
       "key": "a9926397-56a4-4c9d-8d57-c908c92cadf9",
@@ -3667,18 +3376,6 @@
       "icon": "sicon-whatsapp",
       "path": "home.whatsapp-order",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/22-whatsapp-order.jpg' alt='معاينة اطلب عبر واتساب' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "format": "text",
@@ -3739,8 +3436,9 @@
           "description": "مثال جاهز أمامك للتوضيح — عدّل القيمة كما تريد، ولن يؤثر المثال على تصميمك بعد التعديل."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/22-whatsapp-order.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "whatsapp-order"
     },
     {
       "key": "884f1c06-ab01-458e-a992-fc38886cc753",
@@ -3751,18 +3449,6 @@
       "icon": "sicon-video",
       "path": "home.video-hero",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/23-video-hero.jpg' alt='معاينة Hero بالفيديو' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "id": "show_controls",
           "type": "boolean",
@@ -3796,34 +3482,34 @@
           "item_label": "شريحة",
           "value": [
             {
-              "video": "",
-              "image": "https://cdn.salla.sa/qQEzZY/16d83187-26b5-45f1-a03d-c6dabd476a88-1000x1000-g4AvinCuBnNlgstBPJNbj7ZiHDnPrWdeOwBdNWi6.png",
-              "poster": "https://cdn.salla.sa/qQEzZY/750bc255-3564-4ae0-927a-743042f60161-1000x1000-aut7BZ9rSKrZ5EaiPjdMtHlXqnnJhgd1tuHPU7OQ.png",
-              "eyebrow": "اكتشف تشكيلتنا الجديدة",
-              "title": "اكتشف تشكيلتنا الجديدة",
-              "text": "اختيارات مميزة بتجربة تسوق سهلة",
-              "button_text": "تسوق الآن",
-              "url": "/categories"
+              "items.video": "",
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.poster": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+              "items.eyebrow": "اكتشف تشكيلتنا الجديدة",
+              "items.title": "اكتشف تشكيلتنا الجديدة",
+              "items.text": "اختيارات مميزة بتجربة تسوق سهلة",
+              "items.button_text": "تسوق الآن",
+              "items.url": "/categories"
             },
             {
-              "video": "",
-              "image": "https://cdn.salla.sa/qQEzZY/e5c592d9-3366-409e-8725-791f9697c2d2-1000x1000-tkNTzc39GhJGsFeJvrb8dtt26wyKWQ5243Bxttnb.png",
-              "poster": "https://cdn.salla.sa/qQEzZY/a96bfca7-fd63-45e2-a833-5114419168e6-1000x1000-MBCltGZvwVH6VdYJGnpa82no6j7vTFzMhRacT1DE.png",
-              "eyebrow": "اكتشف تشكيلتنا الجديدة",
-              "title": "اكتشف تشكيلتنا الجديدة",
-              "text": "اختيارات مميزة بتجربة تسوق سهلة",
-              "button_text": "تسوق الآن",
-              "url": "/categories"
+              "items.video": "",
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.poster": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+              "items.eyebrow": "اكتشف تشكيلتنا الجديدة",
+              "items.title": "اكتشف تشكيلتنا الجديدة",
+              "items.text": "اختيارات مميزة بتجربة تسوق سهلة",
+              "items.button_text": "تسوق الآن",
+              "items.url": "/categories"
             },
             {
-              "video": "",
-              "image": "https://cdn.salla.sa/qQEzZY/7fb242dc-5cb5-41ff-bcd0-c76cbcdfc370-1000x1000-na5MylevEMq7F4xFhEuBevxbE8zr9CYrpqkQA5Qx.png",
-              "poster": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
-              "eyebrow": "اكتشف تشكيلتنا الجديدة",
-              "title": "اكتشف تشكيلتنا الجديدة",
-              "text": "اختيارات مميزة بتجربة تسوق سهلة",
-              "button_text": "تسوق الآن",
-              "url": "/categories"
+              "items.video": "",
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.poster": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+              "items.eyebrow": "اكتشف تشكيلتنا الجديدة",
+              "items.title": "اكتشف تشكيلتنا الجديدة",
+              "items.text": "اختيارات مميزة بتجربة تسوق سهلة",
+              "items.button_text": "تسوق الآن",
+              "items.url": "/categories"
             }
           ],
           "fields": [
@@ -3844,7 +3530,7 @@
               "format": "image",
               "id": "items.image",
               "label": "الصورة البديلة",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "required": false,
               "maxLength": 500,
               "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -3858,7 +3544,7 @@
               "format": "image",
               "id": "items.poster",
               "label": "صورة الغلاف",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
               "required": false,
               "maxLength": 500,
               "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -3931,8 +3617,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/23-video-hero.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-hero.jpg",
+      "is_default": false,
+      "name": "video-hero"
     },
     {
       "key": "6a8b62ac-0bca-484b-a6d5-4c9aa7c35a96",
@@ -3943,18 +3630,6 @@
       "icon": "sicon-camera",
       "path": "home.stories",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/24-stories.jpg' alt='معاينة قصص المتجر' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "id": "show_titles",
           "type": "boolean",
@@ -4023,19 +3698,19 @@
           "item_label": "قصة",
           "value": [
             {
-              "image": "https://cdn.salla.sa/qQEzZY/5b9bb365-5abf-45c9-82b7-7f70838ab1d2-1000x1000-TCX1xuyTchLKHad5PYfZh0T3fPO1owU09yWPrjFo.png",
-              "title": "وصل حديثًا",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.title": "وصل حديثًا",
+              "items.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/7ecac762-7ec1-4ed2-97ea-fe24845ee115-1000x1000-LHyfMRHcKbFrYkvsNzwQYMrzN4iHjh5w6ZLm6Et6.png",
-              "title": "العروض",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.title": "العروض",
+              "items.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/0b93d3eb-8b8d-4180-bb30-c6ae9c27d57f-1000x1000-ssROcMXILwOjMOfR0yWXdqeXlFZ8oxd5H0eJfmZ5.png",
-              "title": "الأكثر مبيعًا",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.title": "الأكثر مبيعًا",
+              "items.url": "/categories"
             }
           ],
           "fields": [
@@ -4044,7 +3719,7 @@
               "format": "image",
               "id": "items.image",
               "label": "الصورة",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "required": false,
               "maxLength": 500,
               "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -4081,8 +3756,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/24-stories.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "stories"
     },
     {
       "key": "ade6b714-d777-4b80-bc19-18b48922dab2",
@@ -4093,18 +3769,6 @@
       "icon": "sicon-video",
       "path": "home.influencer-videos",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/25-influencer-videos.jpg' alt='معاينة تجارب المؤثرين' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "format": "text",
@@ -4128,22 +3792,20 @@
           "item_label": "مقطع",
           "value": [
             {
-              "video": "",
-              "image": "https://cdn.salla.sa/qQEzZY/21ee84de-d14a-4583-8080-bcb4a99cbac6-1000x1000-nsjIlplzEAlCsZCGZegIYCtb2jkyFoM8EdTvEbKw.png",
-              "poster": "https://cdn.salla.sa/qQEzZY/57207193-7604-423a-af5e-70ec5383d037-1000x1000-jaeggDypbaYu1usqZnH2RchUzJZZRFezd27MMNU3.png",
-              "name": "تجربة المنتج",
-              "caption": "اختيارات مميزة بتجربة تسوق سهلة",
-              "url": "/categories",
-              "title": "تجربة المنتج"
+              "items.video": "",
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.poster": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+              "items.name": "تجربة المنتج",
+              "items.caption": "اختيارات مميزة بتجربة تسوق سهلة",
+              "items.url": "/categories"
             },
             {
-              "video": "",
-              "image": "https://cdn.salla.sa/qQEzZY/50f8922a-d2ce-4f87-90a0-e0c208972c56-1000x1000-rRjliGh4DPkVgLk4My2AOYbqT6QIN7jRnfBG2pil.png",
-              "poster": "https://cdn.salla.sa/qQEzZY/85f2d663-a2ad-4e2a-a8a2-22b2a8f04381-1000x1000-07jZDeIIlnnU0fIaIYSdS55YljSk3sxiQP6QKbHj.png",
-              "name": "طريقة الاستخدام",
-              "caption": "اختيارات مميزة بتجربة تسوق سهلة",
-              "url": "/categories",
-              "title": "شاهد التفاصيل"
+              "items.video": "",
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.poster": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+              "items.name": "طريقة الاستخدام",
+              "items.caption": "اختيارات مميزة بتجربة تسوق سهلة",
+              "items.url": "/categories"
             }
           ],
           "fields": [
@@ -4164,7 +3826,7 @@
               "format": "image",
               "id": "items.image",
               "label": "الصورة",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "required": false,
               "maxLength": 500,
               "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -4178,7 +3840,7 @@
               "format": "image",
               "id": "items.poster",
               "label": "الغلاف",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
               "required": false,
               "maxLength": 500,
               "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -4227,8 +3889,9 @@
           "description": "مثال جاهز: تمت إضافة 2 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/25-influencer-videos.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-video.jpg",
+      "is_default": false,
+      "name": "influencer-videos"
     },
     {
       "key": "50a217e4-4d31-4b7c-9c75-c4b4dfa7856d",
@@ -4240,18 +3903,6 @@
       "path": "home.store-statistics",
       "fields": [
         {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/26-store-statistics.jpg' alt='معاينة إحصائيات المتجر' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
-        {
           "id": "items",
           "type": "collection",
           "format": "collection",
@@ -4262,16 +3913,16 @@
           "item_label": "إحصائية",
           "value": [
             {
-              "value": "+500",
-              "label": "منتج متاح"
+              "items.value": "+500",
+              "items.label": "منتج متاح"
             },
             {
-              "value": "24/7",
-              "label": "خدمة العملاء"
+              "items.value": "24/7",
+              "items.label": "خدمة العملاء"
             },
             {
-              "value": "98%",
-              "label": "رضا العملاء"
+              "items.value": "98%",
+              "items.label": "رضا العملاء"
             }
           ],
           "fields": [
@@ -4302,8 +3953,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/26-store-statistics.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "store-statistics"
     },
     {
       "key": "a5ea676a-2e24-4714-a6cf-f3a30162bf3a",
@@ -4314,18 +3966,6 @@
       "icon": "sicon-location",
       "path": "home.branches-map",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/27-branches-map.jpg' alt='معاينة الفروع والخريطة' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "format": "text",
@@ -4349,16 +3989,16 @@
           "item_label": "فرع",
           "value": [
             {
-              "name": "الفرع الرئيسي",
-              "address": "اكتشف تشكيلتنا الجديدة",
-              "hours": "يوميًا 10 ص - 11 م",
-              "map_url": "/categories"
+              "items.name": "الفرع الرئيسي",
+              "items.address": "اكتشف تشكيلتنا الجديدة",
+              "items.hours": "يوميًا 10 ص - 11 م",
+              "items.map_url": "/categories"
             },
             {
-              "name": "فرع الشمال",
-              "address": "اكتشف تشكيلتنا الجديدة",
-              "hours": "يوميًا 10 ص - 11 م",
-              "map_url": "/categories"
+              "items.name": "فرع الشمال",
+              "items.address": "اكتشف تشكيلتنا الجديدة",
+              "items.hours": "يوميًا 10 ص - 11 م",
+              "items.map_url": "/categories"
             }
           ],
           "fields": [
@@ -4414,8 +4054,9 @@
           "description": "مثال جاهز: تمت إضافة 2 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/27-branches-map.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "branches-map"
     },
     {
       "key": "c39128ca-768a-49a0-a8bd-54ccdda7c3c7",
@@ -4426,18 +4067,6 @@
       "icon": "sicon-tag",
       "path": "home.wholesale-offers",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/28-wholesale-offers.jpg' alt='معاينة عروض الجملة' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "format": "text",
@@ -4461,19 +4090,19 @@
           "item_label": "شريحة",
           "value": [
             {
-              "quantity": "3 قطع",
-              "discount": "5%",
-              "price": "142 ر.س"
+              "items.quantity": "3 قطع",
+              "items.discount": "5%",
+              "items.price": "142 ر.س"
             },
             {
-              "quantity": "10 قطع",
-              "discount": "10%",
-              "price": "134 ر.س"
+              "items.quantity": "10 قطع",
+              "items.discount": "10%",
+              "items.price": "134 ر.س"
             },
             {
-              "quantity": "20 قطعة",
-              "discount": "15%",
-              "price": "126 ر.س"
+              "items.quantity": "20 قطعة",
+              "items.discount": "15%",
+              "items.price": "126 ر.س"
             }
           ],
           "fields": [
@@ -4517,8 +4146,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/28-wholesale-offers.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "wholesale-offers"
     },
     {
       "key": "9a99dbe0-ccfb-457a-b48b-05f00417d983",
@@ -4529,18 +4159,6 @@
       "icon": "sicon-products",
       "path": "home.smart-recommendations",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/29-smart-recommendations.jpg' alt='معاينة توصيات ذكية' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "format": "text",
@@ -4564,22 +4182,22 @@
           "item_label": "منتج",
           "value": [
             {
-              "image": "https://cdn.salla.sa/qQEzZY/45ec8e77-045e-4625-9f1e-6d0cb329e12d-1000x1000-bTCUyZLMDAJ708fXzt0GdeWtVlCRt7enS30I0oTa.png",
-              "name": "منتج مميز",
-              "price": "149 ر.س",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "منتج مميز",
+              "items.price": "149 ر.س",
+              "items.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/16d83187-26b5-45f1-a03d-c6dabd476a88-1000x1000-g4AvinCuBnNlgstBPJNbj7ZiHDnPrWdeOwBdNWi6.png",
-              "name": "منتج جديد",
-              "price": "179 ر.س",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "منتج جديد",
+              "items.price": "179 ر.س",
+              "items.url": "/categories"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/750bc255-3564-4ae0-927a-743042f60161-1000x1000-aut7BZ9rSKrZ5EaiPjdMtHlXqnnJhgd1tuHPU7OQ.png",
-              "name": "الأكثر مبيعًا",
-              "price": "129 ر.س",
-              "url": "/categories"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "الأكثر مبيعًا",
+              "items.price": "129 ر.س",
+              "items.url": "/categories"
             }
           ],
           "fields": [
@@ -4588,7 +4206,7 @@
               "format": "image",
               "id": "items.image",
               "label": "الصورة",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "required": false,
               "maxLength": 500,
               "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -4637,8 +4255,9 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/29-smart-recommendations.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "smart-recommendations"
     },
     {
       "key": "748a7f83-85a4-4e10-a833-6b03b5b3cd9c",
@@ -4649,18 +4268,6 @@
       "icon": "sicon-list",
       "path": "home.compare-products",
       "fields": [
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-preview",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#f6f7f9;line-height:1.7'><img class='w-full' src='https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/30-compare-products.jpg' alt='معاينة مقارنة المنتجات' style='width:100%;border-radius:8px;display:block'><strong>معاينة:</strong> هذا الشكل يوضح طريقة ظهور المكوّن داخل ثيم همسة نبض.</div>"
-        },
-        {
-          "type": "static",
-          "format": "description",
-          "id": "hn-guide-note",
-          "value": "<div style='padding:10px 12px;border-radius:10px;background:#fff7e6;color:#7a4b00;line-height:1.7'><strong>مهم:</strong> البيانات الظاهرة أدناه أمثلة قابلة للتعديل. استبدل الصور والنصوص والروابط ببيانات متجرك قبل الحفظ.</div>"
-        },
         {
           "type": "string",
           "format": "text",
@@ -4684,19 +4291,19 @@
           "item_label": "منتج",
           "value": [
             {
-              "image": "https://cdn.salla.sa/qQEzZY/e5c592d9-3366-409e-8725-791f9697c2d2-1000x1000-tkNTzc39GhJGsFeJvrb8dtt26wyKWQ5243Bxttnb.png",
-              "name": "منتج مميز",
-              "price": "149 ر.س"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "منتج مميز",
+              "items.price": "149 ر.س"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/a96bfca7-fd63-45e2-a833-5114419168e6-1000x1000-MBCltGZvwVH6VdYJGnpa82no6j7vTFzMhRacT1DE.png",
-              "name": "منتج جديد",
-              "price": "179 ر.س"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "منتج جديد",
+              "items.price": "179 ر.س"
             },
             {
-              "image": "https://cdn.salla.sa/qQEzZY/7fb242dc-5cb5-41ff-bcd0-c76cbcdfc370-1000x1000-na5MylevEMq7F4xFhEuBevxbE8zr9CYrpqkQA5Qx.png",
-              "name": "الأكثر مبيعًا",
-              "price": "129 ر.س"
+              "items.image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
+              "items.name": "الأكثر مبيعًا",
+              "items.price": "129 ر.س"
             }
           ],
           "fields": [
@@ -4705,7 +4312,7 @@
               "format": "image",
               "id": "items.image",
               "label": "الصورة",
-              "value": "https://cdn.salla.sa/qQEzZY/43619b0c-e77f-4ce1-a038-558607b3cfc3-1000x1000-vnOO7dTomooxNxgBuR3Uc6jN1uMLwsdI6w8VAamR.png",
+              "value": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-square.jpg",
               "required": false,
               "maxLength": 500,
               "description": "مثال جاهز: تم وضع صورة نموذجية لتوضيح الشكل. استبدلها بصورتك. المقاس المقترح موضح هنا.",
@@ -4742,11 +4349,16 @@
           "description": "مثال جاهز: تمت إضافة 3 عناصر نموذجية لتوضيح طريقة الاستخدام. يمكنك حذفها أو تعديلها وإضافة عناصر جديدة."
         }
       ],
-      "image": "https://raw.githubusercontent.com/azpc1993/hamsa-nabd-theme/main/src/assets/images/30-compare-products.jpg",
-      "is_default": false
+      "image": "https://cdn.jsdelivr.net/gh/azpc1993/hamsa-nabd-theme@main/src/assets/images/guide-card.jpg",
+      "is_default": false,
+      "name": "compare-products"
     }
   ],
-  "version": "9.5.4",
+  "name": {
+    "ar": "همسة نبض",
+    "en": "Hamsa Nabd"
+  },
+  "version": "10.0.3",
   "theme_name": "همسة نبض",
   "repo_url": "https://github.com/azpc1993/hamsa-nabd-theme"
 }
