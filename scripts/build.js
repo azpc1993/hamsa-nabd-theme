@@ -50,14 +50,15 @@ pageEntries.forEach((name) => {
     copyFile(src, dest);
 });
 
-// نسخ أي صور موجودة في src/assets/images إلى public/images
-const imagesDir = path.join(SRC, 'images');
-if (fs.existsSync(imagesDir)) {
-    const outImages = path.join(OUT, 'images');
-    ensureDir(outImages);
-    fs.readdirSync(imagesDir).forEach((file) => {
-        copyFile(path.join(imagesDir, file), path.join(outImages, file));
-    });
-}
+// انسخ فقط الصور المحلية المستخدمة فعليًا في قوالب الثيم.
+// صور الإرشاد في src/assets/images تُستخدم عبر CDN داخل twilight.json، ولا تحتاج نسخة ثانية داخل public.
+const requiredImages = ['placeholder.png'];
+requiredImages.forEach((name) => {
+    const src = path.join(SRC, 'images', name);
+    if (!fs.existsSync(src)) {
+        throw new Error(`Missing required image asset: ${src}`);
+    }
+    copyFile(src, path.join(OUT, 'images', name));
+});
 
 console.log('Done.');

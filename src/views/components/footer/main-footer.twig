@@ -31,9 +31,9 @@
     </div>
 
     <div class="hn-footer-col">
-        <h2>{{ trans('hn.titles.contact_us') }}</h2>
+        <h2>{{ trans('common.titles.contact_us') }}</h2>
         <ul>
-            {% if store.contacts.whatsapp %}<li><a href="{{ store.contacts.whatsapp }}">{{ trans('hn.elements.whatsapp') }}</a></li>{% endif %}
+            {% if store.contacts.whatsapp %}<li><a href="{{ store.contacts.whatsapp }}">{{ trans('common.elements.whatsapp') }}</a></li>{% endif %}
             {% if store.contacts.email %}<li><a href="mailto:{{ store.contacts.email }}">{{ store.contacts.email }}</a></li>{% endif %}
             {% if store.contacts.mobile %}<li><a href="tel:{{ store.contacts.mobile }}">{{ store.contacts.mobile }}</a></li>{% endif %}
         </ul>
