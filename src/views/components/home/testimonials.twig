@@ -1,10 +1,13 @@
-{% set component = component|default({}) %}
 {#
-| Variable | Type   | Description                        |
-|----------|--------|-------------------------------------|
-| limit    | ?string| الحد الأقصى لعدد التقييمات المعروضة |
-| sort     | ?string|                                     |
+  مكوّن سلة الأساسي: "آراء العملاء" (feature: component-testimonials)
+| Variable           | Type    |
+|--------------------|---------|
+| limit              | ?int    |
+| type               | ?string | store, product, all |
+| sort               | ?string |
+| hide_customer_info | ?bool   |
+| display_all_url    | ?string |
 #}
-<section component-id="{{ componentId }}" class="s-block hn-testimonials container">
-    <salla-reviews display-all-link limit="{{ limit|default(6) }}" sort="{{ sort|default('latest') }}" type="store"></salla-reviews>
+<section component-id="{{ componentId }}" class="s-block hn-builtin hn-testimonials container overflow-hidden">
+  <salla-reviews {{ display_all_url|default(true) ? 'display-all-link' : '' }} limit="{{ limit|default(6) }}" sort="{{ sort|default('latest') }}" type="{{ type|default('store') }}" {{ hide_customer_info|default(false) ? 'hide-customer-info' : '' }}></salla-reviews>
 </section>

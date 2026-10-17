@@ -1,0 +1,26 @@
+{#
+  مكوّن سلة الأساسي: "منتجات ثابتة" (feature: component-fixed-products)
+| Variable              | Type    |
+|-----------------------|---------|
+| products.source       | string  |
+| products.source_value | ?int[]  |
+| title                 | string  |
+| display_all_url       | ?string |
+| limit                 | int     |
+#}
+<section component-id="{{ componentId }}" class="s-block hn-builtin hn-fixed-products container">
+  {% if title|default('') %}
+    <div class="hn-block-title">
+      <h2>{{ title }}</h2>
+      {% if display_all_url|default('') %}
+        <a href="{{ display_all_url }}" class="hn-block-title__more">{{ trans('blocks.home.display_all') }} <i class="sicon-arrow-left"></i></a>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% if products|default(null) %}
+    <salla-products-list
+        source="{{ products.source|default('latest') }}"
+        source-value="{{ products.source_value|default([])|json_encode }}"
+        limit="{{ limit|default(8) }}"></salla-products-list>
+  {% endif %}
+</section>

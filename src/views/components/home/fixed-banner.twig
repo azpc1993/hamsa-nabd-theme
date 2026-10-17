@@ -1,0 +1,12 @@
+{# مكوّن سلة الأساسي: "بنر ثابت" (feature: component-fixed-banner) — image.url, image.small_url, image.alt, url #}
+{% if image|default(null) and image.url|default('') %}
+<section component-id="{{ componentId }}" class="s-block hn-builtin hn-fixed-banner container">
+  {% set alt_text = image.alt|default('')|trim ? image.alt : store.name %}
+  <a href="{{ url|default('#') }}" aria-label="{{ alt_text }}">
+    <picture>
+      {% if image.small_url|default('') %}<source media="(max-width: 767px)" srcset="{{ image.small_url }}">{% endif %}
+      <img src="{{ image.url }}" width="1200" height="300" loading="lazy" alt="{{ alt_text }}">
+    </picture>
+  </a>
+</section>
+{% endif %}
