@@ -120,3 +120,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 (function(){document.querySelectorAll('[data-hn-compare]').forEach(function(root){var boxes=root.querySelectorAll('[data-hn-compare-item]'),btn=root.querySelector('[data-hn-compare-open]'),out=root.querySelector('[data-hn-compare-result]');function clear(){if(!out)return;while(out.firstChild)out.removeChild(out.firstChild);}function sync(){var checked=[].filter.call(boxes,function(x){return x.checked});if(!btn||!out)return;btn.disabled=checked.length<2||checked.length>4;if(checked.length===0){out.hidden=true;clear();}else{out.hidden=false;clear();var count=document.createElement('div');count.className='hn-compare__count';count.textContent=checked.length+' '+(checked.length===1?'item':'items');out.appendChild(count);}}boxes.forEach(function(x){x.addEventListener('change',sync)});if(!btn||!out)return;btn.addEventListener('click',function(){var checked=[].filter.call(boxes,function(x){return x.checked});if(checked.length<2||checked.length>4)return;clear();out.hidden=false;var wrap=document.createElement('div');wrap.className='hn-compare__selected';checked.forEach(function(x){var card=x.closest('.hn-compare-card'),span=document.createElement('span');span.textContent=card.querySelector('strong').textContent;wrap.appendChild(span);});out.appendChild(wrap);});});})();
+
+/* v10.0.4 — تبويبات مكوّن "منتجات مميزة" */
+document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('.hn-tab-trigger');
+    if (!btn) return;
+    var group = btn.getAttribute('data-hn-group');
+    document.querySelectorAll('.hn-tab-trigger[data-hn-group="' + group + '"]').forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+    document.querySelectorAll('.hn-tab-panel[data-hn-group="' + group + '"]').forEach(function (p) { p.classList.toggle('is-active', p.id === btn.getAttribute('data-hn-tab')); });
+});
