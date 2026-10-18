@@ -1,0 +1,285 @@
+/* ==========================================================================
+   Hamsa Nabd — Marketing components
+   marquee · coupon · video banner · stats · products tabs · bundle tiers ·
+   gallery · FAQ · join channel
+   ========================================================================== */
+
+/* --------------------------------------------------------------- marquee */
+.sh-marquee {
+  @apply overflow-hidden;
+  background: var(--sh-mq-bg);
+  color: var(--sh-mq-color);
+
+  &.container {
+    border-radius: var(--sh-radius);
+  }
+
+  &--gold { --sh-mq-bg: var(--sh-gold-gradient); --sh-mq-color: var(--sh-ink); }
+  &--dark { --sh-mq-bg: var(--sh-ink); --sh-mq-color: #f4f1ea; --sh-mq-icon: var(--sh-gold); }
+  &--ivory { --sh-mq-bg: var(--sh-ivory); --sh-mq-color: var(--sh-ink); --sh-mq-icon: var(--sh-gold-dark); }
+  &--custom { --sh-mq-bg: var(--sh-ink); --sh-mq-color: #fff; }
+
+  &--skew {
+    transform: rotate(-1.5deg) scale(1.02);
+    margin-block: 1.5rem;
+  }
+
+  &__item {
+    @apply flex items-center gap-3 px-8 py-4 text-sm md:text-base font-bold whitespace-nowrap;
+
+    i {
+      @apply text-xs opacity-80;
+      color: var(--sh-mq-icon, currentColor);
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+
+  &--sm &__item { @apply text-xs md:text-sm py-2.5 px-6; }
+  &--lg &__item { @apply text-base md:text-xl py-5 px-10; }
+
+  &__sep {
+    @apply ms-8 font-normal opacity-70;
+    color: var(--sh-mq-icon, currentColor);
+  }
+
+  &--sep-star &__item,
+  &--sep-dot &__item { @apply pe-0; }
+}
+
+/* --------------------------------------------------------------- coupon */
+.sh-coupon {
+  &__card {
+    @apply relative grid gap-6 items-center p-6 md:p-10 overflow-hidden;
+    grid-template-columns: auto 1fr;
+    background: var(--sh-ivory);
+    border: 1px dashed var(--sh-gold);
+    border-radius: var(--sh-radius);
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+
+    // ticket notches
+    &::before,
+    &::after {
+      content: '';
+      @apply absolute w-7 h-7 rounded-full bg-white top-1/2 -translate-y-1/2;
+      border: 1px dashed var(--sh-gold);
+    }
+
+    &::before { inset-inline-start: -15px; }
+    &::after { inset-inline-end: -15px; }
+
+    &--media {
+      @screen lg {
+        grid-template-columns: auto 1fr 280px;
+      }
+    }
+  }
+
+  &__badge {
+    @apply flex flex-col items-center justify-center w-32 h-32 md:w-40 md:h-40 rounded-full text-center mx-auto;
+    background: var(--sh-ink);
+    color: var(--sh-gold-light);
+    box-shadow: 0 0 0 6px var(--sh-ivory), 0 0 0 7px var(--sh-gold);
+  }
+
+  &__value {
+    @apply text-3xl md:text-5xl font-bold leading-none;
+    font-family: var(--font-heading);
+  }
+
+  &__off {
+    @apply text-xs mt-2 tracking-widest uppercase text-white/70 max-w-full px-3 truncate;
+  }
+
+  &__title {
+    @apply text-2xl md:text-3xl font-bold text-ink mt-2;
+  }
+
+  &__desc {
+    @apply text-gray-600 mt-2 leading-7;
+  }
+
+  &__code-row {
+    @apply flex flex-wrap items-stretch gap-3 mt-5;
+  }
+
+  &__code {
+    @apply flex items-center px-6 py-3 text-lg md:text-xl font-bold tracking-[.25em] bg-white;
+    border: 2px dashed var(--sh-gold);
+    border-radius: var(--sh-radius);
+    color: var(--sh-ink);
+  }
+
+  &__footer {
+    @apply flex flex-wrap items-center gap-6 mt-5;
+  }
+
+  &__link {
+    @apply inline-flex items-center gap-2 text-sm font-bold;
+    color: var(--sh-gold-dark);
+
+    i { @apply ltr:rotate-180 inline-block; }
+  }
+
+  &__media {
+    @apply hidden lg:block h-full;
+
+    img {
+      @apply w-full h-full object-cover;
+      border-radius: var(--sh-radius);
+      max-height: 260px;
+    }
+  }
+}
+
+.sh-copy.is-copied {
+  background: #16a34a !important;
+  color: #fff !important;
+}
+
+/* --------------------------------------------------------------- products tabs */
+.sh-tabs {
+  &__nav {
+    @apply flex gap-2 overflow-x-auto pb-2 mb-6 md:justify-center;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  &__btn {
+    @apply shrink-0 px-5 py-2.5 text-sm font-bold transition duration-300 whitespace-nowrap;
+    border: 1px solid rgba(7, 27, 45, .12);
+    border-radius: 999px;
+    color: #4b4b52;
+
+    &:hover {
+      border-color: var(--sh-gold);
+      color: var(--sh-ink);
+    }
+
+    &.is-active {
+      background: var(--sh-ink);
+      border-color: var(--sh-ink);
+      color: var(--sh-gold-light);
+    }
+  }
+
+  &__panel {
+    animation: sh-fade-up .5s ease both;
+
+    .s-slider-block__title { @apply hidden; }
+  }
+}
+
+@keyframes sh-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* --------------------------------------------------------------- bundle tiers */
+.sh-tiers {
+  &__grid {
+    @apply grid grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto;
+
+    &--3 { @apply md:grid-cols-3; }
+    &--4 { @apply md:grid-cols-4; }
+  }
+}
+
+.sh-tier {
+  @apply relative flex flex-col items-center text-center p-6 md:p-8 transition duration-300;
+  background: #fff;
+  border: 1px solid rgba(7, 27, 45, .1);
+  border-radius: var(--sh-radius);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px -25px rgba(7, 27, 45, .35);
+  }
+
+  &__qty {
+    @apply text-sm font-bold text-gray-500;
+  }
+
+  &__discount {
+    @apply text-3xl md:text-4xl font-bold my-2 text-ink;
+    font-family: var(--font-heading);
+  }
+
+  &__note {
+    @apply text-xs text-gray-500;
+  }
+
+  &__flag {
+    @apply absolute -top-3 px-3 py-1 text-xs font-bold rounded-full;
+    background: var(--sh-gold-gradient);
+    color: var(--sh-ink);
+  }
+
+  &--featured {
+    background: var(--sh-ink);
+    border-color: var(--sh-gold);
+    box-shadow: 0 20px 45px -20px var(--sh-gold);
+
+    .sh-tier__qty,
+    .sh-tier__note { @apply text-white/70; }
+
+    .sh-tier__discount { color: var(--sh-gold-light); }
+  }
+}
+
+/* --------------------------------------------------------------- join channel */
+.sh-join {
+  &__band {
+    @apply relative grid gap-6 items-center p-8 md:p-12 lg:grid-cols-[1.3fr_1fr] text-white overflow-hidden;
+    border-radius: var(--sh-radius);
+    background:
+      linear-gradient(120deg, rgba(7, 27, 45, .92), rgba(7, 27, 45, .7)),
+      var(--sh-join-bg, none) center / cover no-repeat,
+      var(--sh-ink);
+
+    &::after {
+      content: '';
+      @apply absolute w-72 h-72 rounded-full pointer-events-none;
+      inset-inline-end: -6rem;
+      top: -6rem;
+      background: radial-gradient(circle, rgba(201, 162, 75, .35), transparent 70%);
+    }
+  }
+
+  &__title {
+    @apply text-2xl md:text-3xl font-bold mt-2;
+    font-family: var(--font-heading);
+  }
+
+  &__desc {
+    @apply text-white/70 mt-3 leading-7;
+  }
+
+  &__actions {
+    @apply relative z-[1] flex flex-wrap gap-3 lg:justify-end;
+  }
+
+  &__btn {
+    @apply inline-flex items-center gap-2 px-5 py-3 text-sm font-bold transition duration-300;
+    border-radius: var(--sh-radius);
+    border: 1px solid rgba(255, 255, 255, .2);
+    background: rgba(255, 255, 255, .06);
+
+    i { @apply text-lg; }
+
+    &:hover { transform: translateY(-2px); border-color: var(--sh-gold); }
+
+    &--wa i { color: #25d366; }
+    &--tg i { color: #2aabee; }
+    &--ig i { color: #e1306c; }
+    &--sc i { color: #fffc00; }
+    &--tt i { color: #fff; }
+  }
+}
