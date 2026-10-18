@@ -1,4 +1,6 @@
 {% set component = component|default({}) %}
+{% set o = {} %}
+{% set hn_mod = ['']|filter(c => c)|join(' ') %}
 {#
 | Variable                     | Type    |
 |------------------------------|---------|
@@ -8,7 +10,7 @@
 #}
 {% set messages = component.messages|default([]) %}
 {% if messages|length %}
-<section component-id="{{ componentId }}" class="s-block hn-announcement">
+<section component-id="{{ componentId }}" class="s-block hn-announcement {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
     <div class="hn-announcement__track">
         {% for i in 1..2 %}
             {% for msg in messages %}

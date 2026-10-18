@@ -1,4 +1,6 @@
 {% set component = component|default({}) %}
+{% set o = {} %}{% for k in ['hero_text_position', 'hero_height_mode'] %}{% set v = attribute(component, k) %}{% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}{% set o = o|merge({(k): v}) %}{% endfor %}
+{% set hn_mod = ['hn-hero--pos-' ~ (o.hero_text_position ?: 'start'), 'hn-hero--h-' ~ (o.hero_height_mode ?: 'auto'), component.hero_overlay is same as(false) ? '' : 'hn-hero--overlay']|filter(c => c)|join(' ') %}
 {#
 | Variable                      | Type     | Description                                    |
 |-------------------------------|----------|------------------------------------------------|
@@ -13,10 +15,11 @@
 #}
 {% set slides = component.slides|default([]) %}
 {% if slides|length %}
-<section component-id="{{ componentId }}" class="s-block hn-hero">
+<section component-id="{{ componentId }}" class="s-block hn-hero {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
     <salla-slider
         id="hn-hero-{{ position }}"
         auto-play
+        {{ component.hero_show_dots is same as(false) ? '' : 'pagination' }}
         static-when-single
         {{ slides|length > 1 ? '' : 'show-controls="false"' }}
         type="fullwidth">

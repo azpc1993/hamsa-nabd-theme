@@ -1,50 +1,42 @@
 {#
-  مكوّن سلة الأساسي: "منتجات مميزة" نمط 3 (feature: component-featured-products)
-| Variable                 | Type      |
-|--------------------------|-----------|
-| items[].id / title       | string    |
-| items[].products[]       | Product[] |
-| items[].products.source  | (style2)  |
-| main_product.product     | ?Product  |
-| is_slider                | ?bool     |
+| Variable                      | Type      | Description                                                         |
+|-------------------------------|-----------|---------------------------------------------------------------------|
+| items                         | array     |                                                                     |
+| items[].title                 | string    | Section title                                                       |
+| items[].name                  | string    | Alias for title                                                     |
+| items[].type                  | string    | category,most_sales,latest_products,chosen_products                 |
+| items[].featured_product      | Product   |                                                                     |
+| items[].special_product.id    | string    | Product string id                                                   |
+| items[].special_product.title | string    | Product Name                                                        |
+| items[].products[]            | Product[] |                                                                     |
+| items[].limit                 | Int       | Number of products to be shown                                      |
+| items[].id                    | string    | Section id                                                          |
+| position                      | int       | Sorting number starts from zero                                     |
 #}
-{% set hn_style = 3 %}
-{% set hn_items = items|default([]) %}
-{% set hn_main = main_product|default(null) %}
-{% set hn_id = 'hn-featured-' ~ hn_style|default(1) ~ '-' ~ position|default(0) %}
-{% if hn_items|length or hn_main %}
-<section component-id="{{ componentId }}" class="s-block hn-builtin hn-featured-products container" id="{{ hn_id }}">
-  <div class="hn-block-title">
-    <h2>{{ hn_main ? hn_main.title|default('') : (hn_items|length == 1 ? hn_items[0].title|default('') : '') }}</h2>
-    {% if hn_items|length > 1 %}
-      <div class="hn-tabs-nav" role="tablist">
-        {% for section in hn_items %}
-          <button type="button" class="hn-tab-trigger {{ loop.first ? 'is-active' : '' }}" data-hn-tab="{{ hn_id }}-{{ loop.index }}" data-hn-group="{{ hn_id }}">{{ section.title|default(section.name|default('')) }}</button>
-        {% endfor %}
-      </div>
-    {% endif %}
-  </div>
-  <div class="hn-featured-products__body {{ hn_main ? 'has-main' : '' }}">
-    {% if hn_main and hn_main.product|default(null) %}
-      <div class="hn-featured-products__main">
-        <salla-product-card shadow-on-hover product="{{ hn_main.product }}"></salla-product-card>
-      </div>
-    {% endif %}
-    <div class="hn-featured-products__tabs">
-      {% for section in hn_items %}
-        <div id="{{ hn_id }}-{{ loop.index }}" class="hn-tab-panel {{ loop.first ? 'is-active' : '' }}" data-hn-group="{{ hn_id }}">
-          {% if section.products.source is defined %}
-            <salla-products-list source="{{ section.products.source }}" limit="{{ section.products.limit|default(8) }}" source-value="{{ section.products.source_value|default([])|json_encode }}"></salla-products-list>
-          {% else %}
-            <div class="hn-featured-products__grid">
-              {% for product in section.products|default([])|slice(0, hn_main ? 4 : 8) %}
-                <salla-product-card shadow-on-hover product="{{ product }}"></salla-product-card>
-              {% endfor %}
+<section component-id="{{ componentId }}" data-testid="store-home-featured-products-grid" class="s-block s-block--features-products {% if items | length > 1 %}two-cols{% endif %} container">
+    <div class="inner">
+        {% for section in items %}
+            <div>
+                <div class="s-block__title">
+                  <h2>{{ section.title }}</h2>
+                  {# <p>عنوان فرعي توصيفي صغير</p> #}
+                </div> 
+                <div class="flex-1 grid lg:grid-cols-2 gap-4 sm:gap-8">
+                    {% if section.featured_product %}
+                        <custom-salla-product-card shadow-on-hover product="{{section.featured_product}}" fullImage></custom-salla-product-card>
+                        <div class="grid gap-4 sm:gap-8">
+                            {% for product in section.products|slice(0,3) %}
+                                <custom-salla-product-card shadow-on-hover product="{{product}}" minimal></custom-salla-product-card>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {% for product in section.products %}
+                            <custom-salla-product-card shadow-on-hover product="{{product}}" minimal></custom-salla-product-card>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
-          {% endif %}
-        </div>
-      {% endfor %}
+        {% endfor %}
     </div>
-  </div>
 </section>
-{% endif %}
+ 

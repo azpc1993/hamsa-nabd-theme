@@ -1,4 +1,6 @@
 {% set component = component|default({}) %}
+{% set o = {} %}
+{% set hn_mod = ['hn-boxed']|filter(c => c)|join(' ') %}
 {#
 | Variable                     | Type    | Description                                  |
 |-------------------------------|---------|------------------------------------------------|
@@ -12,7 +14,7 @@
 | position                     | int     |                                                |
 #}
 {% if component.steps|length %}
-<section component-id="{{ componentId }}" class="s-block hn-build-box">
+<section component-id="{{ componentId }}" class="s-block hn-build-box {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
     <div class="hn-build-box__media">
         <img src="{{ component.image }}" alt="{{ component.title }}" loading="lazy">
     </div>

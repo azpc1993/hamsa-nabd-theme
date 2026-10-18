@@ -1,4 +1,6 @@
 {% set component = component|default({}) %}
+{% set o = {} %}
+{% set hn_mod = ['hn-boxed']|filter(c => c)|join(' ') %}
 {#
 | Variable                   | Type    |
 |----------------------------|---------|
@@ -11,7 +13,7 @@
 #}
 {% set photos = component.photos|default([]) %}
 {% if photos|length %}
-<section component-id="{{ componentId }}" class="s-block hn-instagram">
+<section component-id="{{ componentId }}" class="s-block hn-instagram {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
     <div class="hn-divider">
         <div class="hn-divider__label">
             <div><h2 class="hn-divider__title">{{ component.title }}</h2></div>

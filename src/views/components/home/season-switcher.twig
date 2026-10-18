@@ -1,4 +1,6 @@
 {% set component = component|default({}) %}
+{% set o = {} %}
+{% set hn_mod = ['hn-boxed']|filter(c => c)|join(' ') %}
 {#
 | Variable                           | Type    | Description                                       |
 |-------------------------------------|---------|----------------------------------------------------|
@@ -12,7 +14,7 @@
 #}
 {% set tabs = component.tabs|default([]) %}
 {% if tabs|length %}
-<section component-id="{{ componentId }}" class="s-block hn-season" data-hn-season-switcher>
+<section component-id="{{ componentId }}" class="s-block hn-season {{ hn_mod }} {% include 'components.hamsa.section-classes' %}" data-hn-season-switcher>
     <div class="hn-season__tabs">
         {% for tab in tabs %}
         <button class="hn-season__tab {{ loop.first ? 'is-active' : '' }}" data-hn-season-tab="{{ loop.index0 }}">

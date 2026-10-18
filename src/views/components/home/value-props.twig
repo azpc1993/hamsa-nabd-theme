@@ -1,4 +1,6 @@
 {% set component = component|default({}) %}
+{% set o = {} %}{% for k in ['columns'] %}{% set v = attribute(component, k) %}{% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}{% set o = o|merge({(k): v}) %}{% endfor %}
+{% set hn_mod = ['hn-vp-cols--' ~ (o.columns ?: '4'), component.show_icons is same as(false) ? 'hn-vp--no-icons' : '', 'hn-boxed']|filter(c => c)|join(' ') %}
 {#
 | Variable                    | Type   | Description                                              |
 |------------------------------|--------|-------------------------------------------------------------|
@@ -8,7 +10,7 @@
 #}
 {% set items = component.items|default([]) %}
 {% if items|length %}
-<section component-id="{{ componentId }}" class="s-block hn-value-props">
+<section component-id="{{ componentId }}" class="s-block hn-value-props {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
     {% for item in items %}
     <div class="hn-value-props__item">
         <img src="{{ item.icon }}" alt="">

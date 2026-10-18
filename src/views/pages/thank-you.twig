@@ -1,2 +1,113 @@
+{#
+| Variable            | Type   | Description                            |
+|---------------------|--------|----------------------------------------|
+| page                | object |                                        |
+| page.title          | string |                                        |
+| page.slug           | string |                                        |
+| order               | Order  | @see pages/customer/orders/single.twig |
+| thank_you_title     | string | merchant customized main text          |
+| share_message       | string |                                        |
+| short_share_message | string |                                        |
+
+Fulfilment section is picked from order state:
+ - pickup (order.is_pickable)  -> <salla-order-branch items sticky-cta> (items card + branch details footer)
+ - delivery (single or split)  -> <salla-order-shipments sticky-cta> (one card per shipment, bottom sheet for split)
+Digital orders are out of scope here (they are redirected to the order summary page by the backend).
+
+The fulfilment CTA lives inside those components: on desktop it renders in-flow above the cards
+(as in the design), on mobile it is the sticky bottom bar.
+#}
 {% extends "layouts.master" %}
-{% block content %}<div class="container hn-thankyou"><nav class="breadcrumbs"><salla-breadcrumb></salla-breadcrumb></nav><section class="hn-thankyou__card"><div class="hn-thankyou__icon"><i class="sicon-check-circle"></i></div><h1>{{ thank_you_title }}</h1><p>{{ trans('pages.thank_you.order_id') }} <strong>#{{ order.reference_id }}</strong></p><salla-button href="{{ order.url }}" class="hn-btn hn-btn--navy">{{ trans('common.actions.order_details') }}</salla-button>{% if order.instructions %}<div class="hn-thankyou__instructions">{{ order.instructions|raw }}</div>{% endif %}{% for message in messages %}<p class="hn-thankyou__message">{{ message }}</p>{% endfor %}</section><salla-order-shipments class="hn-thankyou__shipments"></salla-order-shipments><salla-next-order-coupon></salla-next-order-coupon>{% if order.email_sent %}<section class="hn-thankyou__contact"><i class="sicon-mail-letter"></i><p>{{ trans('pages.thank_you.email_sent') }}</p><b>{{ order.customer.email }}</b></section>{% endif %}<section class="hn-thankyou__contact"><i class="sicon-headphones"></i><p>{{ trans('common.titles.support') }}</p>{% if store.contacts.mobile %}<a href="tel:{{ store.contacts.mobile }}">{{ store.contacts.mobile }}</a>{% endif %}{% if store.contacts.whatsapp %}<a target="_blank" rel="noopener" href="https://wa.me/{{ store.contacts.whatsapp|replace({' ': '', '+': '', '-': ''}) }}">{{ store.contacts.whatsapp }}</a>{% endif %}</section></div>{% endblock %}
+
+{% block styles %}
+    {{ parent() }}
+    {# Icon font used by the thank-you components (e.g. the items card's unfold-more / unfold-less toggle). #}
+    <link rel="stylesheet" href="{{ 'fonts/hugeicons-font.css'|cdn }}"/>
+    <style>
+        /* Mobile keeps the store header but drops the footer; the sticky CTA owns the bottom of the screen. */
+        @media (max-width: 767px) {
+            .store-footer {
+                display: none;
+            }
+
+            /* On narrow devices the header's top bar can be wider than the screen; without this the page
+               scrolls sideways, looks off-centre and the fixed CTA no longer lines up with the content.
+               `clip` (unlike `hidden`) creates no scroll container, so the sticky header keeps working. */
+            body {
+                overflow-x: hidden;
+                overflow-x: clip;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% hook 'thank-you:start' %}
+    <div class="container">
+        <salla-thank-you-page class="thank-you-content">
+        {# Header, fulfillment, and payment use responsive component spacing. #}
+        <div slot="main">
+            {# Header: merchant main/subtext (Header Customization story), order number, date & time #}
+            <salla-thank-you-header heading="{{ thank_you_title }}"
+                subtitle="{{ thank_you_components.subtitle ?? thank_you_subtitle ?? trans('pages.thank_you.order_received') }}"
+                store-logo="{{ store.logo ? store.logo|cdn(48, 48) : '' }}" store-name="{{ store.name }}"
+                reference-id="{{ order.reference_id }}" created-at="{{ order.created_at|date('c') }}">
+                {% if order.instructions %}
+                    <article class="article article--main article--small text-center">{{ order.instructions|raw }}</article>
+                {% endif %}
+                {% for message in messages %}
+                    <span class="font-bold">{{ message }}</span>
+                {% endfor %}
+            </salla-thank-you-header>
+
+            {# Items list + tracking / pickup info #}
+            {% hook 'thank-you:items.start' %}
+            {# Plain amounts + the order currency (`currency` attribute): the components format them in that
+               currency and never fall back to the selected market's. |money is avoided — it fails for currencies
+               not configured on the store ("Cannot find ISO currency"). #}
+            {% set thank_you_items = order.items|map(item => {id: item.id, name: item.name, image: item.image, quantity: item.quantity, price: item.price, url: item.product ? item.product.url : null}) %}
+            {% if order.is_pickable %}
+                <salla-order-branch data-testid="store-thankyou-branch" items="{{ thank_you_items|json_encode }}" currency="{{ order.payment_currency }}" sticky-cta></salla-order-branch>
+            {% else %}
+                <salla-order-shipments data-testid="store-thankyou-shipments" items="{{ thank_you_items|json_encode }}" currency="{{ order.payment_currency }}" initial-shipments="{{ order.thank_you_shipments|json_encode }}" sticky-cta></salla-order-shipments>
+            {% endif %}
+            {% hook 'thank-you:items.end' %}
+
+            {# Payment #}
+            <salla-order-payment data-testid="store-thankyou-payment"
+                payment-method="{{ order.payment_method }}" currency="{{ order.payment_currency }}"
+                payment-logo="{{ ('images/payment/' ~ order.payment_method ~ '_mini.png')|cdn(58, 58) }}"
+                sub-total="{{ order.sub_total }}" total="{{ order.total }}"
+                {% if order.tax %}tax-amount="{{ order.tax.amount }}"{% endif %}
+                {% if order.shipping_cost %}shipping-cost="{{ order.shipping_cost }}"{% endif %}
+                {% if order.cod_cost %}cod-cost="{{ order.cod_cost }}"{% endif %}
+                {% if order.discounts is not empty %}discounts="{{ order.discounts|json_encode }}"{% endif %}
+                invoice-url="{{ order.print_url }}"></salla-order-payment>
+        </div>
+
+        {# Merchant custom component after the payment section (Custom Component story) #}
+        {% hook 'thank-you:payment.end' %}
+
+        {% set show_loyalty = (thank_you_components.show_loyalty ?? true) and order.loyalty_points %}
+        {% set cashback = (thank_you_components.show_cashback ?? true) ? order.thank_you_cashback : null %}
+        {% if show_loyalty or cashback %}
+            <salla-order-rewards data-testid="store-thankyou-rewards"
+                {% if show_loyalty %}loyalty-points="{{ order.loyalty_points }}" loyalty-url="{{ link('loyalty') }}"{% endif %}
+                {% if cashback %}cashback-amount="{{ cashback.amount }}" currency="{{ cashback.currency }}" cashback-url="{{ link('wallet') }}"{% endif %}
+            ></salla-order-rewards>
+        {% endif %}
+
+        {% if thank_you_components.show_coupons ?? true %}
+            <salla-next-order-coupon data-testid="store-thankyou-coupon"></salla-next-order-coupon>
+        {% endif %}
+
+        {% if thank_you_components.show_contacts ?? true %}
+            <salla-contacts data-testid="store-thankyou-contacts"
+                {% if thank_you_components.contact_channels is defined and thank_you_components.contact_channels is not null %}channels="{{ thank_you_components.contact_channels|join(',') }}"{% endif %}
+                introduction="{{ trans('pages.thank_you.contact_us') }}" hide-title horizontal icons-only></salla-contacts>
+        {% endif %}
+
+        {% hook 'thank-you:end' %}
+        </salla-thank-you-page>
+    </div>
+{% endblock %}

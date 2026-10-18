@@ -1,5 +1,13 @@
-{# مكوّن سلة الأساسي: أحدث المنتجات #}
-<section component-id="{{ componentId }}" class="s-block hn-builtin hn-latest-products container">
-  <div class="hn-block-title"><h2>{{ trans('blocks.home.latest_products') }}</h2></div>
-  <salla-products-list source="latest"></salla-products-list>
-</section>
+{#
+| Variable        | Type       | Description                    |
+|-----------------|------------|--------------------------------|
+| products        | Products[] |                                |
+| position        | Int        | Sorting number start from zero |
+#}
+<section component-id="{{ componentId }}" data-testid="store-home-products-section" class="s-block s-block--latest-products container mt-6 sm:mt-8">
+    <div class="s-block__title">
+      <h2>{{ trans('blocks.home.latest_products') }}</h2>
+    </div>
+    
+    <salla-products-list data-testid="store-home-latest-products-list" source="latest"></salla-products-list>
+</section> 
