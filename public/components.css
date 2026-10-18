@@ -551,3 +551,41 @@
   .hn-square-photos__grid,.hn-store-features{grid-template-columns:repeat(2,minmax(0,1fr))}
   .hn-parallax{background-attachment:scroll;min-height:260px}
 }
+
+/* =====================================================================
+   v11 — options that existed in the editor but did nothing before
+   ===================================================================== */
+.hn-gift-finder__result[hidden],
+.hn-compare__result[hidden]{ display: none !important; }
+
+.hn-hero .hn-hero__slide img{ width: 100%; display: block; }
+.hn-hero--h-compact .hn-hero__slide img{ height: 46vh; min-height: 260px; object-fit: cover; }
+.hn-hero--h-tall .hn-hero__slide img{ height: 82vh; min-height: 460px; object-fit: cover; }
+.hn-hero--overlay .hn-hero__slide::after{ content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to top, rgba(7,27,45,.7), rgba(7,27,45,0) 60%); }
+.hn-hero .hn-hero__content{ z-index: 2; }
+.hn-hero--pos-center .hn-hero__content{ inset-inline-start: 50%; transform: translateX(50%); text-align: center; }
+[dir="ltr"] .hn-hero--pos-center .hn-hero__content{ transform: translateX(-50%); }
+.hn-hero--pos-end .hn-hero__content{ inset-inline-start: auto; inset-inline-end: 6%; text-align: end; }
+
+.hn-icon-cats--rounded .hn-icon-cats__circle{ border-radius: 18px; }
+.hn-icon-cats--square .hn-icon-cats__circle{ border-radius: 4px; }
+.hn-icon-cats--grid .hn-icon-cats{ display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); overflow: visible; justify-items: center; }
+
+@media (min-width: 768px){
+    .hn-brand-cols--4 .hn-brand-grid{ grid-template-columns: repeat(4, 1fr); }
+    .hn-brand-cols--5 .hn-brand-grid{ grid-template-columns: repeat(5, 1fr); }
+    .hn-brand-cols--6 .hn-brand-grid{ grid-template-columns: repeat(6, 1fr); }
+    .hn-dept--cols-2 .hn-dept-grid{ grid-template-columns: repeat(2, 1fr) !important; }
+    .hn-dept--cols-3 .hn-dept-grid{ grid-template-columns: repeat(3, 1fr) !important; }
+    .hn-dept--cols-4 .hn-dept-grid{ grid-template-columns: repeat(4, 1fr) !important; }
+    .hn-vp-cols--2 .hn-value-props__item{ flex-basis: calc(50% - 40px); max-width: none; }
+    .hn-vp-cols--3 .hn-value-props__item{ flex-basis: calc(33.333% - 40px); max-width: none; }
+}
+.hn-brand--no-names .hn-brand-tile__label{ display: none; }
+.hn-dept--fit-contain .hn-dept-card img{ object-fit: contain; background: var(--hn-ivory, #f7f4ee); }
+.hn-lookbook--no-prices .hn-lookbook__hotspot-card span{ display: none; }
+.hn-vp--no-icons .hn-value-props__item img{ display: none; }
+.hn-stories--small .hn-story__ring{ width: 64px; height: 64px; }
+.hn-stories--large .hn-story__ring{ width: 110px; height: 110px; }
+.hn-stories--no-titles .hn-story > span:not(.hn-story__ring){ display: none; }
