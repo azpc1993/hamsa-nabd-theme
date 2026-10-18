@@ -1,129 +1,64 @@
 {
+  "shop_now": "تسوق الآن",
+  "view_all": "عرض الكل",
+  "best_sellers": "الأكثر مبيعاً",
+  "order_now": "اطلب الآن",
+  "view_bundle": "عرض الطقم",
+  "save": "وفر",
+  "most_ordered": "الأكثر طلباً",
+  "fast_shipping": "شحن سريع لجميع المناطق",
+  "free_returns": "إرجاع مجاني خلال 7 أيام",
+  "secure_payment": "دفع آمن 100%",
+  "contact_whatsapp": "تواصل معنا عبر واتساب",
+  "browse_categories": "تصفح الأقسام",
+  "product_tax_included": "السعر شامل الضريبة",
+  "product_sku": "رمز المنتج",
+  "product_barcode": "الباركود",
+  "product_sold": "تم بيع",
+  "product_remaining": "متبقي",
+  "product_offer": "عروض المنتج",
+  "product_metadata": "مواصفات المنتج",
+  "product_gift": "أرسل كهدية",
+  "product_quick_order": "طلب سريع",
+  "product_reviews_summary": "ملخص التقييمات",
+  "product_notify": "أبلغني عند التوفر",
+  "cart_tax_included": "الأسعار تشمل ضريبة القيمة المضافة",
+  "profile_save": "حفظ التغييرات",
+  "profile_delete": "حذف الحساب",
+  "no_results": "لم نجد نتائج مطابقة",
+  "not_found_title": "الصفحة غير موجودة",
+  "not_found_text": "يبدو أن الصفحة التي تبحث عنها غير متاحة أو تم نقلها.",
+  "back_home": "العودة للرئيسية",
+  "search_again": "ابحث مرة أخرى",
+  "order_details": "تفاصيل الطلب",
+  "order_shipping": "الشحن",
+  "order_total": "إجمالي الطلب",
+  "order_payment": "الدفع",
+  "order_status": "حالة الطلب",
+  "order_reorder": "إعادة الطلب",
+  "order_pay": "إكمال الدفع",
+  "order_cancel": "إلغاء الطلب",
+  "blog_read_more": "اقرأ المزيد",
+  "brand_products": "منتجات العلامة",
+  "newsletter_error": "تعذر الاشتراك حالياً، حاول مرة أخرى.",
   "blocks": {
-    "header": {
-      "cart": "السلة",
-      "account": "حسابي",
-      "home": "الرئيسية",
-      "menu": "القائمة",
-      "wishlist": "المفضلة"
-    },
-    "appBanner": {
-      "download_now": "حمله الان"
-    },
-    "hamsa": {
-      "back_to_top": "العودة للأعلى",
-      "offer_ended": "انتهى العرض",
-      "off": "خصم",
-      "copy_code": "انسخ الكود",
-      "copied": "تم النسخ ✓",
-      "pause_video": "إيقاف الفيديو",
-      "new_arrivals": "وصل حديثاً",
-      "best_value": "الأوفر",
-      "quick_nav": "تنقل سريع",
-      "home": "الرئيسية",
-      "categories": "الأقسام",
-      "search": "بحث",
-      "cart": "السلة",
-      "account": "حسابي",
-      "close": "إغلاق",
-      "ask_about": "السلام عليكم، أرغب بالاستفسار عن:",
-      "ask_whatsapp": "اسأل عن المنتج عبر واتساب",
-      "view_all": "عرض الكل",
-      "wishlist": "المفضلة"
-    },
     "footer": {
       "contact_us": "تواصل معنا",
       "tax_number": "الرقم الضريبي",
       "whatsapp": "واتساب"
     },
+    "header": {
+      "account": "حسابي",
+      "cart": "السلة",
+      "home": "الرئيسية",
+      "menu": "القائمة",
+      "wishlist": "المفضلة"
+    },
     "home": {
       "view_all": "عرض الكل"
     }
   },
-  "pages": {
-    "cart": {
-      "cart_options": "خيارات السلة",
-      "add_note": "إضافة ملاحظة",
-      "checkout": "إتمام الطلب",
-      "continue_shopping": "متابعة التسوق",
-      "empty_cart": "السلة فارغة",
-      "free_shipping_achieved": "مبروك! حصلت على الشحن المجاني",
-      "free_shipping_remaining": "متبقي %s للحصول على الشحن المجاني",
-      "gift_widget_title": "إرسال كهدية",
-      "out_of_stock": "غير متوفر",
-      "remove": "حذف"
-    },
-    "products": {
-      "barcode": "الباركود",
-      "add_note": "إضافة ملاحظة",
-      "attachments": "مرفقات المنتج",
-      "description": "الوصف",
-      "quantity": "الكمية",
-      "shop_now": "تسوق الآن",
-      "show_size_guides": "عرض دليل المقاسات",
-      "similar_products": "منتجات مشابهة",
-      "size_guides": "دليل المقاسات",
-      "weight": "الوزن",
-      "write_note": "اكتب ملاحظتك هنا"
-    },
-    "order": {
-      "can_edit_or_delete_your_review_within": "يمكنك تعديل أو حذف تقييمك خلال",
-      "edit_period_ended": "تم انتهاء المدة المحددة لتعديل التقييم",
-      "delete_period_ended": "تم انتهاء المدة المحددة لحذف التقييم",
-      "days_since_added": "أيام من إضافته",
-      "option_name": "الخيار",
-      "option_content": "المحتوى"
-    },
-    "thank_you": {
-      "view_invoice": "عرض الفاتورة",
-      "contact_us": "في بالك سؤال أو استفسار؟ نسعد بتواصلك معنا",
-      "cashback": "الاسترداد النقدي",
-      "loyalty_points": "نقاط الولاء",
-      "gifts_title": "هدايا لا تفوت 🎉",
-      "order_received": "شكرا لتسوقكم عبر متجرنا وجاري العمل على طلبكم",
-      "email_sent": "تم إرسال تفاصيل الطلب إلى بريدك الإلكتروني",
-      "order_id": "رقم الطلب"
-    },
-    "blog_articles": {
-      "related": "مقالات ذات صلة"
-    },
-    "blog_categories": {
-      "categories": "تصنيفات المدونة",
-      "no_articles": "لا توجد مقالات"
-    },
-    "brands": {
-      "non_brands": "لا توجد علامات تجارية",
-      "non_products": "لا توجد منتجات لهذه العلامة التجارية"
-    },
-    "categories": {
-      "filter": "تصفية"
-    },
-    "comments": {
-      "title": "التقييمات"
-    },
-    "loyalty_program": {
-      "point": "نقطة",
-      "ways_to_get_points": "طرق الحصول على النقاط"
-    },
-    "orders": {
-      "non_orders": "لا توجد طلبات"
-    },
-    "profile": {
-      "birthday": "تاريخ الميلاد",
-      "female": "أنثى",
-      "first_name": "الاسم الأول",
-      "gender": "الجنس",
-      "gender_placeholder": "اختر الجنس",
-      "last_name": "اسم العائلة",
-      "male": "ذكر"
-    },
-    "rating": {
-      "rate_the_store": "قيّم المتجر"
-    }
-  },
   "common": {
-    "bank_offer_sub_title_multiple": "ادفع قيمة مشترياتك عبر أحد البطاقات البنكة التالية واحصل على الخصم المحدد",
-    "bank_offer_sub_title_single": "ادفع قيمة مشترياتك عبر أحد بطاقات بنك :bank_name واحصل على خصم بنسبة ",
     "elements": {
       "back_home": "العودة للرئيسية",
       "close": "إغلاق",
@@ -159,11 +94,82 @@
       "account": "حسابي"
     }
   },
+  "pages": {
+    "blog_articles": {
+      "related": "مقالات ذات صلة"
+    },
+    "blog_categories": {
+      "categories": "تصنيفات المدونة",
+      "no_articles": "لا توجد مقالات"
+    },
+    "brands": {
+      "non_brands": "لا توجد علامات تجارية",
+      "non_products": "لا توجد منتجات لهذه العلامة التجارية"
+    },
+    "cart": {
+      "add_note": "إضافة ملاحظة",
+      "checkout": "إتمام الطلب",
+      "continue_shopping": "متابعة التسوق",
+      "empty_cart": "السلة فارغة",
+      "free_shipping_achieved": "مبروك! حصلت على الشحن المجاني",
+      "free_shipping_remaining": "متبقي %s للحصول على الشحن المجاني",
+      "gift_widget_title": "إرسال كهدية",
+      "out_of_stock": "غير متوفر",
+      "remove": "حذف"
+    },
+    "categories": {
+      "filter": "تصفية"
+    },
+    "comments": {
+      "title": "التقييمات"
+    },
+    "loyalty_program": {
+      "point": "نقطة",
+      "ways_to_get_points": "طرق الحصول على النقاط"
+    },
+    "orders": {
+      "non_orders": "لا توجد طلبات"
+    },
+    "products": {
+      "add_note": "إضافة ملاحظة",
+      "attachments": "مرفقات المنتج",
+      "description": "الوصف",
+      "quantity": "الكمية",
+      "shop_now": "تسوق الآن",
+      "show_size_guides": "عرض دليل المقاسات",
+      "similar_products": "منتجات مشابهة",
+      "size_guides": "دليل المقاسات",
+      "weight": "الوزن",
+      "write_note": "اكتب ملاحظتك هنا"
+    },
+    "profile": {
+      "birthday": "تاريخ الميلاد",
+      "female": "أنثى",
+      "first_name": "الاسم الأول",
+      "gender": "الجنس",
+      "gender_placeholder": "اختر الجنس",
+      "last_name": "اسم العائلة",
+      "male": "ذكر"
+    },
+    "rating": {
+      "rate_the_store": "قيّم المتجر"
+    },
+    "thank_you": {
+      "email_sent": "تم إرسال تفاصيل الطلب إلى بريدك الإلكتروني",
+      "order_id": "رقم الطلب"
+    }
+  },
   "hn": {
     "trust": {
       "fast_shipping": "شحن سريع لجميع المناطق",
       "free_returns": "إرجاع مجاني خلال 7 أيام",
       "secure_payment": "دفع آمن 100%"
+    },
+    "newsletter": {
+      "title": "انضم واحصل على خصم 10%",
+      "text": "اشترك ليصلك كل جديد وعروض حصرية",
+      "email_placeholder": "بريدك الإلكتروني",
+      "subscribe": "اشترك"
     },
     "gift_finder": {
       "step_recipient": "١ / ٢ — لمن الهدية؟",
@@ -172,6 +178,27 @@
       "shop_now": "تسوق الآن",
       "try_again": "حاول مرة أخرى",
       "default_title": "ما زلت محتاراً؟ خلّنا نساعدك"
+    },
+    "accessibility": {
+      "wishlist_add": "أضف للمفضلة",
+      "delete": "حذف",
+      "menu": "القائمة",
+      "wishlist": "المفضلة",
+      "whatsapp": "واتساب",
+      "close": "إغلاق",
+      "customer_navigation": "تنقل حساب العميل"
+    },
+    "product": {
+      "sold": "تم بيع",
+      "remaining": "متبقي",
+      "sku": "رمز المنتج",
+      "barcode": "الباركود",
+      "gift": "أهدِ هذا المنتج"
+    },
+    "cart": {
+      "add_note": "أضف ملاحظة",
+      "free_shipping_achieved": "تهانينا! حصلت على شحن مجاني 🎉",
+      "free_shipping_remaining": "أضف %s للحصول على شحن مجاني"
     },
     "components": {
       "shop_now": "تسوق الآن",

@@ -30,8 +30,9 @@ body.hn-theme{
 /* Hero */
 .hn-hero{ position: relative; overflow: hidden; }
 .hn-hero__track{ position: relative; }
+/* v11: the hero uses <salla-slider>; swiper shows/hides slides itself, so slides must stay visible */
 .hn-hero__slide{
-    display: none;
+    display: block;
     position: relative;
 }
 .hn-hero__slide.is-active{ display: block; }
