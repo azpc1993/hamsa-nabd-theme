@@ -1,6 +1,6 @@
 {% set component = component|default({}) %}
 {% set o = {} %}{% for k in ['image_fit', 'columns'] %}{% set v = attribute(component, k) %}{% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}{% set o = o|merge({(k): v}) %}{% endfor %}
-{% set hn_mod = ['hn-dept--fit-' ~ (o.image_fit ?: 'cover'), o.columns ? 'hn-dept--cols-' ~ o.columns : '', 'hn-boxed']|filter(c => c)|join(' ') %}
+{% set hn_mod = ['hn-dept--fit-' ~ (o.image_fit ?: 'cover'), o.columns ? 'hn-dept--cols-' ~ o.columns : '']|filter(c => c)|join(' ') %}
 {#
 | Variable                          | Type    | Description                                    |
 |------------------------------------|---------|------------------------------------------------|
@@ -13,7 +13,7 @@
 #}
 {% set departments = component.departments|default([]) %}
 {% if departments|length %}
-<section component-id="{{ componentId }}" class="s-block hn-dept-grid-block {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
+<section component-id="{{ componentId }}" class="s-block hn-dept-grid-block {{ hn_mod }}">
     {% if component.title %}
         <div class="s-block__title"><h2>{{ component.title }}</h2></div>
     {% endif %}

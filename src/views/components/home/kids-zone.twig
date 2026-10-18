@@ -1,6 +1,4 @@
 {% set component = component|default({}) %}
-{% set o = {} %}
-{% set hn_mod = ['hn-boxed']|filter(c => c)|join(' ') %}
 {#
 | Variable                        | Type    | Description                         |
 |-----------------------------------|---------|--------------------------------------|
@@ -12,7 +10,7 @@
 #}
 {% set ranges = component.age_ranges|default([]) %}
 {% if component.banner_image or ranges|length %}
-<section component-id="{{ componentId }}" class="s-block hn-kids-zone {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
+<section component-id="{{ componentId }}" class="s-block hn-kids-zone">
     {% if component.banner_image %}
     <div class="hn-kids-zone__banner">
         <img src="{{ component.banner_image }}" alt="{{ component.title }}" loading="lazy">

@@ -1,27 +1,25 @@
 {#
-| Variable              | Type      | Description                                                      |
-|-----------------------|-----------|------------------------------------------------------------------|
-| products.source       | string    |                                                                  |
-| products.source_value | ?int[]    | ids of sources (product_ids, categories_ids, brands_id..etc)     |
-| products.source_value | ?int      | limit of products                                                |
-| title                 | string    | Section title                                                    |
-| display_all_url       | ?string   | If it's existed, mean should show load more link to this url     |
-| position              | Int       | Sorting number start from zero                                   |
-| limit                 | int       | Number of products to be shown                                   |
+  مكوّن سلة الأساسي: "منتجات متحركة" (feature: component-products-slider)
+| Variable              | Type    | Description                              |
+|-----------------------|---------|------------------------------------------|
+| products.source       | string  |                                          |
+| products.source_value | ?int[]  | ids of sources                           |
+| title                 | string  |                                          |
+| sub_title             | ?string |                                          |
+| display_all_url       | ?string |                                          |
+| limit                 | int     |                                          |
+| position              | int     |                                          |
 #}
-
-<section component-id="{{ componentId }}" data-testid="store-home-products-slider" id="best-offers-{{ position }}-slider" class="s-block s-block--best-offers container overflow-hidden">
-  {% if products|length %}
+<section component-id="{{ componentId }}" class="s-block hn-builtin hn-products-slider container overflow-hidden">
+  {% if products|default(null) %}
     <salla-products-slider
-            data-testid="store-home-products-slider-widget"
-            source="{{ products.source }}"
-            limit="{{ limit }}"
-            autoplay
-            source-value="{{ products.source_value|json_encode }}"
-            display-all-url="{{display_all_url}}"
-            block-title="{{ title }}"
-            block-subTitle="{{ sub_title|raw }}"
-            slider-id="slider-with-bg-{{ position }}"
-    ></salla-products-slider>
+        source="{{ products.source|default('latest') }}"
+        source-value="{{ products.source_value|default([])|json_encode }}"
+        limit="{{ limit|default(8) }}"
+        autoplay
+        display-all-url="{{ display_all_url|default('') }}"
+        block-title="{{ title|default('') }}"
+        block-subTitle="{{ sub_title|default('')|raw }}"
+        slider-id="hn-products-slider-{{ position|default(0) }}"></salla-products-slider>
   {% endif %}
 </section>

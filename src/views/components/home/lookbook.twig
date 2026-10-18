@@ -1,6 +1,6 @@
 {% set component = component|default({}) %}
 {% set o = {} %}
-{% set hn_mod = [component.show_prices is same as(false) ? 'hn-lookbook--no-prices' : '', 'hn-boxed']|filter(c => c)|join(' ') %}
+{% set hn_mod = [component.show_prices is same as(false) ? 'hn-lookbook--no-prices' : '']|filter(c => c)|join(' ') %}
 {#
 | Variable                   | Type    | Description                                  |
 |-----------------------------|---------|------------------------------------------------|
@@ -12,7 +12,7 @@
 #}
 {% set looks = component.looks|default([]) %}
 {% if looks|length %}
-<section component-id="{{ componentId }}" class="s-block hn-lookbook {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
+<section component-id="{{ componentId }}" class="s-block hn-lookbook {{ hn_mod }}">
     {% if component.title %}
         <div class="s-block__title"><h2>{{ component.title }}</h2></div>
     {% endif %}

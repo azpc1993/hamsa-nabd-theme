@@ -15,7 +15,7 @@
 #}
 {% set slides = component.slides|default([]) %}
 {% if slides|length %}
-<section component-id="{{ componentId }}" class="s-block hn-hero {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
+<section component-id="{{ componentId }}" class="s-block hn-hero {{ hn_mod }}">
     <salla-slider
         id="hn-hero-{{ position }}"
         auto-play

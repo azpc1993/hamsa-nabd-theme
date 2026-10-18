@@ -1,6 +1,6 @@
 {% set component = component|default({}) %}
 {% set o = {} %}{% for k in ['image_shape', 'layout'] %}{% set v = attribute(component, k) %}{% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}{% set o = o|merge({(k): v}) %}{% endfor %}
-{% set hn_mod = ['hn-icon-cats--' ~ (o.image_shape ?: 'circle'), 'hn-icon-cats--' ~ (o.layout ?: 'scroll'), 'hn-boxed']|filter(c => c)|join(' ') %}
+{% set hn_mod = ['hn-icon-cats--' ~ (o.image_shape ?: 'circle'), 'hn-icon-cats--' ~ (o.layout ?: 'scroll')]|filter(c => c)|join(' ') %}
 {#
 | Variable                      | Type   | Description                     |
 |-------------------------------|--------|---------------------------------|
@@ -12,7 +12,7 @@
 #}
 {% set cats = component.categories|default([]) %}
 {% if cats|length %}
-<section component-id="{{ componentId }}" class="s-block hn-icon-cats-block {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
+<section component-id="{{ componentId }}" class="s-block hn-icon-cats-block {{ hn_mod }}">
     {% if component.title %}
         <div class="s-block__title"><h2>{{ component.title }}</h2></div>
     {% endif %}

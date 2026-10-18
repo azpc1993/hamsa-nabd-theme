@@ -1,6 +1,6 @@
 {% set component = component|default({}) %}
 {% set o = {} %}{% for k in ['columns'] %}{% set v = attribute(component, k) %}{% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}{% set o = o|merge({(k): v}) %}{% endfor %}
-{% set hn_mod = ['hn-brand-cols--' ~ (o.columns ?: '4'), component.show_names is same as(false) ? 'hn-brand--no-names' : '', 'hn-boxed']|filter(c => c)|join(' ') %}
+{% set hn_mod = ['hn-brand-cols--' ~ (o.columns ?: '5'), component.show_names is same as(false) ? 'hn-brand--no-names' : '']|filter(c => c)|join(' ') %}
 {#
 | Variable                  | Type   |
 |---------------------------|--------|
@@ -12,7 +12,7 @@
 #}
 {% set tiles = component.tiles|default([]) %}
 {% if tiles|length %}
-<section component-id="{{ componentId }}" class="s-block {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
+<section component-id="{{ componentId }}" class="s-block {{ hn_mod }}">
     {% if component.title %}
         <div class="s-block__title"><h2>{{ component.title }}</h2></div>
     {% endif %}

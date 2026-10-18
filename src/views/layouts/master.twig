@@ -1,283 +1,86 @@
-{# ############## Shared Variables in all views ################
-| Variable                                           | Type     | Description                                                                                              |
-|----------------------------------------------------|----------|----------------------------------------------------------------------------------------------------------|
-| store                                              | Store    |                                                                                                          |
-| store.id                                           | int      |                                                                                                          |
-| store.name                                         | string   |                                                                                                          |
-| store.username                                     | string   |                                                                                                          |
-| store.description                                  | string   |                                                                                                          |
-| store.slogan                                       | ?string  | * if feature in twilight.json                                                                            |
-| store.logo                                         | string   |                                                                                                          |
-| store.url                                          | string   |                                                                                                          |
-| store.api                                          | string   | the api url for current store                                                                            |
-| store.icon                                         | string   | *fav icon url                                                                                            |
-| store.contacts                                     | object   | [mobile, phone, email, whatsapp, telegram], ex. store.contacts.email                                     |
-| store.social                                       | object   | [instagram, snapchat, twitter, youtube, facebook, pinterest, maroof, whatsapp], ex. store.social.twitter |
-| store.settings                                     | object   |                                                                                                          |
-| store.settings.auth.email_allowed                  | bool     |                                                                                                          |
-| store.settings.auth.mobile_allowed                 | bool     |                                                                                                          |
-| store.settings.auth.is_email_required              | bool     |                                                                                                          |
-| store.settings.cart.apply_coupon_enabled           | bool     | Does visitor allowed to applay coupon in cart page                                                       |
-| store.settings.product.total_sold_enabled          | bool     |                                                                                                          |
-| store.settings.product.fit_type                    | ?string  | null when equal product card size is off, or ['cover', 'contain']                                        |
-| store.settings.category.testimonial_enabled        | bool     | Show random testimonials in category page                                                                |
-| store.settings.tax.number                          | ?string  |                                                                                                          |
-| store.settings.tax.certificate                     | ?string  | certificate image url                                                                                    |
-| store.settings.tax.taxable_prices_enabled          | bool     | Does tax included in the prices ex product_price 100 & tax is 15, price will be 115                      |
-| store.settings.rating_enabled                      | bool     | Is one of: store_enabled or shipping_enabled or products_enabled                                         |
-| store.settings.arabic_numbers_enabled              | bool     | Does the merchant wants the numbers to be shown as Arabic format                                         |
-| store.settings.is_multilingual                     | bool     |                                                                                                          |
-| store.settings.currencies_enabled                  | bool     |     
-| theme                                              | Theme    |                                                                                                          |
-| theme.id                                           | int      |                                                                                                          |
-| theme.name                                         | string   |                                                                                                          |
-| theme.mode                                         | string   | `live`, `preview`                                                                                        |
-| theme.is_rtl                                       | bool     |                                                                                                          |
-| theme.translations_hash                            | int      | to be used in case merchant updated frontend store translations                                          |
-| theme.color                                        | object   |                                                                                                          |
-| theme.color.primary                                | string   |                                                                                                          |
-| theme.color.text                                   | string   | suitable text color comparing to `theme.primary.color`, #000000, #FFFFFF                                 |
-| theme.color.reverse_primary                        | string   |                                                                                                          |
-| theme.color.reverse_text                           | string   | if `theme.text_color=#000000` means that `theme.reverse_text_color=#FFFFFF`                              |
-| theme.color.is_dark                                | bool     | Does main store color `theme.primary.color` considered as dim color?                                     |
-| theme.color.darker(float alpha, ?string hexColor)  | string   | get darker color from `theme.primary.color` or from passed color, `alpha` range from 0.0-1.0             |
-| theme.color.lighter(float alpha, ?string hexColor) | string   | get lighter color from `theme.primary.color` or from passed color, `alpha` range from 0.0-1.0            |
-| theme.font                                         | ?object  | Salla predefined font, null when the theme doesn't have `fonts` feature                                  |
-| theme.font.name                                    | string   | DINNextLTArabic-Regular, Amazon-Ember, Apple, Dubai, Estedad                                             |
-| theme.font.url                                     | string   | css full url ex: 'https://my_store.test/dist/fonts/default.css'                                          |
-| theme.settings                                     | object   | dynamic object with values of the `settings` in twilight.json ex. `theme.settings.topnav_is_dark`        |
-| theme.settings.set(settingName, value)             | string   | set global var, then get it {{theme.settings.get('my_var','fallback') }}                                 |
-| theme.settings.get(settingName, default=null)      | mixed    | get theme setting ex `theme.settings.get('my_var', 'fallback')`                                          |
+{#
+| Variable              | Type   | Description                                         |
+|-----------------------|--------|-----------------------------------------------------|
+| store.name/.logo/.url | Store  |                                                     |
+| store.social          | object | instagram, snapchat, twitter, youtube, facebook...  |
+| store.contacts        | object | mobile, phone, email, whatsapp, telegram            |
+| theme.is_rtl          | bool   |                                                     |
+| theme.color.primary   | string |                                                     |
+| theme.settings.get()  | mixed  | قيم قسم settings في twilight.json                    |
+| language.code         | string |                                                     |
+| cart.items_count      | int    |                                                     |
 #}
 <!DOCTYPE html>
 <html lang="{{ language.code }}" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
-<!-- بسم الله الرحمن الرحيم -->
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ theme.settings.set('placeholder', 'images/placeholder.png') }}
 
-    <script defer data-cfasync="false" crossorigin="anonymous" src="{{ 'product-card.js'|asset }}"></script>
-    <script defer src="{{ 'main-menu.js'|asset }}"></script>
-    {% if theme.settings.get('enable_add_product_toast', true) %}
-        <script defer src="{{ 'add-product-toast.js'|asset }}"></script>
-    {% endif %}
-
-    {% block head_scripts %}{% endblock %}
-
-
-    <script data-cfasync="false">
-        window.header_is_sticky = "{{theme.settings.get('hn_header_sticky', 'Default Value')}}"
-        window.imageZoom = "{{theme.settings.get('imageZoom')}}"
-        window.can_access_wallet = {{ user.can_access_wallet | json_encode }}
-        window.enable_more_menu = "{{ theme.settings.get('enable_more_menu', true) }}"
-        window.enable_add_product_toast = "{{ theme.settings.get('enable_add_product_toast', true) }}"
-        window.notify_when_available_in_card = "{{ theme.settings.get('notify_when_available_in_card', true) }}"
-    </script>
-    
     {% hook 'head:start' %}
-    {% hook head %}
-    {% block styles %}{% endblock %}
-    <link rel="stylesheet" href="{{ 'app.css' | asset }}">
-    <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
-    <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
-    
+    {% block head %}{% endblock %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+
+    {# أيقونات سلة (sicon-*) — بدونها تظهر أيقونات القلب والسلة والقائمة وواتساب فارغة #}
+    <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}">
+    <link rel="stylesheet" href="{{ 'style.css'|asset }}">
+    <link rel="stylesheet" href="{{ 'components.css'|asset }}">
+
     <style>
-        :root {
-            --font-main: '{{theme.font.name}}';
-            --color-primary: {{ theme.color.primary }};
-            --color-primary-dark: {{ theme.color.darker(0.15) }};
-            --color-primary-light: {{ theme.color.lighter(0.15) }};
-            --color-primary-reverse: {{ theme.color.reverse_text }};
-            /* Theme specific variables */
-            --s-radius: .75rem;
+        :root{
+            /* اللون الأساسي يأتي من ميزة "color" في سلة (يختاره التاجر من لوحة التحكم)،
+               وباقي ألوان الهوية ثابتة في ملفات CSS */
+            --hn-primary: {{ theme.color.primary }};
+            --hn-primary-text: {{ theme.color.text }};
+            --hn-accent: #C9A24B;
+            --hn-dark-bg: {{ theme.color.darker(0.35) }};
+            --hn-bg: #FFFFFF;
+            --hn-font-heading: 'Tajawal', sans-serif;
+            --hn-font-body: 'Almarai', sans-serif;
+            --hn-container-width: {{ theme.settings.get('hn_home_container_width','wide') == 'compact' ? '1120px' : (theme.settings.get('hn_home_container_width','wide') == 'standard' ? '1240px' : '1440px') }};
+            --hn-section-gap: {{ theme.settings.get('hn_section_spacing','standard') == 'compact' ? '24px' : (theme.settings.get('hn_section_spacing','standard') == 'spacious' ? '64px' : '40px') }};
+            --hn-card-radius: {{ theme.settings.get('hn_card_radius','soft') == 'sharp' ? '6px' : (theme.settings.get('hn_card_radius','soft') == 'rounded' ? '20px' : '12px') }};
+            --hn-button-radius: {{ theme.settings.get('hn_button_radius','soft') == 'sharp' ? '6px' : (theme.settings.get('hn_button_radius','soft') == 'pill' ? '999px' : '10px') }};
         }
     </style>
 
-    {# ================= Hamsa Nabd identity (from theme settings) ================= #}
-    {% set hn_gold = theme.settings.get('hn_gold_color', '#C9A24B') ?: '#C9A24B' %}
-    {% set hn_radius_map = {'sharp': '0px', 'soft': '8px', 'rounded': '16px'} %}
-    {% set hn_radius = hn_radius_map[theme.settings.get('hn_card_radius', 'soft')] is defined ? hn_radius_map[theme.settings.get('hn_card_radius', 'soft')] : '8px' %}
-    {% set hn_fonts = {
-        'el-messiri': {'family': 'El Messiri', 'query': 'El+Messiri:wght@500;600;700'},
-        'reem-kufi' : {'family': 'Reem Kufi',  'query': 'Reem+Kufi:wght@500;600;700'},
-        'amiri'     : {'family': 'Amiri',      'query': 'Amiri:wght@400;700'},
-        'tajawal'   : {'family': 'Tajawal',    'query': 'Tajawal:wght@500;700;800'},
-        'cairo'     : {'family': 'Cairo',      'query': 'Cairo:wght@600;700;800'},
-        'almarai'   : {'family': 'Almarai',    'query': 'Almarai:wght@400;700;800'}
-    } %}
-    {% set hn_font_key = theme.settings.get('hn_heading_font', 'tajawal') %}
-    {% set hn_body_key = theme.settings.get('hn_body_font', 'almarai') %}
-    {# one Google Fonts request for the heading + body fonts that are actually selected #}
-    {% set hn_font_queries = [] %}
-    {% if hn_fonts[hn_font_key] is defined %}{% set hn_font_queries = hn_font_queries|merge([hn_fonts[hn_font_key].query]) %}{% endif %}
-    {% if hn_fonts[hn_body_key] is defined and hn_body_key != hn_font_key %}{% set hn_font_queries = hn_font_queries|merge([hn_fonts[hn_body_key].query]) %}{% endif %}
-    {% if hn_font_queries|length %}
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ hn_font_queries|join('&family=') }}&display=swap">
-    {% endif %}
-    {% set hn_container_map = {'compact': '1120px', 'standard': '1280px', 'wide': '1440px', 'xwide': '1600px'} %}
-    {% set hn_container = hn_container_map[theme.settings.get('hn_home_container_width', 'wide')] ?? '1440px' %}
-    {% set hn_btn_radius_map = {'sharp': '4px', 'soft': '10px', 'pill': '999px'} %}
-    <style>
-        :root {
-            --sh-gold: {{ hn_gold }};
-            --sh-gold-light: {{ theme.color.lighter(0.25, hn_gold) }};
-            --sh-gold-dark: {{ theme.color.darker(0.22, hn_gold) }};
-            --sh-radius: {{ hn_radius }};
-            --font-heading: {% if hn_fonts[hn_font_key] is defined %}'{{ hn_fonts[hn_font_key].family }}', {% endif %}var(--font-main);
-            --font-body: {% if hn_fonts[hn_body_key] is defined %}'{{ hn_fonts[hn_body_key].family }}', {% endif %}var(--font-main);
-            --hn-container: {{ hn_container }};
-            --hn-button-radius: {{ hn_btn_radius_map[theme.settings.get('hn_button_radius', 'soft')] ?? '10px' }};
-            --hn-card-radius: {{ hn_radius }};
-            /* aliases used by the Hamsa Nabd components */
-            --hn-primary: var(--sh-ink);
-            --hn-navy: var(--sh-ink);
-            --hn-accent: var(--sh-gold);
-            --hn-gold: var(--sh-gold);
-            --hn-ivory: var(--sh-ivory);
-            --hn-bg: #fff;
-            --hn-border: #e7e3da;
-            --hn-dark-bg: var(--sh-ink);
-            --hn-primary-text: #fff;
-            --hn-font-heading: var(--font-heading);
-            --hn-font-body: var(--font-body);
-            --hn-container-width: var(--hn-container);
-        }
-    </style>
-    {# tracking services, custom css feature. #}
+    {% block styles %}{% endblock %}
+    {% hook 'head' %}
     {% hook 'head:end' %}
 </head>
-<body id="app" class="theme-hamsa hn-theme overflow-x-hidden {% hook 'body:classes' %}
-  {{ ' hn-shadow--' ~ theme.settings.get('hn_card_shadow', 'soft') }}
-  {{ ' hn-fit--' ~ theme.settings.get('hn_product_image_fit', 'cover') }}
-  {{ theme.settings.get('hn_reduce_motion', false) ? ' hn-reduce-motion' : '' }}
-  {{ theme.settings.get('hn_body_font', 'almarai') != 'store' ? ' hn-body-font' : '' }}
-  {{ theme.settings.get('hn_dark_header', true) ? ' sh-dark-header' : '' }}
-  {{ ' sh-card--' ~ theme.settings.get('hn_card_style', 'elegant') }}
-  {{ theme.settings.get('hn_card_hover_zoom', true) ? ' sh-hover-zoom' : '' }}
-  {{ ' hn-container-custom' }}
-  {{ ' sh-spacing--' ~ ({'compact': 'compact', 'standard': 'normal', 'spacious': 'airy'}[theme.settings.get('hn_section_spacing', 'standard')] ?? 'normal') }}
-  {{ ' sh-bg--' ~ theme.settings.get('hn_page_bg', 'white') }}
-  {{ ' sh-ratio--' ~ theme.settings.get('hn_card_image_ratio', 'auto') }}
-  {{ ' sh-title-lines--' ~ theme.settings.get('hn_card_title_lines', '2') }}
-  {{ ' sh-card-btn--' ~ theme.settings.get('hn_card_button_style', 'dark') }}
-  {{ theme.settings.get('hn_card_show_button', true) ? '' : ' sh-card-no-btn' }}
-  {{ theme.settings.get('show_bottom_nav', true) and page.slug != 'product.single' ? ' has-sh-bottom-nav' : '' }}
-  {{ theme.settings.get('footer_is_dark') ? ' footer-is-dark' : ' footer-is-light' }}
-  {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
-  {{ theme.settings.get('show_sticky_cart') ? ' is-sticky-product-bar' : '' }}
-  ">
-<noscript>
-    To get full functionality of this site you need to enable JavaScript. Here is how
-    <a href="https://www.enable-javascript.com/" rel="noreferrer"
-       target="_blank">To enable JavaScript on webpage</a>.
-</noscript>
-{# ================= Hamsa Nabd preloader ================= #}
-{% if theme.settings.get('hn_preloader', false) %}
-    <div class="sh-preloader" data-sh-preloader aria-hidden="true">
-        {% if store.logo %}<img src="{{ store.logo|cdn(160) }}" alt="" width="120" height="48">{% else %}<span class="sh-preloader__name">{{ store.name }}</span>{% endif %}
-        <span class="sh-preloader__bar"></span>
-    </div>
-{% endif %}
-<div class="app-inner flex flex-col min-h-full">
+<body class="hn-theme {% hook 'body:classes' %} {{ theme.is_rtl ? 'rtl' : 'ltr' }} {{ theme.settings.get('hn_home_container_width','wide') }} {{ theme.settings.get('hn_section_spacing','standard') }} {{ theme.settings.get('hn_card_radius','soft') }} {{ theme.settings.get('hn_card_shadow','soft') }} {{ theme.settings.get('hn_button_radius','soft') }} {{ theme.settings.get('hn_product_image_fit','cover') }}{% if theme.settings.get('hn_reduce_motion', false) %} hn-reduce-motion{% endif %}>
     {% hook 'body:start' %}
+
+    {% if theme.settings.get('hn_show_announcement', true) %}{% include 'components.header.announcement-bar' %}{% endif %}
     {% component 'header.header' %}
-    <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col space-y-8 sm:space-y-16"' : '' }}>
-    {% block content %}{% endblock %}
+
+    <main id="hn-main-content">
+        {% block content %}{% endblock %}
     </main>
+
     {% component 'footer.footer' %}
-</div>
+    {% if theme.settings.get('hn_enable_whatsapp_float', true) %}{% include 'components.footer.whatsapp-float' %}{% endif %}
 
-{# ================= Hamsa Nabd mobile bottom navigation ================= #}
-{% if theme.settings.get('show_bottom_nav', true) and page.slug != 'product.single' %}
-    <nav class="sh-bottom-nav lg:hidden" aria-label="{{ trans('blocks.hamsa.quick_nav')|e('html_attr') }}" data-testid="hn-bottom-nav">
-        <a href="{{ store.url }}" class="sh-bottom-nav__item {{ page.slug == 'index' ? 'is-active' : '' }}">
-            <i class="sicon-home"></i><span>{{ trans('blocks.hamsa.home') }}</span>
-        </a>
-        <a href="#mobile-menu" class="sh-bottom-nav__item">
-            <i class="sicon-list"></i><span>{{ trans('blocks.hamsa.categories') }}</span>
-        </a>
-        <button type="button" class="sh-bottom-nav__item" onclick="salla.event.dispatch('search::open')">
-            <i class="sicon-search"></i><span>{{ trans('blocks.hamsa.search') }}</span>
-        </button>
-        <a href="{{ link('cart') }}" class="sh-bottom-nav__item {{ page.slug == 'cart' ? 'is-active' : '' }}">
-            <span class="sh-bottom-nav__icon"><i class="sicon-shopping-bag"></i><b class="sh-bottom-nav__count" data-sh-cart-count hidden></b></span>
-            <span>{{ trans('blocks.hamsa.cart') }}</span>
-        </a>
-        <button type="button" class="sh-bottom-nav__item" data-sh-account data-profile-url="{{ link('profile') }}">
-            <i class="sicon-user"></i><span>{{ trans('blocks.hamsa.account') }}</span>
-        </button>
-    </nav>
-{% endif %}
+    {% hook 'body:end' %}
+    {# نافذة العرض تُضاف من عناصر الصفحة الرئيسية (home.promo-popup) #}
 
-{# ================= Hamsa Nabd welcome popup ================= #}
-{% if theme.settings.get('hn_popup_enabled', false) and page.slug != 'cart' %}
-    {% set hn_popup_title = theme.settings.get('hn_popup_title') %}
-    {% set hn_popup_code = theme.settings.get('hn_popup_code') %}
-    {% set hn_popup_image = theme.settings.get('hn_popup_image') %}
-    {% set hn_popup_link = theme.settings.get('hn_popup_button_link') %}
-    <div class="sh-popup" data-sh-popup hidden
-         data-delay="{{ theme.settings.get('hn_popup_delay', '5') }}"
-         data-frequency="{{ theme.settings.get('hn_popup_frequency', 'day') }}"
-         data-version="{{ (hn_popup_title ~ hn_popup_code)|length }}"
-         role="dialog" aria-modal="true" aria-label="{{ (hn_popup_title ?: store.name)|e('html_attr') }}">
-        <div class="sh-popup__backdrop" data-sh-popup-close></div>
-        <div class="sh-popup__box {{ hn_popup_image ? 'sh-popup__box--media' : '' }}">
-            <button type="button" class="sh-popup__close" data-sh-popup-close aria-label="{{ trans('blocks.hamsa.close')|e('html_attr') }}"><i class="sicon-cancel"></i></button>
-            {% if hn_popup_image %}
-                <div class="sh-popup__media"><img src="{{ hn_popup_image }}" alt="" loading="lazy"></div>
-            {% endif %}
-            <div class="sh-popup__body">
-                <span class="sh-eyebrow">{{ store.name }}</span>
-                {% if hn_popup_title %}<h2 class="sh-popup__title">{{ hn_popup_title }}</h2>{% endif %}
-                {% if theme.settings.get('hn_popup_text') %}<p class="sh-popup__text">{{ theme.settings.get('hn_popup_text') }}</p>{% endif %}
-                {% if hn_popup_code %}
-                    <div class="sh-coupon__code-row sh-popup__code">
-                        <div class="sh-coupon__code" dir="ltr">{{ hn_popup_code }}</div>
-                        <button type="button" class="sh-btn sh-btn--gold sh-copy" data-sh-copy="{{ hn_popup_code|e('html_attr') }}" data-copied-text="{{ trans('blocks.hamsa.copied')|e('html_attr') }}">
-                            <i class="sicon-page-alt"></i><span>{{ trans('blocks.hamsa.copy_code') }}</span>
-                        </button>
-                    </div>
-                {% endif %}
-                {% if theme.settings.get('hn_popup_button_text') and hn_popup_link %}
-                    <a href="{{ hn_popup_link }}" class="sh-btn sh-btn--dark w-full mt-4" data-sh-popup-close>{{ theme.settings.get('hn_popup_button_text') }}</a>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-{% endif %}
-
-{# ================= Hamsa Nabd floating actions ================= #}
-<div class="sh-floating" data-testid="hn-floating-actions">
-    {% if theme.settings.get('hn_back_to_top', true) %}
-        <button type="button" class="sh-floating__btn sh-back-to-top" aria-label="{{ trans('blocks.hamsa.back_to_top') }}" data-sh-back-to-top>
-            <i class="sicon-keyboard_arrow_up"></i>
-        </button>
+    {% if theme.settings.get('enable_add_product_toast', true) %}
+        <salla-add-product-toast data-testid="store-add-product-toast"></salla-add-product-toast>
     {% endif %}
-    {% set hn_wa = store.contacts.whatsapp %}
-    {% if theme.settings.get('hn_enable_whatsapp_float', true) and hn_wa %}
-        {% set hn_wa_link = hn_wa starts with 'http' ? hn_wa : 'https://wa.me/' ~ hn_wa|replace({'+': '', ' ': '', '-': ''}) %}
-        <a href="{{ hn_wa_link }}" target="_blank" rel="noopener" class="sh-floating__btn sh-floating__btn--wa" aria-label="WhatsApp">
-            <i class="sicon-whatsapp"></i>
-        </a>
-    {% endif %}
-</div>
-{% hook 'body:end' %}
-{% if theme.settings.get('enable_add_product_toast', true) %}
-    <salla-add-product-toast data-testid="store-add-product-toast"></salla-add-product-toast>
-{% endif %}
-<script defer crossorigin="anonymous" src="{{ 'app.js' | asset }}"></script>
 
-{# Twilight Components #}
-<salla-offer-modal data-testid="store-offer-modal"></salla-offer-modal>
-<salla-search data-testid="store-search-modal"></salla-search>
-<salla-login-modal data-testid="store-login-modal"></salla-login-modal>
-{% if store.scope %}
-    <salla-scopes data-testid="store-scopes" selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
-{% endif %}
-{% block scripts %}{% endblock %}
+    <script defer src="{{ 'app.js'|asset }}"></script>
+    <script defer src="{{ 'components.js'|asset }}"></script>
+
+    {# Twilight Components #}
+    <salla-offer-modal data-testid="store-offer-modal"></salla-offer-modal>
+    <salla-search data-testid="store-search-modal"></salla-search>
+    <salla-login-modal data-testid="store-login-modal"></salla-login-modal>
+    {% if store.scope %}
+        <salla-scopes data-testid="store-scopes" selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
+    {% endif %}
+
+    {% block scripts %}{% endblock %}
 </body>
 </html>

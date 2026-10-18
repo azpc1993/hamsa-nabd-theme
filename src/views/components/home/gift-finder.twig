@@ -1,6 +1,4 @@
 {% set component = component|default({}) %}
-{% set o = {} %}
-{% set hn_mod = ['hn-boxed']|filter(c => c)|join(' ') %}
 {#
 | Variable                                  | Type    | Description                                         |
 |---------------------------------------------|---------|------------------------------------------------------|
@@ -18,7 +16,7 @@
 | position                                   | int     |                                                      |
 #}
 {% if component.recipients|length and component.occasions|length %}
-<section component-id="{{ componentId }}" class="s-block hn-gift-finder {{ hn_mod }} {% include 'components.hamsa.section-classes' %}" data-hn-gift-finder
+<section component-id="{{ componentId }}" class="s-block hn-gift-finder" data-hn-gift-finder
          data-results='{{ component.results|default([])|json_encode }}'>
     <div class="hn-gift-finder__head">
         <h2>{{ component.title|default(trans('hn.gift_finder.default_title')) }}</h2>
