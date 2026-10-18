@@ -1,0 +1,9 @@
+packages:
+  - '.'
+
+allowBuilds:
+  '@parcel/watcher': true
+  bufferutil: true
+  es5-ext: true
+  swiper: true
+  utf-8-validate: true
