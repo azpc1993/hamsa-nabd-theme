@@ -1,0 +1,47 @@
+/* =========================================================================
+   Mobile page-title bar — names the current page at the top of the content,
+   since the site header is collapsed on mobile away from home. Hidden from
+   `md` up, and on the home / product pages (they run their own headers).
+   Markup: app/components/layout/MobilePageTitleBar.tsx (mounted in ThemeLayout).
+   ========================================================================= */
+
+.mobile-page-title {
+  @apply sticky z-30 flex h-12 items-center gap-1 border-b border-gray-100 bg-white px-2 md:hidden;
+  /* Stays at the top while the page scrolls, below the status bar inside the
+     Salla app (0 in a browser). The product listing's toolbar pins under it
+     (`product-list.scss`). */
+  top: var(--app-safe-area-top, 0px);
+}
+
+.mobile-page-title__back {
+  @apply -ms-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-gray-700;
+
+  /* `ArrowRightIcon` is "back" in Arabic; in LTR back points left. */
+  svg {
+    @apply h-5 w-5 ltr:-scale-x-100;
+  }
+}
+
+.mobile-page-title__text {
+  @apply m-0 min-w-0 truncate text-base font-bold text-gray-900;
+}
+
+/* Home + product pages have their own headers / overlay bar. */
+body.product-single .mobile-page-title {
+  @apply hidden;
+}
+
+/* One title on mobile: where a page already renders its own heading in the
+   content, suppress it — the bar above carries the same text.
+     · `#page-main-title` — `ProductListPage` (category / offers / search / tag /
+       brand routes)
+     · `.main-content > h1` on the account pages (orders / profile / wallet /
+       wishlist / notifications). Keyed off `.profile-header`, which only the
+       engine's CustomerLayout renders: the engine sets no `customer-*` body
+       class on the /account/* routes (see user-pages.scss). */
+@media (max-width: 767px) {
+  #page-main-title,
+  body:has(.profile-header) .main-content > h1 {
+    @apply hidden;
+  }
+}

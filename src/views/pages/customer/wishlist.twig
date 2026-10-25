@@ -1,6 +1,0 @@
-{% extends "layouts.customer" %}
-{% block inner_content %}
-{% hook 'customer:wishlist.items.start' %}
-<salla-products-list data-testid="store-wishlist-products" source="wishlist" row-cards></salla-products-list>
-{% hook 'customer:wishlist.items.end' %}
-{% endblock %}

@@ -1,0 +1,43 @@
+/*
+ * Global SCSS Variables
+ * Note: CSS custom properties (--color-primary, etc.) should be defined
+ * in the consuming theme's CSS, not here. This allows each theme to customize colors.
+ */
+
+// SCSS Variables (for use within SCSS files)
+$main-color: var(--color-primary);
+$infinte-color: var(--infinte-color);
+$main-text-color: var(--main-text-color);
+
+// Default CSS custom properties (can be overridden by consuming theme)
+:root {
+  // Twilight web components ship their own CSS and read only this token for the
+  // default corner radius; keep it equal to Tailwind's `rounded` for this theme.
+  --s-radius: 16px;
+  --infinte-color: #c9c9c9;
+  --main-text-color: #231f1e;
+  --main-text-color-dark: #2b2d34;
+  --color-text: #7c8082;
+  --bg-gray: #c6c7ce1a;
+  --color-grey: #f5f7f9;
+  --color-light-grey: #eeeeee;
+  
+  /* font-size */
+  --font-sm: 0.8685714286rem;
+  
+  /* plugins */
+  --mm-ocd-width: calc(100% - 51px);
+
+  /* The device's unsafe edges (notch / status bar, home indicator). In the Salla
+     app the engine writes the app's own insets (`mobile::ui.safearea`) to
+     `--app-safe-area-*`; in a browser they are unset and env() answers. Taking
+     the larger keeps one inset from being counted twice. */
+  --safe-top: max(env(safe-area-inset-top, 0px), var(--app-safe-area-top, 0px));
+  --safe-bottom: max(env(safe-area-inset-bottom, 0px), var(--app-safe-area-bottom, 0px));
+  /* What is left for an element in the page flow: `body` is already padded by
+     the app's insets (02-generic/common.scss), so only the part env() asks for
+     beyond them. env() in a browser; normally 0 in the app. Fixed elements,
+     which body padding doesn't move, use `--safe-*`. */
+  --flow-safe-top: max(0px, env(safe-area-inset-top, 0px) - var(--app-safe-area-top, 0px));
+  --flow-safe-bottom: max(0px, env(safe-area-inset-bottom, 0px) - var(--app-safe-area-bottom, 0px));
+}

@@ -1,0 +1,51 @@
+
+.loyalty{
+  .breadcrumbs {
+    @apply pb-0 pt-4;
+
+    ol{
+      @apply justify-center lg:justify-start;
+    }
+    
+    a,
+    span,
+    .arrow {
+      @apply text-white/90;
+      text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+// Reward cards (<salla-reward-card>, light DOM). The component prints
+// "name: description" in one element that the Tailwind theme truncates to a
+// single line, and the details modal never shows that text, so long rewards
+// were unreadable. Let it wrap, and stretch the cards in a row to one height
+// so the action buttons stay aligned.
+.s-loyalty-program-rewards-container,
+.s-loyalty-program-rewards-container-cart {
+  .swiper-slide {
+    @apply h-auto;
+  }
+}
+
+.s-loyalty-program-reward-host {
+  @apply block h-full;
+}
+
+.s-loyalty-program-reward-container {
+  @apply flex h-full flex-col;
+
+  > [role='button'] {
+    @apply flex-1;
+  }
+}
+
+.s-loyalty-program-reward-name {
+  @apply text-sm leading-snug md:text-base;
+}
+
+.s-loyalty-program-rewards-name {
+  @apply whitespace-normal break-words;
+  overflow: visible;
+  text-overflow: clip;
+}

@@ -1,0 +1,46 @@
+/* Store profiles give the shared storefront a category-appropriate product card. */
+.store-profile--balanced {
+  --s-radius: 16px;
+}
+
+.store-profile--activewear {
+  --s-radius: 12px;
+}
+
+.store-profile--refined {
+  --s-radius: 4px;
+}
+
+.store-profile--kids {
+  --s-radius: 22px;
+}
+
+.store-profile--balanced,
+.store-profile--activewear,
+.store-profile--refined,
+.store-profile--kids {
+  .s-product-card-entry {
+    border-radius: var(--s-radius);
+  }
+}
+
+.store-profile--activewear .s-product-card-vertical .s-product-card-image {
+  background-color: #f3f5f4;
+}
+
+.store-profile--refined .s-product-card-entry {
+  border: 1px solid #eee8e1;
+  box-shadow: none;
+}
+
+.store-profile--refined .s-product-card-vertical .s-product-card-image {
+  background-color: #faf8f5;
+}
+
+.store-profile--kids .s-product-card-entry {
+  border: 1px solid #f0ece5;
+}
+
+.store-profile--kids .s-product-card-vertical .s-product-card-image {
+  background-color: #fbf8f2;
+}

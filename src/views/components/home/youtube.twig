@@ -1,8 +1,0 @@
-{# مكوّن سلة الأساسي: "فيديو يوتيوب" (feature: component-youtube) — youtube_id #}
-{% if youtube_id|default('') %}
-<section component-id="{{ componentId }}" class="s-block hn-builtin hn-youtube container">
-  <div class="hn-youtube__frame">
-    <iframe src="https://www.youtube-nocookie.com/embed/{{ youtube_id }}?rel=0" title="YouTube" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-</section>
-{% endif %}

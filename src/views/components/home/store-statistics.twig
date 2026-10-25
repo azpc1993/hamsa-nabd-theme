@@ -1,3 +1,0 @@
-{% set component = component|default({}) %}
-{% set items = component.items|default([]) %}
-{% if items|length %}<section component-id="{{ componentId }}" class="s-block hn-stats"><div class="hn-stats__grid">{% for item in items %}<article class="hn-stat"><strong>{{ item.value }}</strong><span>{{ item.label }}</span></article>{% endfor %}</div></section>{% endif %}

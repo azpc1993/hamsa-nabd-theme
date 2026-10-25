@@ -1,16 +1,56 @@
 {
-  "name": "hamsa-nabd-theme",
-  "version": "11.0.0",
-  "description": "ثيم همسة نبض 11.0.0 لمنصة سلة (Twilight) — مكونات قابلة للتخصيص وفحوصات تحقق.",
-  "private": true,
+  "name": "hamset-nabd",
+  "version": "1.0.0",
+  "description": "Hamset Nabd - a Salla React theme",
+  "type": "module",
   "scripts": {
-    "production": "node scripts/build.js",
-    "prod": "node scripts/build.js",
-    "development": "node scripts/build.js",
-    "build": "node scripts/build.js",
-    "watch": "node scripts/watch.js",
-    "preview": "salla theme preview",
-    "qa": "node scripts/qa.js"
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "check:manifest": "twilight-check-manifest",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
-  "license": "UNLICENSED"
+  "dependencies": {
+    "@salla.sa/twilight-components-react": "^3.0.2",
+    "@salla.sa/twilight-theme-engine": "^1.0.127",
+    "@tanstack/react-query": "~5.102.8",
+    "@tanstack/react-router": "~1.170.38",
+    "@tanstack/react-router-devtools": "~1.167.2",
+    "@tanstack/react-start": "~1.168.57",
+    "@tanstack/virtual-file-routes": "~1.162.0",
+    "@uidotdev/usehooks": "^2.4.1",
+    "fslightbox": "^3.8.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@salla.sa/twilight-tailwind-theme": "^3.0.2",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tanstack/router-plugin": "~1.168.40",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "~6.1.0",
+    "@vitest/coverage-v8": "^4.1.11",
+    "autoprefixer": "^10.5.4",
+    "esbuild": "0.28.2",
+    "jsdom": "^30.0.1",
+    "postcss": "8.5.26",
+    "rollup-plugin-visualizer": "^7.1.1",
+    "sass": "^1.103.1",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^6.0.3",
+    "vite": "8.2.2",
+    "vitest": "^4.1.11",
+    "@tanstack/react-query-devtools": "~5.102.8"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
+  }
 }

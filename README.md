@@ -1,43 +1,49 @@
-# ثيم همسة نبض 11.0.0 — Salla Twilight
+# همسة نبض | Hamset Nabd
 
-نسخة نظيفة للمشروع، مع إزالة ملفات تقارير الإصدارات السابقة وملفات العرض غير اللازمة للتشغيل.
+ثيم React مرن لمتاجر سلة، مبني على TanStack Start وTwilight. صُمم ليخدم
+متاجر الملابس الرياضية والمجوهرات والإكسسوارات والأزياء الرجالية والنسائية
+وملابس الأطفال.
 
-## محتويات المشروع
-- `twilight.json`: إعدادات الثيم والمكونات والخصائص.
-- `src/`: قوالب Twig، الترجمات، وأصول CSS/JavaScript المصدرية.
-- `public/`: الأصول التي يشير إليها الثيم عبر مرشح `asset`.
-- `scripts/`: البناء والفحوصات المحلية.
-- `package.json`: أوامر البناء والفحص.
+The theme uses Salla's Twilight engine for storefront data and commerce behavior.
+Its merchant setting **Store profile / طابع المتجر** adjusts product-card shape
+and surfaces for a balanced catalog, activewear, refined accessories, or kidswear.
+Store owners can still choose their own colors and fonts in Salla's theme editor.
 
-## التغييرات في 11.0.0
-- **البانر الرئيسي لا يظهر:** قاعدة `.hn-hero__slide{display:none}` في `style.css` كانت تخفي كل شرائح البانر لأن سلايدر سلة لا يضيف صنف `is-active`. صارت الشرائح ظاهرة ويتولى السلايدر التنقل بينها.
-- **أيقونات سلة (sicon) فارغة:** `master.twig` لم يكن يحمّل `fonts/sallaicons.css`، وأضيف.
-- إضافة `{% hook 'body:classes' %}` إلى وسم `<body>` كما في ثيمات سلة.
-- 15 قائمة اختيار إلزامية في `twilight.json` كانت بدون قيمة (6 إعدادات + 9 داخل العناصر)، وصار لكل منها قيمة افتراضية.
-- خيارات كانت في المحرّر بلا أي تأثير وصارت تعمل: ارتفاع البانر وموضع النص والتعتيم والنقاط، شكل وتخطيط التصنيفات بأيقونات، أعمدة وأسماء الماركات، أعمدة وملاءمة صور الأقسام، أسعار Lookbook، أعمدة وأيقونات المزايا، زر وتشغيل الريلز، فتح أول سؤال، صوت وتحكم فيديو الهيرو، حجم وعناوين القصص.
-- مساعد اختيار الهدية كان يعرض صندوق النتيجة فارغاً قبل الاختيار.
-- حذف ملفات التقارير القديمة وسكربتات Python، والقالبين غير المسجّلين `smart-bundle.twig` و`v10-presets.twig`، و36 صورة قديمة في `public/images` لا يستخدمها الثيم.
+## Quick start
 
-## التغييرات في 10.0.3
-- توحيد رقم الإصدار في `twilight.json` و`package.json`.
-- إضافة خاصية `name` إلى تعريف كل مكون مخصص بما يتوافق مع أمثلة توثيق Twilight.
-- إزالة حقول `static` غير الموثقة من إعدادات الثيم والمكونات؛ والاعتماد على الحقول المدعومة بدل حقول HTML إرشادية.
-- تحويل روابط صور المعاينة من GitHub Raw إلى jsDelivr.
-- تحديث ملفات `public/` من أصول `src/assets/`.
-- إزالة ملفات توثيق الإصدارات السابقة وصور العرض غير اللازمة لتشغيل الثيم.
+You need pnpm 10 and Node.js 22 (22.22.2 or later), 24 (24.15.0 or later) or 26+.
 
-## الفحص المحلي
-شغّل:
+Scaffold a new theme with the Salla CLI:
 
 ```bash
-npm run qa
-npm run production
+npx @salla.sa/cli@beta theme create
 ```
 
-ثم أعد تشغيل `npm run qa`. يتضمن `scripts/qa.js` فحص JSON، وتعريفات المكونات ومسارات Twig، ووجود الأصول، وترابط الإعدادات المستخدمة بالقوالب.
+Or work directly inside a copy of this package:
 
-## تنبيه مهم
-نجاح الفحوصات المحلية لا يثبت وحده أن معاينة سلة تعمل داخل بوابة الشركاء. يجب رفع التغييرات إلى المستودع المرتبط بالثيم ثم تجربة محرر التخصيص. لم يتم اعتماد الإصدار على أنه ناجح في المعاينة الحية، لأن خطأ HTTP 403 في تسجيل الدخول عبر Salla CLI منع اختبار المعاينة المحلية.
+```bash
+pnpm install
+pnpm dev
+```
 
-## المستودع
-`https://github.com/azpc1993/hamsa-nabd-theme`
+Running `salla theme dev` writes a `.env` with `VITE_STORE_DOMAIN`
+(defaults to the demo store), which points the dev server at your store's data,
+and `VITE_TWILIGHT_URL`, the fallback twilight SDK build used only when the
+store's settings don't pin a release (`theme.twilight.version`).
+
+## Scripts
+
+| Script                | Description                         |
+| --------------------- | ----------------------------------- |
+| `pnpm dev`            | Start the Vite dev server (workerd) |
+| `pnpm build`          | Production build                    |
+| `pnpm preview`        | Preview the production build        |
+| `pnpm typecheck`      | TypeScript type checking            |
+| `pnpm test`           | Run the test suite (Vitest)         |
+| `pnpm check:manifest` | Validate `twilight.json`            |
+
+## Deployment
+
+Salla builds and publishes your theme on its own infrastructure — push to your
+theme repository and the platform takes it from there. No deploy configuration,
+credentials, or server runtime settings ship with this starter kit.
