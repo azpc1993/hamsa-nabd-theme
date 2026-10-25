@@ -4,6 +4,7 @@
     "ar": "همسة نبض",
     "en": "Hamset Nabd"
   },
+  "repository": "https://github.com/azpc1993/hamsa-nabd-theme.git",
   "features": [
     "mega-menu",
     "fonts",
