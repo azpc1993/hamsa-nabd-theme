@@ -1,0 +1,19 @@
+{# شريط شراء ثابت بالجوال — يعتمد على متغيّر product العام في صفحة المنتج #}
+<div class="hn-sticky-cart" data-hn-sticky-cart aria-hidden="true">
+    <div class="hn-sticky-cart__info">
+        <img src="{{ product.image.url }}" alt="" class="hn-sticky-cart__img">
+        <div>
+            <p class="hn-sticky-cart__name">{{ product.name }}</p>
+            <span class="hn-price hn-price--sale">
+                {{ (product.is_on_sale ? product.sale_price : product.price)|money }}
+            </span>
+        </div>
+    </div>
+    <salla-add-product-button
+        class="hn-btn hn-btn--gold"
+        product-id="{{ product.id }}"
+        product-status="{{ product.status }}"
+        product-type="{{ product.type }}">
+        {{ product.add_to_cart_label }}
+    </salla-add-product-button>
+</div>

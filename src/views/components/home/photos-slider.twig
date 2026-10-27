@@ -1,0 +1,15 @@
+{# مكوّن سلة الأساسي: "صور متحركة" (feature: component-photos-slider) — items[].image.url, items[].url #}
+{% set hn_items = items|default([]) %}
+{% if hn_items|length %}
+<section component-id="{{ componentId }}" class="s-block hn-builtin hn-photos-slider">
+  <salla-slider type="carousel" centered auto-play pagination id="hn-photos-{{ position|default(0) }}-slider">
+    <div slot="items">
+      {% for item in hn_items %}
+        <div class="swiper-slide">
+          <a href="{{ item.url|default('#') }}"><img src="{{ item.image.url|default('') }}" width="1200" height="300" alt="{{ store.name }} {{ loop.index }}"></a>
+        </div>
+      {% endfor %}
+    </div>
+  </salla-slider>
+</section>
+{% endif %}

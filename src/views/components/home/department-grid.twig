@@ -1,0 +1,34 @@
+{% set component = component|default({}) %}
+{% set o = {} %}{% for k in ['image_fit', 'columns'] %}{% set v = attribute(component, k) %}{% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}{% set o = o|merge({(k): v}) %}{% endfor %}
+{% set hn_mod = ['hn-dept--fit-' ~ (o.image_fit ?: 'cover'), o.columns ? 'hn-dept--cols-' ~ o.columns : '']|filter(c => c)|join(' ') %}
+{#
+| Variable                          | Type    | Description                                    |
+|------------------------------------|---------|------------------------------------------------|
+| component.title                   | ?string | عنوان القسم                                     |
+| component.departments[].image     | string  | صورة القسم (رجالي، نسائي، أطفال، مجوهرات...)     |
+| component.departments[].name      | string  |                                                |
+| component.departments[].tag       | ?string | كلمة صغيرة أعلى الصورة مثل "جديد" أو "الأكثر طلباً" |
+| component.departments[].url       | string  |                                                |
+| position                          | int     |                                                |
+#}
+{% set departments = component.departments|default([]) %}
+{% if departments|length %}
+<section component-id="{{ componentId }}" class="s-block hn-dept-grid-block {{ hn_mod }}">
+    {% if component.title %}
+        <div class="s-block__title"><h2>{{ component.title }}</h2></div>
+    {% endif %}
+
+    <div class="hn-dept-grid hn-dept-grid--{{ departments|length }}">
+        {% for dept in departments %}
+        <a href="{{ dept.url }}" class="hn-dept-card">
+            <img src="{{ dept.image }}" alt="{{ dept.name }}" loading="lazy">
+            <div class="hn-dept-card__overlay">
+                {% if dept.tag %}<span class="hn-dept-card__tag">{{ dept.tag }}</span>{% endif %}
+                <span class="hn-dept-card__name">{{ dept.name }}</span>
+                <span class="hn-dept-card__cta">{{ trans('common.actions.view_all') }} <i class="sicon-keyboard_arrow_left"></i></span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}

@@ -1,0 +1,29 @@
+{% set component = component|default({}) %}
+{#
+| Variable                        | Type    | Description                         |
+|-----------------------------------|---------|--------------------------------------|
+| component.title                  | ?string |                                      |
+| component.banner_image           | string  |                                      |
+| component.age_ranges[].label     | string  | مثال: "0-2 سنوات"، "3-5 سنوات"        |
+| component.age_ranges[].url       | string  |                                      |
+| position                         | int     |                                      |
+#}
+{% set ranges = component.age_ranges|default([]) %}
+{% if component.banner_image or ranges|length %}
+<section component-id="{{ componentId }}" class="s-block hn-kids-zone">
+    {% if component.banner_image %}
+    <div class="hn-kids-zone__banner">
+        <img src="{{ component.banner_image }}" alt="{{ component.title }}" loading="lazy">
+        {% if component.title %}<h2>{{ component.title }}</h2>{% endif %}
+    </div>
+    {% endif %}
+
+    {% if ranges|length %}
+    <div class="hn-kids-zone__ages">
+        {% for range in ranges %}
+        <a href="{{ range.url }}" class="hn-kids-zone__age-chip">{{ range.label }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>
+{% endif %}

@@ -1,0 +1,38 @@
+{#
+| Variable         | Type   | Description                   |
+|------------------|--------|-------------------------------|
+| cart.items_count | int    |                               |
+| cart.total       | string | مُنسّق مسبقاً ex: "١٠٠ ر.س"     |
+| store.logo       | string |                               |
+| store.name       | string |                               |
+#}
+<div class="hn-header {{ theme.settings.get('hn_header_sticky', true) ? 'is-sticky' : '' }}">
+    <button class="hn-header__menu-btn" data-hn-menu-open aria-label="{{ trans('hn.accessibility.menu') }}">
+        <span></span><span></span><span></span>
+    </button>
+
+    <a href="{{ store.url }}" class="hn-header__logo">
+        {% if store.logo %}
+            <img src="{{ store.logo }}" alt="{{ store.name }}">
+        {% else %}
+            <span class="hn-header__logo-text">{{ store.name }}</span>
+        {% endif %}
+    </a>
+
+    {# بحث سلة الحيّ: اقتراحات فورية ونتائج حقيقية بدون كتابة أي منطق بحث #}
+    {% if theme.settings.get('hn_show_header_search', true) %}<div class="hn-header__search">
+        <salla-search inline oval height="48"></salla-search>
+    </div>{% endif %}
+
+    <div class="hn-header__actions">
+        {% if theme.settings.get('hn_show_header_wishlist', true) %}<a href="{{ store.url }}/wishlist" class="hn-header__icon-link" aria-label="{{ trans('hn.accessibility.wishlist') }}">
+            <i class="sicon-heart"></i>
+            <salla-wishlist-summary></salla-wishlist-summary>
+        </a>{% endif %}
+
+        {% if theme.settings.get('hn_show_header_account', true) %}<salla-user-menu></salla-user-menu>{% endif %}
+
+        {# ملخص السلة الرسمي — يفتح سلة سلة المنزلقة ويحدّث العدّاد تلقائياً #}
+        <salla-cart-summary></salla-cart-summary>
+    </div>
+</div>

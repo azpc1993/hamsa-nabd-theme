@@ -1,0 +1,32 @@
+{% set component = component|default({}) %}
+{#
+| Variable                   | Type    |
+|----------------------------|---------|
+| component.title            | ?string |
+| component.handle           | ?string |
+| component.profile_url      | ?string |
+| component.photos[].image   | string  |
+| component.photos[].url     | ?string |
+| position                   | int     |
+#}
+{% set photos = component.photos|default([]) %}
+{% if photos|length %}
+<section component-id="{{ componentId }}" class="s-block hn-instagram">
+    <div class="hn-divider">
+        <div class="hn-divider__label">
+            <div><h2 class="hn-divider__title">{{ component.title }}</h2></div>
+        </div>
+        {% if component.profile_url %}
+        <a href="{{ component.profile_url }}" target="_blank" rel="noopener" class="hn-divider__link">@{{ component.handle }}</a>
+        {% endif %}
+    </div>
+    <div class="hn-instagram__grid">
+        {% for photo in photos %}
+        <a href="{{ photo.url|default(component.profile_url) }}" target="_blank" rel="noopener" class="hn-instagram__item">
+            <img src="{{ photo.image }}" alt="" loading="lazy">
+            <span class="hn-instagram__overlay"></span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}

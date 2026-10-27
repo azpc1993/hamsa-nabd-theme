@@ -1,0 +1,15 @@
+<section class="hn-v10-presets" aria-label="{{ title|default('V10 Presets') }}">
+  <div class="hn-v10-presets__head">
+    <div><span class="hn-eyebrow">V10</span><h2>{{ title|default('اختر هوية متجرك') }}</h2><p>{{ subtitle|default('Presets جاهزة لتسريع إطلاق المتجر') }}</p></div>
+  </div>
+  {% if show_presets|default(true) %}
+  <div class="hn-v10-presets__grid">
+    <article class="hn-v10-preset-card hn-v10-preset-card--sports"><span>⚽</span><h3>الرياضة والأندية</h3><p>هوية قوية للملابس الرياضية والأندية.</p></article>
+    <article class="hn-v10-preset-card hn-v10-preset-card--fashion"><span>✦</span><h3>الأزياء</h3><p>مساحات أنيقة وصور أكبر للمنتجات.</p></article>
+    <article class="hn-v10-preset-card hn-v10-preset-card--gifts"><span>🎁</span><h3>الهدايا</h3><p>هوية دافئة تبرز البكجات والمناسبات.</p></article>
+    <article class="hn-v10-preset-card hn-v10-preset-card--electronics"><span>◉</span><h3>الإلكترونيات</h3><p>واجهة عملية للمقارنة والمواصفات.</p></article>
+    <article class="hn-v10-preset-card hn-v10-preset-card--beauty"><span>✿</span><h3>الجمال</h3><p>تصميم هادئ يركز على الصورة والتفاصيل.</p></article>
+    <article class="hn-v10-preset-card hn-v10-preset-card--kids"><span>★</span><h3>الأطفال</h3><p>بطاقات مرحة وواضحة للتصفح السريع.</p></article>
+  </div>
+  {% endif %}
+</section>

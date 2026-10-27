@@ -1,0 +1,5 @@
+{% set component = component|default({}) %}
+{% set o = {} %}{% for k in ['size'] %}{% set v = attribute(component, k) %}{% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}{% set o = o|merge({(k): v}) %}{% endfor %}
+{% set hn_mod = ['hn-stories--' ~ (o.size ?: 'medium'), component.show_titles is same as(false) ? 'hn-stories--no-titles' : '']|filter(c => c)|join(' ') %}
+{% set items = component.items|default([]) %}
+{% if items|length %}<section component-id="{{ componentId }}" class="s-block hn-stories {{ hn_mod }}"><div class="s-block__title"><h2>{{ component.title|default(trans('hn.v92.stories_title')) }}</h2></div><div class="hn-stories__track">{% for item in items %}<a class="hn-story" href="{{ item.url|default('#') }}" {% if item.url %}target="_blank" rel="noopener noreferrer"{% endif %}><span class="hn-story__ring"><img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy"></span><span>{{ item.title }}</span></a>{% endfor %}</div></section>{% endif %}

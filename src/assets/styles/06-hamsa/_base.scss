@@ -1,0 +1,178 @@
+/* ==========================================================================
+   Hamsa Nabd — Base layer
+   Black & gold identity tokens are defined in 01-settings/global.scss and
+   overridden at runtime from theme settings in layouts/master.twig.
+   ========================================================================== */
+
+.theme-hamsa {
+  background-color: #fff;
+  color: #1c1c1f;
+
+  ::selection {
+    background: var(--sh-gold);
+    color: var(--sh-ink);
+  }
+
+  // Headings use the optional display font chosen in the theme settings
+  h1, h2, h3,
+  .s-block__title h2,
+  .s-slider-block__title h2,
+  .sh-heading {
+    font-family: var(--font-heading);
+  }
+
+  // Unified radius for the main surfaces
+  .s-product-card-entry,
+  .banner-entry,
+  .sh-radius {
+    border-radius: var(--sh-radius);
+  }
+}
+
+/* Gold text helpers */
+.sh-gold-text {
+  background: var(--sh-gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sh-eyebrow {
+  @apply inline-flex items-center gap-2 text-xs font-bold tracking-[.2em] uppercase;
+  color: var(--sh-gold);
+
+  &::before,
+  &::after {
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: currentColor;
+    opacity: .7;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Section titles (theme blocks + Salla sliders)
+   -------------------------------------------------------------------------- */
+.theme-hamsa {
+  .s-block__title h2,
+  .s-slider-block__title h2,
+  .sh-section-head__title {
+    @apply text-xl md:text-2xl font-bold text-ink;
+    position: relative;
+    padding-bottom: .65rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      inset-inline-start: 0;
+      width: 48px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--sh-gold-gradient);
+    }
+  }
+
+  .s-block__display-all,
+  .s-slider-block__display-all {
+    color: var(--sh-gold-dark);
+
+    &:hover {
+      color: var(--sh-ink);
+    }
+  }
+}
+
+/* Shared section head for Hamsa Nabd components */
+.sh-section-head {
+  @apply flex flex-col items-center text-center mb-8 md:mb-10;
+
+  &__title {
+    @apply mt-2;
+
+    &::after {
+      inset-inline-start: 50% !important;
+      transform: translateX(-50%);
+
+      [dir='rtl'] & {
+        transform: translateX(50%);
+      }
+    }
+  }
+
+  &__desc {
+    @apply text-sm md:text-base text-gray-500 max-w-xl mt-3 leading-7;
+  }
+
+  &--start {
+    @apply items-start text-start;
+
+    .sh-section-head__title::after {
+      inset-inline-start: 0 !important;
+      transform: none !important;
+    }
+  }
+}
+
+/* Gold primary button used inside Hamsa Nabd components */
+.sh-btn {
+  @apply inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-bold transition duration-300 whitespace-nowrap;
+  border-radius: var(--sh-radius);
+
+  &--gold {
+    background: var(--sh-gold-gradient);
+    background-size: 200% 100%;
+    color: var(--sh-ink);
+    box-shadow: 0 10px 30px -12px var(--sh-gold);
+
+    &:hover {
+      background-position: 100% 0;
+      transform: translateY(-2px);
+    }
+  }
+
+  &--dark {
+    background: var(--sh-ink);
+    color: #fff;
+
+    &:hover {
+      background: var(--sh-gold);
+      color: var(--sh-ink);
+    }
+  }
+
+  &--ghost {
+    border: 1px solid rgba(255, 255, 255, .55);
+    color: #fff;
+
+    &:hover {
+      border-color: var(--sh-gold);
+      color: var(--sh-gold);
+    }
+  }
+
+  i {
+    @apply ltr:rotate-180 inline-block;
+  }
+}
+
+/* Scroll reveal (driven by js/partials/hamsa-ui.js) */
+.sh-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1);
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sh-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

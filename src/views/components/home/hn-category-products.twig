@@ -1,0 +1,64 @@
+{#
+| Variable                 | Type      | Description                                                   |
+|--------------------------|-----------|---------------------------------------------------------------|
+| component                | object    | Merchant settings for fields from twilight.json `components`  |
+| component.eyebrow        | ?string   |                                                               |
+| component.title          | ?string   |                                                               |
+| component.description    | ?string   |                                                               |
+| component.use_category   | bool      | Products from one category (true) or the latest products      |
+| component.category       | object[]  | Selected category (first one is used)                         |
+| component.limit_8        | bool      | Show up to 8 products instead of 12                           |
+| position                 | int       | Sorting number start from zero                                |
+#}
+{% set o = {} %}
+{% for k in ['layout'] %}
+    {% set v = attribute(component, k) %}
+    {% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}
+    {% set o = o|merge({(k): v}) %}
+{% endfor %}
+{% set hn_mod = [
+    'sh-cat-products--' ~ (o.layout ?: 'slider')
+]|filter(c => c)|join(' ') %}
+{% set hn_style = [
+    ''
+]|filter(c => c)|join(';') %}
+{% set category = null %}
+{% if component.use_category and component.category %}
+    {% set category = component.category.id is defined ? component.category : component.category|first %}
+{% endif %}
+
+<section component-id="{{ componentId }}" data-testid="hn-category-products" style="{{ hn_style }}" class="s-block sh-cat-products {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
+    <div class="container">
+        {% if component.title or component.eyebrow %}
+            <div class="sh-section-head sh-reveal">
+                {% if component.eyebrow %}<span class="sh-eyebrow">{{ component.eyebrow }}</span>{% endif %}
+                {% if component.title %}<h2 class="sh-section-head__title">{{ component.title }}</h2>{% endif %}
+                {% if component.description %}<p class="sh-section-head__desc">{{ component.description }}</p>{% endif %}
+            </div>
+        {% endif %}
+
+        {% set limit = component.limit_8 ? 8 : (component.limit ?: 12) %}
+        {% if o.layout == 'grid' %}
+            <salla-products-list
+                data-testid="hn-category-products-grid"
+                {% if category and category.id %}source="categories" source-value="{{ category.id }}"{% else %}source="latest"{% endif %}
+                limit="{{ limit }}"></salla-products-list>
+            {% if category and category.url and component.show_all_button is not same as(false) %}
+                <div class="text-center mt-8"><a href="{{ category.url }}" class="sh-btn sh-btn--dark">{{ trans('blocks.hamsa.view_all') }} <i class="sicon-arrow-left"></i></a></div>
+            {% endif %}
+        {% else %}
+        <salla-products-slider
+            data-testid="hn-category-products-slider"
+            {% if category and category.id %}
+                source="categories"
+                source-value="[{{ category.id }}]"
+                {% if category.url %}display-all-url="{{ category.url }}"{% endif %}
+            {% else %}
+                source="latest"
+            {% endif %}
+            limit="{{ limit }}"
+            block-title=" "
+            slider-id="sh-cat-products-{{ position }}"></salla-products-slider>
+        {% endif %}
+    </div>
+</section>

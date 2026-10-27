@@ -1,0 +1,67 @@
+{#
+| Variable                 | Type      | Description                                                   |
+|--------------------------|-----------|---------------------------------------------------------------|
+| component.eyebrow        | ?string   |                                                               |
+| component.title          | ?string   |                                                               |
+| component.categories     | object[]  | 2–6 categories, each becomes a tab                            |
+| component.show_latest    | bool      | Add a first "New arrivals" tab with the latest products       |
+| position                 | int       | Sorting number start from zero                                |
+#}
+{% set o = {} %}
+{% for k in ['tab_style', 'tabs_align'] %}
+    {% set v = attribute(component, k) %}
+    {% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}
+    {% set o = o|merge({(k): v}) %}
+{% endfor %}
+{% set hn_mod = [
+    'sh-tabs--' ~ (o.tab_style ?: 'pills'),
+    o.tabs_align == 'start' ? 'sh-tabs--start' : ''
+]|filter(c => c)|join(' ') %}
+{% set hn_style = [
+    ''
+]|filter(c => c)|join(';') %}
+{% set tabs = [] %}
+{% if component.show_latest %}
+    {% set tabs = tabs|merge([{'id': 'latest', 'name': trans('blocks.hamsa.new_arrivals'), 'source': 'latest', 'value': '', 'url': ''}]) %}
+{% endif %}
+{% for cat in component.categories %}
+    {% set tabs = tabs|merge([{'id': cat.id, 'name': cat.name, 'source': 'categories', 'value': '[' ~ cat.id ~ ']', 'url': cat.url}]) %}
+{% endfor %}
+
+{% if tabs|length %}
+{% set uid = 'sh-tabs-' ~ position %}
+<section component-id="{{ componentId }}" data-testid="hn-products-tabs" style="{{ hn_style }}" class="s-block sh-tabs {{ hn_mod }} {% include 'components.hamsa.section-classes' %}" id="{{ uid }}">
+    <div class="container">
+        {% if component.title or component.eyebrow %}
+            <div class="sh-section-head sh-reveal">
+                {% if component.eyebrow %}<span class="sh-eyebrow">{{ component.eyebrow }}</span>{% endif %}
+                {% if component.title %}<h2 class="sh-section-head__title">{{ component.title }}</h2>{% endif %}
+            </div>
+        {% endif %}
+
+        <div class="sh-tabs__nav" role="tablist">
+            {% for tab in tabs %}
+                <button type="button" role="tab" class="sh-tabs__btn {{ loop.first ? 'is-active' : '' }}"
+                        aria-selected="{{ loop.first ? 'true' : 'false' }}"
+                        aria-controls="{{ uid }}-panel-{{ loop.index }}"
+                        data-sh-tab="{{ uid }}-panel-{{ loop.index }}">{{ tab.name }}</button>
+            {% endfor %}
+        </div>
+
+        {% for tab in tabs %}
+            <div class="sh-tabs__panel {{ loop.first ? 'is-active' : '' }}" role="tabpanel" id="{{ uid }}-panel-{{ loop.index }}" {{ loop.first ? '' : 'hidden' }}>
+                {# the first panel renders immediately; the others are stamped from <template> by hamsa.js when opened #}
+                {% if not loop.first %}<template data-sh-tab-template>{% endif %}
+                    <salla-products-slider
+                        source="{{ tab.source }}"
+                        {% if tab.value %}source-value="{{ tab.value }}"{% endif %}
+                        {% if tab.url and component.show_all_link is not same as(false) %}display-all-url="{{ tab.url }}"{% endif %}
+                        limit="{{ component.limit ?: 12 }}"
+                        block-title=" "
+                        slider-id="{{ uid }}-slider-{{ loop.index }}"></salla-products-slider>
+                {% if not loop.first %}</template>{% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}

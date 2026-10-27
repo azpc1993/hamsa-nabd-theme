@@ -1,0 +1,13 @@
+{# قائمة كبيرة — تستخدم قائمة سلة الرسمية (salla-menu) لجلب تصنيفات المتجر الحقيقية #}
+<div class="hn-mega-menu-overlay" id="hn-mega-menu" aria-hidden="true">
+    <div class="hn-mega-menu" role="dialog" aria-modal="true">
+        <button class="hn-mega-menu__close" data-hn-menu-close aria-label="{{ trans('hn.accessibility.close') }}">
+            <i class="sicon-cancel"></i>
+        </button>
+
+        <div class="hn-mega-menu__body">
+            {# مصدر "header" يجلب القائمة التي رتّبها التاجر من لوحة التحكم #}
+            <salla-menu source="header" class="hn-mega-menu__menu"></salla-menu>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,245 @@
+{
+  "shop_now": "Shop Now",
+  "view_all": "View All",
+  "best_sellers": "Best Sellers",
+  "order_now": "Order Now",
+  "view_bundle": "View Bundle",
+  "save": "Save",
+  "most_ordered": "Most Ordered",
+  "fast_shipping": "Fast shipping nationwide",
+  "free_returns": "Free returns within 7 days",
+  "secure_payment": "100% Secure Payment",
+  "contact_whatsapp": "Chat with us on WhatsApp",
+  "browse_categories": "Browse Categories",
+  "product_tax_included": "Tax included",
+  "product_sku": "SKU",
+  "product_barcode": "Barcode",
+  "product_sold": "Sold",
+  "product_remaining": "Remaining",
+  "product_offer": "Product offers",
+  "product_metadata": "Product specifications",
+  "product_gift": "Send as a gift",
+  "product_quick_order": "Quick order",
+  "product_reviews_summary": "Reviews summary",
+  "product_notify": "Notify me",
+  "cart_tax_included": "Prices include VAT",
+  "profile_save": "Save changes",
+  "profile_delete": "Delete account",
+  "no_results": "No matching results",
+  "not_found_title": "Page not found",
+  "not_found_text": "The page you are looking for is unavailable or has moved.",
+  "back_home": "Back to home",
+  "search_again": "Search again",
+  "order_details": "Order details",
+  "order_shipping": "Shipping",
+  "order_total": "Order total",
+  "order_payment": "Payment",
+  "order_status": "Order status",
+  "order_reorder": "Reorder",
+  "order_pay": "Complete payment",
+  "order_cancel": "Cancel order",
+  "blog_read_more": "Read more",
+  "brand_products": "Brand products",
+  "newsletter_error": "Unable to subscribe right now. Please try again.",
+  "blocks": {
+    "footer": {
+      "contact_us": "Contact us",
+      "tax_number": "VAT number",
+      "whatsapp": "WhatsApp"
+    },
+    "header": {
+      "account": "Account",
+      "cart": "Cart",
+      "home": "Home",
+      "menu": "Menu",
+      "wishlist": "Wishlist"
+    },
+    "home": {
+      "view_all": "View all"
+    }
+  },
+  "common": {
+    "elements": {
+      "back_home": "Back to home",
+      "close": "Close",
+      "email": "Email",
+      "mobile": "Mobile",
+      "tax_number": "VAT number",
+      "tax_included": "Tax included",
+      "description": "Description",
+      "reviews": "Reviews",
+      "whatsapp": "WhatsApp"
+    },
+    "titles": {
+      "support": "Support",
+      "contact_us": "Contact us"
+    },
+    "actions": {
+      "save_changes": "Save changes",
+      "pay_now": "Pay now",
+      "track_shipment": "Track shipment",
+      "order_details": "Order details",
+      "continue_shopping": "Continue shopping",
+      "checkout": "Checkout",
+      "shop_now": "Shop now",
+      "try_again": "Try again",
+      "back": "Back",
+      "view_all": "View all",
+      "exclusive": "Exclusive"
+    },
+    "navigation": {
+      "home": "Home",
+      "menu": "Menu",
+      "wishlist": "Wishlist",
+      "account": "Account"
+    }
+  },
+  "pages": {
+    "blog_articles": {
+      "related": "Related articles"
+    },
+    "blog_categories": {
+      "categories": "Blog categories",
+      "no_articles": "No articles found"
+    },
+    "brands": {
+      "non_brands": "No brands found",
+      "non_products": "No products found for this brand"
+    },
+    "cart": {
+      "add_note": "Add note",
+      "checkout": "Checkout",
+      "continue_shopping": "Continue shopping",
+      "empty_cart": "Your cart is empty",
+      "free_shipping_achieved": "You have unlocked free shipping",
+      "free_shipping_remaining": "%s remaining for free shipping",
+      "gift_widget_title": "Send as a gift",
+      "out_of_stock": "Out of stock",
+      "remove": "Remove"
+    },
+    "categories": {
+      "filter": "Filter"
+    },
+    "comments": {
+      "title": "Reviews"
+    },
+    "loyalty_program": {
+      "point": "Point",
+      "ways_to_get_points": "Ways to earn points"
+    },
+    "orders": {
+      "non_orders": "No orders found"
+    },
+    "products": {
+      "add_note": "Add note",
+      "attachments": "Product attachments",
+      "description": "Description",
+      "quantity": "Quantity",
+      "shop_now": "Shop now",
+      "show_size_guides": "Show size guide",
+      "similar_products": "Similar products",
+      "size_guides": "Size guide",
+      "weight": "Weight",
+      "write_note": "Write your note here"
+    },
+    "profile": {
+      "birthday": "Birthday",
+      "female": "Female",
+      "first_name": "First name",
+      "gender": "Gender",
+      "gender_placeholder": "Select gender",
+      "last_name": "Last name",
+      "male": "Male"
+    },
+    "rating": {
+      "rate_the_store": "Rate the store"
+    },
+    "thank_you": {
+      "email_sent": "Order details were sent to your email",
+      "order_id": "Order number"
+    }
+  },
+  "hn": {
+    "trust": {
+      "fast_shipping": "Fast shipping nationwide",
+      "free_returns": "Free returns within 7 days",
+      "secure_payment": "100% secure payment"
+    },
+    "newsletter": {
+      "title": "Join and get 10% off",
+      "text": "Subscribe for updates and exclusive offers",
+      "email_placeholder": "Your email address",
+      "subscribe": "Subscribe"
+    },
+    "gift_finder": {
+      "step_recipient": "1 / 2 — Who is the gift for?",
+      "step_occasion": "2 / 2 — What is the occasion?",
+      "back": "Back",
+      "shop_now": "Shop now",
+      "try_again": "Try again",
+      "default_title": "Not sure what to choose? Let us help"
+    },
+    "accessibility": {
+      "wishlist_add": "Add to wishlist",
+      "delete": "Delete",
+      "menu": "Menu",
+      "wishlist": "Wishlist",
+      "whatsapp": "WhatsApp",
+      "close": "Close",
+      "customer_navigation": "Customer navigation"
+    },
+    "product": {
+      "sold": "Sold",
+      "remaining": "Remaining",
+      "sku": "SKU",
+      "barcode": "Barcode",
+      "gift": "Send as a gift"
+    },
+    "cart": {
+      "add_note": "Add a note",
+      "free_shipping_achieved": "You have unlocked free shipping 🎉",
+      "free_shipping_remaining": "Add %s for free shipping"
+    },
+    "components": {
+      "shop_now": "Shop now",
+      "vip_title": "Join VIP membership",
+      "vip_button": "Join now",
+      "box_title": "Build your own gift box",
+      "box_button": "Start building"
+    },
+    "features": {
+      "shop_now": "Shop now",
+      "buy_together_title": "Buy together",
+      "shop_bundle": "Shop the bundle",
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds",
+      "shop_campaign": "Shop campaign",
+      "close": "Close",
+      "tiktok_title": "Follow us on TikTok",
+      "faq_title": "Frequently asked questions",
+      "brands_title": "Our brands",
+      "whatsapp_title": "Order via WhatsApp",
+      "whatsapp_button": "Order on WhatsApp",
+      "whatsapp_message": "Hello, I would like to ask about your products.",
+      "reels_title": "Product Reels"
+    },
+    "v92": {
+      "shop_now": "Shop now",
+      "stories_title": "Store Stories",
+      "influencer_title": "Looks & Experiences",
+      "watch": "Watch now",
+      "branches_title": "Our branches",
+      "open_map": "Open location",
+      "wholesale_title": "Wholesale offers",
+      "quantity": "Quantity",
+      "discount": "Discount",
+      "price": "Price",
+      "recommendations_title": "You may also like",
+      "compare_title": "Compare products",
+      "compare_hint": "Choose 2 to 4 products to compare",
+      "compare_action": "View comparison"
+    }
+  }
+}
