@@ -197,3 +197,13 @@ document.addEventListener('click', function (e) {
     function boot() { document.querySelectorAll('[data-hn-ba]').forEach(init); }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true }); else boot();
 })();
+
+/* ---------- v11 · Preloader: hide on load (with a safety timeout) ---------- */
+(function () {
+    'use strict';
+    var el = document.querySelector('[data-hn-preloader]');
+    if (!el) return;
+    function done() { el.classList.add('is-done'); }
+    if (document.readyState === 'complete') done(); else window.addEventListener('load', done, { once: true });
+    setTimeout(done, 4000);
+})();

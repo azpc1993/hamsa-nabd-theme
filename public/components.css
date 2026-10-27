@@ -673,3 +673,41 @@ body.hn-theme{ background:var(--hn-bg) !important; }
 .hn-ba__handle::before{ content:''; position:absolute; top:0; bottom:0; width:3px; background:var(--hn-accent,#C9A24B); }
 .hn-ba__knob{ position:relative; width:42px; height:42px; border-radius:50%; background:var(--hn-accent,#C9A24B); color:#0B1F3A; font-weight:900; display:grid; place-items:center; box-shadow:0 4px 14px rgba(0,0,0,.25); }
 .hn-ba__handle:focus-visible .hn-ba__knob{ outline:3px solid #fff; outline-offset:2px; }
+
+/* ===== v11 · إعدادات عامة: خطوط، هيدر، قائمة، فوتر، معرض، تصنيف، تحميل، خلفية ===== */
+body.hn-theme{ font-size:var(--hn-font-size,15px); }
+.hn-header__logo img{ height:var(--hn-logo-h,42px); }
+.hn-header--navy .hn-header{ background:#0B1F3A; color:#fff; }
+.hn-header--navy .hn-header__icon-link,.hn-header--navy .hn-header__logo-text{ color:#fff; }
+.hn-header--navy .hn-header__menu-btn span{ background:#fff; }
+.hn-header--glass .hn-header{ background:color-mix(in srgb, var(--hn-bg,#fff) 72%, transparent); -webkit-backdrop-filter:saturate(160%) blur(12px); backdrop-filter:saturate(160%) blur(12px); }
+.hn-menu--start .hn-mega-menu,.hn-menu--end .hn-mega-menu{ margin:0; height:100vh; max-height:100vh; width:min(420px,88vw); border-radius:0; position:absolute; top:0; }
+.hn-menu--start .hn-mega-menu{ inset-inline-start:0; }
+.hn-menu--end .hn-mega-menu{ inset-inline-end:0; }
+.hn-menu--start .hn-mega-menu__cols,.hn-menu--end .hn-mega-menu__cols{ grid-template-columns:1fr; }
+.hn-menu-ov--blur .hn-mega-menu-overlay{ -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+.hn-footer--centered .hn-footer-main{ grid-template-columns:1fr; text-align:center; justify-items:center; }
+.hn-footer--centered .hn-footer-col ul,.hn-footer--centered .hn-footer-social{ align-items:center; justify-content:center; }
+.hn-gallery--square .hn-gallery__media img{ aspect-ratio:1/1; object-fit:cover; height:auto; }
+.hn-gallery--portrait .hn-gallery__media img{ aspect-ratio:3/4; object-fit:cover; height:auto; }
+.hn-gallery-static .hn-product-page__gallery{ position:static; }
+@media (min-width:1024px){ .hn-filters--end .hn-category-page{ grid-template-columns:1fr 260px; } .hn-filters--end .hn-category-page > .hn-filters{ order:2; } }
+.hn-bg--dots{ background-image:radial-gradient(color-mix(in srgb, var(--hn-accent,#C9A24B) 22%, transparent) 1px, transparent 1.4px) !important; background-size:22px 22px !important; }
+.hn-bg--lines{ background-image:repeating-linear-gradient(45deg, color-mix(in srgb, var(--hn-accent,#C9A24B) 10%, transparent) 0 1px, transparent 1px 18px) !important; }
+.hn-preloader{ position:fixed; inset:0; z-index:10000; display:grid; place-items:center; background:var(--hn-bg,#fff); transition:opacity .35s ease, visibility .35s; }
+.hn-preloader.is-done{ opacity:0; visibility:hidden; pointer-events:none; }
+.hn-preloader img{ width:120px; height:auto; animation:hn-pulse 1.2s ease-in-out infinite; }
+.hn-preloader--logo .hn-preloader__mark,.hn-preloader--spinner .hn-preloader__mark{ width:48px; height:48px; border-radius:50%; border:4px solid var(--hn-border,#e7e3da); border-top-color:var(--hn-accent,#C9A24B); animation:hn-spin .8s linear infinite; }
+.hn-preloader--bar{ place-items:start stretch; background:transparent; pointer-events:none; }
+.hn-preloader--bar .hn-preloader__mark{ display:block; height:3px; background:var(--hn-accent,#C9A24B); animation:hn-bar 1.4s ease-in-out infinite; transform-origin:0 50%; }
+@keyframes hn-spin{ to{ transform:rotate(360deg); } }
+@keyframes hn-pulse{ 50%{ transform:scale(.92); opacity:.7; } }
+@keyframes hn-bar{ 0%{ transform:scaleX(0); } 100%{ transform:scaleX(1); } }
+@media (prefers-reduced-motion:reduce){ .hn-preloader *{ animation:none !important; } }
+
+/* ===== v11 · صفحة التصنيف: بنر الصورة (1440×360، نسبة 4:1) + صور التصنيفات الفرعية (56×56) ===== */
+.hn-category-banner{ margin-block:8px 4px; }
+.hn-category-banner img{ display:block; width:100%; aspect-ratio:4/1; object-fit:cover; border-radius:var(--hn-card-radius,12px); }
+@media (max-width:767px){ .hn-category-banner img{ aspect-ratio:2.4/1; } }
+.hn-subcats__chip.has-image{ display:inline-flex; flex-direction:column; align-items:center; gap:6px; }
+.hn-subcats__chip.has-image img{ width:56px; height:56px; object-fit:cover; border-radius:50%; border:2px solid var(--hn-accent,#C9A24B); }

@@ -2,6 +2,6 @@
   Footer — نقطة الدخول الرئيسية، تحل محل فوتر ثيم رائد الافتراضي بالكامل
 #}
 <footer class="hn-site-footer">
-    {% include 'components.footer.newsletter' %}
+    {% if theme.settings.get('hn_footer_show_newsletter', true) %}{% include 'components.footer.newsletter' %}{% endif %}
     {% include 'components.footer.main-footer' %}
 </footer>

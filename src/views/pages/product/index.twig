@@ -5,7 +5,8 @@
 | page.slug                  | string      | ex: "cat.show"                                |
 | page.id                    | int         |                                               |
 | category.name / .url       | ?Category   |                                               |
-| category.sub_categories    | ?Category[] |                                               |
+| category.sub_categories    | ?Category[] | كل عنصر Category: .name .url .image           |
+| category.image             | ?string     | صورة التصنيف من لوحة سلة (بنر أعلى الصفحة)       |
 | filters                    | bool        | هل الفلاتر مفعّلة لهذه الصفحة                   |
 | sort_options[]             | SortList[]  | .id .name .is_selected                        |
 | search_query               | ?string     |                                               |
@@ -29,6 +30,12 @@
         Use this hook to inject content above the products listing area.
     #}
     <div class="s-blocks-wrapper s-before-products-list">{% hook 'product.index.before_products_group_with_filter' %}</div>
+
+    {% if theme.settings.get('hn_category_banner', true) and category and category.image %}
+    <div class="container hn-category-banner">
+        <img src="{{ category.image }}" alt="{{ category.name }}" width="1440" height="360" fetchpriority="high">
+    </div>
+    {% endif %}
 
     <div class="hn-category-page container">
 
@@ -61,7 +68,7 @@
             {% if theme.settings.get('hn_listing_show_subcategories', true) and category.sub_categories|length %}
             <nav class="hn-subcats">
                 {% for sub in category.sub_categories %}
-                <a href="{{ sub.url }}" class="hn-subcats__chip">{{ sub.name }}</a>
+                <a href="{{ sub.url }}" class="hn-subcats__chip{{ theme.settings.get('hn_subcat_images', true) and sub.image ? ' has-image' : '' }}">{% if theme.settings.get('hn_subcat_images', true) and sub.image %}<img src="{{ sub.image }}" alt="" width="56" height="56" loading="lazy">{% endif %}<span>{{ sub.name }}</span></a>
                 {% endfor %}
             </nav>
             {% endif %}

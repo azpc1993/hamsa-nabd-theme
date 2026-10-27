@@ -39,11 +39,13 @@
                وباقي ألوان الهوية ثابتة في ملفات CSS */
             --hn-primary: {{ theme.color.primary }};
             --hn-primary-text: {{ theme.color.text }};
-            --hn-accent: #C9A24B;
+            --hn-accent: {{ theme.settings.get('hn_accent_palette','gold') == 'champagne' ? '#D8C08E' : (theme.settings.get('hn_accent_palette','gold') == 'bronze' ? '#B07A45' : '#C9A24B') }};
             --hn-dark-bg: {{ theme.color.darker(0.35) }};
             --hn-bg: #FFFFFF;
-            --hn-font-heading: 'Tajawal', sans-serif;
-            --hn-font-body: 'Almarai', sans-serif;
+            --hn-font-heading: {{ theme.settings.get('hn_heading_font','tajawal') == 'almarai' ? "'Almarai'" : "'Tajawal'" }}, sans-serif;
+            --hn-font-body: {{ theme.settings.get('hn_body_font','almarai') == 'tajawal' ? "'Tajawal'" : "'Almarai'" }}, sans-serif;
+            --hn-font-size: {{ theme.settings.get('hn_base_font_size','md') == 'sm' ? '14px' : (theme.settings.get('hn_base_font_size','md') == 'lg' ? '16px' : '15px') }};
+            --hn-logo-h: {{ theme.settings.get('hn_logo_size','md') == 'sm' ? '34px' : (theme.settings.get('hn_logo_size','md') == 'lg' ? '54px' : '42px') }};
             --hn-container-width: {{ theme.settings.get('hn_home_container_width','wide') == 'compact' ? '1120px' : (theme.settings.get('hn_home_container_width','wide') == 'standard' ? '1240px' : '1440px') }};
             --hn-section-gap: {{ theme.settings.get('hn_section_spacing','standard') == 'compact' ? '24px' : (theme.settings.get('hn_section_spacing','standard') == 'spacious' ? '64px' : '40px') }};
             --hn-card-radius: {{ theme.settings.get('hn_card_radius','soft') == 'sharp' ? '6px' : (theme.settings.get('hn_card_radius','soft') == 'rounded' ? '20px' : '12px') }};
@@ -55,8 +57,14 @@
     {% hook 'head' %}
     {% hook 'head:end' %}
 </head>
-<body class="hn-theme {% hook 'body:classes' %} {{ theme.is_rtl ? 'rtl' : 'ltr' }} {{ theme.settings.get('hn_home_container_width','wide') }} {{ theme.settings.get('hn_section_spacing','standard') }} {{ theme.settings.get('hn_card_radius','soft') }} {{ theme.settings.get('hn_card_shadow','soft') }} {{ theme.settings.get('hn_button_radius','soft') }} {{ theme.settings.get('hn_product_image_fit','cover') }}{% if theme.settings.get('hn_reduce_motion', false) %} hn-reduce-motion{% endif %} hn-card--{{ theme.settings.get('hn_card_style', 'classic') }} hn-card-btn--{{ theme.settings.get('hn_card_button_style', 'navy') }} hn-card-badge--{{ theme.settings.get('hn_card_badge_style', 'pill') }} hn-card-badge-c--{{ theme.settings.get('hn_card_badge_color', 'gold') }}{% if theme.settings.get('hn_card_hover_zoom', true) %} hn-card-zoom{% endif %}{% if theme.settings.get('hn_card_equal_height', true) %} hn-card-equal{% endif %}>
+<body class="hn-theme {% hook 'body:classes' %} {{ theme.is_rtl ? 'rtl' : 'ltr' }} {{ theme.settings.get('hn_home_container_width','wide') }} {{ theme.settings.get('hn_section_spacing','standard') }} {{ theme.settings.get('hn_card_radius','soft') }} {{ theme.settings.get('hn_card_shadow','soft') }} {{ theme.settings.get('hn_button_radius','soft') }} {{ theme.settings.get('hn_product_image_fit','cover') }}{% if theme.settings.get('hn_reduce_motion', false) %} hn-reduce-motion{% endif %} hn-header--{{ theme.settings.get('hn_header_style', 'light') }} hn-menu--{{ theme.settings.get('hn_menu_position', 'center') }} hn-menu-ov--{{ theme.settings.get('hn_menu_overlay', 'dim') }} hn-footer--{{ theme.settings.get('hn_footer_layout', 'columns') }} hn-gallery--{{ theme.settings.get('hn_product_gallery_ratio', 'auto') }} hn-filters--{{ theme.settings.get('hn_filters_side', 'start') }} hn-bg--{{ theme.settings.get('hn_bg_pattern', 'none') }}{% if not theme.settings.get('hn_product_sticky_gallery', true) %} hn-gallery-static{% endif %} hn-card--{{ theme.settings.get('hn_card_style', 'classic') }} hn-card-btn--{{ theme.settings.get('hn_card_button_style', 'navy') }} hn-card-badge--{{ theme.settings.get('hn_card_badge_style', 'pill') }} hn-card-badge-c--{{ theme.settings.get('hn_card_badge_color', 'gold') }}{% if theme.settings.get('hn_card_hover_zoom', true) %} hn-card-zoom{% endif %}{% if theme.settings.get('hn_card_equal_height', true) %} hn-card-equal{% endif %}>
     {% hook 'body:start' %}
+    {% if theme.settings.get('hn_preloader_enable', false) %}
+    <noscript><style>.hn-preloader{display:none!important}</style></noscript>
+    <div class="hn-preloader hn-preloader--{{ theme.settings.get('hn_preloader_style', 'logo') }}" data-hn-preloader aria-hidden="true">
+        {% if theme.settings.get('hn_preloader_style', 'logo') == 'logo' and store.logo %}<img src="{{ store.logo }}" alt="" width="120" height="120">{% else %}<span class="hn-preloader__mark"></span>{% endif %}
+    </div>
+    {% endif %}
 
     {% if theme.settings.get('hn_show_announcement', true) %}{% include 'components.header.announcement-bar' %}{% endif %}
     {% component 'header.header' %}
