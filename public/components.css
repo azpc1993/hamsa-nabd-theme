@@ -735,3 +735,9 @@ body.hn-theme{ font-size:var(--hn-font-size,15px); }
 button.hn-dept-card{ border:0; padding:0; width:100%; cursor:pointer; font:inherit; text-align:inherit; background:none; }
 .hn-dept--slider .hn-dept-grid{ display:flex !important; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
 .hn-dept--slider .hn-dept-card{ flex:0 0 min(260px,70vw); scroll-snap-align:start; }
+
+/* ===== v11 · icon-categories: الشكل المستطيل (120×80 = 3:2) ===== */
+.hn-icon-cats--rect .hn-icon-cats__item{ width:128px; }
+.hn-icon-cats--rect .hn-icon-cats__circle{ width:120px; height:80px; border-radius:10px; overflow:hidden; }
+.hn-icon-cats--rect .hn-icon-cats__circle img{ width:100%; height:100%; object-fit:cover; }
+.hn-icon-cats--rect.hn-icon-cats--grid .hn-icon-cats{ grid-template-columns:repeat(auto-fill,minmax(128px,1fr)); }
