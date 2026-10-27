@@ -12,7 +12,7 @@
 | 7 department-grid | PASS | qa-preview: popup_id يفتح النافذة |
 | 8 icon-categories | PASS | qa-json |
 | 9 hero-banner | PASS (جزئي) | فيديو وتشغيل تلقائي. إيقاف الزائر BLOCKED |
-| 10 home.testimonials | BLOCKED | BLOCKERS.md |
+| 10 home.testimonials | BLOCKED → بديل PASS | سُجّل home.custom-testimonials؛ qa-json/qa-fields PASS |
 | 11 تصنيف/سلة/قائمة | PASS (تصنيف) / BLOCKED (سلة، قائمة) | BLOCKERS.md |
 | 12 صفحات متعددة | BLOCKED | BLOCKERS.md |
 | 13 أوصاف ومقاسات | PASS | أوصاف الحقول |

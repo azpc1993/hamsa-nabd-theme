@@ -13,6 +13,7 @@
 - `home.before-after`: مقارنة قبل/بعد (ماوس، لمس، لوحة مفاتيح، role=slider).
 - `home.featured-spotlight`: منتج واحد بحقل products المستخدم في theme-raed.
 - `home.articles-slider`: مقالات مختارة يدوياً.
+- تسجيل `home.custom-testimonials` (بديل home.testimonials الأساسي).
 - بنر صورة التصنيف وصور التصنيفات الفرعية في صفحة التصنيف.
 - شاشة تحميل (3 أشكال) ونقش خلفية المتجر.
 
