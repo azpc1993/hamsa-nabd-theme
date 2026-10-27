@@ -741,3 +741,9 @@ button.hn-dept-card{ border:0; padding:0; width:100%; cursor:pointer; font:inher
 .hn-icon-cats--rect .hn-icon-cats__circle{ width:120px; height:80px; border-radius:10px; overflow:hidden; }
 .hn-icon-cats--rect .hn-icon-cats__circle img{ width:100%; height:100%; object-fit:cover; }
 .hn-icon-cats--rect.hn-icon-cats--grid .hn-icon-cats{ grid-template-columns:repeat(auto-fill,minmax(128px,1fr)); }
+
+/* ===== v11 · hero-banner: فيديو اختياري فوق الصورة (الصورة تبقى البديل) ===== */
+.hn-hero__video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; }
+.hn-hero--overlay .hn-hero__slide::after{ z-index:1; }
+@media (prefers-reduced-motion:reduce){ .hn-hero__video{ display:none; } }
+.hn-reduce-motion .hn-hero__video{ display:none; }

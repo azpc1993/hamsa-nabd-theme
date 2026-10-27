@@ -11,6 +11,8 @@
 | component.slides[].subtitle   | ?string  |                                                |
 | component.slides[].url        | ?string  |                                                |
 | component.slides[].button_text| ?string  |                                                |
+| component.slides[].video      | ?string  | رابط mp4 يظهر بدل الصورة (الصورة تبقى بديلاً)       |
+| component.hero_autoplay       | ?bool    | تشغيل تلقائي للشرائح (افتراضي: نعم)                |
 | position                      | int      | ترتيب العنصر في الصفحة، يبدأ من صفر              |
 #}
 {% set slides = component.slides|default([]) %}
@@ -18,7 +20,7 @@
 <section component-id="{{ componentId }}" class="s-block hn-hero {{ hn_mod }}">
     <salla-slider
         id="hn-hero-{{ position }}"
-        auto-play
+        {{ component.hero_autoplay is same as(false) ? '' : 'auto-play' }}
         {{ component.hero_show_dots is same as(false) ? '' : 'pagination' }}
         static-when-single
         {{ slides|length > 1 ? '' : 'show-controls="false"' }}
@@ -33,6 +35,12 @@
                     <img src="{{ slide.image }}" alt="{{ slide.title|default(store.name) }}"
                          loading="{{ loop.first ? 'eager' : 'lazy' }}">
                 </picture>
+                {% if slide.video|default('')|trim %}
+                <video class="hn-hero__video" autoplay muted loop playsinline preload="metadata" poster="{{ slide.image }}" aria-hidden="true">
+                    <source src="{{ slide.video|trim }}" type="video/mp4">
+                    <img src="{{ slide.image }}" alt="">
+                </video>
+                {% endif %}
                 <div class="hn-hero__content">
                     {% if slide.title %}<h2 class="hn-hero__title">{{ slide.title }}</h2>{% endif %}
                     {% if slide.subtitle %}<p class="hn-hero__subtitle">{{ slide.subtitle }}</p>{% endif %}
