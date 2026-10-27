@@ -37,8 +37,9 @@
     {% if product.category %}<a href="{{ product.category.url }}" class="hn-product-page__category">{{ product.category.name }}</a>{% endif %}
     <h1 class="hn-product-page__title">{{ product.name }}</h1>
     {% if product.subtitle %}<p class="hn-product-page__subtitle">{{ product.subtitle }}</p>{% endif %}
-    {% if product.rating %}<div class="hn-rating-wrap"><salla-rating-stars value="{{ product.rating.stars }}" reviews="{{ product.rating.count }}" readonly></salla-rating-stars><span>({{ product.rating.count }})</span></div>{% endif %}
-    {% if theme.settings.get('product_show_reviews', true) %}<salla-reviews-summary item-id="{{ product.id }}" class="hn-product-reviews-summary"></salla-reviews-summary>{% endif %}
+    {% set hn_reviews = theme.settings.get('product_show_reviews', true) %}
+    {% if hn_reviews and product.rating %}<div class="hn-rating-wrap"><salla-rating-stars value="{{ product.rating.stars }}" reviews="{{ product.rating.count }}" readonly></salla-rating-stars><span>({{ product.rating.count }})</span></div>{% endif %}
+    {% if hn_reviews %}<salla-reviews-summary item-id="{{ product.id }}" class="hn-product-reviews-summary"></salla-reviews-summary>{% endif %}
     {% if product.is_taxable %}<small class="hn-tax-note">{{ trans('common.elements.tax_included') }}</small>{% endif %}
 
     <div class="hn-product-page__price">
@@ -52,7 +53,7 @@
 
     {% if product.sku or product.barcode %}<div class="hn-product-meta-line">{% if product.sku %}<span>{{ trans('hn.product.sku') }}: {{ product.sku }}</span>{% endif %}{% if product.barcode %}<span>{{ trans('hn.product.barcode') }}: {{ product.barcode }}</span>{% endif %}</div>{% endif %}
 
-    {% if product.description %}<div class="hn-product-page__intro">{{ product.description|raw }}</div>{% endif %}
+    {% set hn_excerpt = product.description|default('')|striptags|trim %}{% if hn_excerpt %}<p class="hn-product-page__intro">{{ hn_excerpt|length > 220 ? hn_excerpt|slice(0, 220) ~ '…' : hn_excerpt }}</p>{% endif %}
 
     {% if theme.settings.get('product_show_installments', true) and product.is_available %}<div class="hn-product-service-card"><salla-installment price="{{ product.base_currency_price|default(product.price) }}"></salla-installment></div>{% endif %}
     {% if product.has_metadata and theme.settings.get('product_show_metadata', true) %}<div class="hn-product-service-card"><salla-metadata entity="product" entity-id="{{ product.id }}"></salla-metadata></div>{% endif %}
@@ -81,9 +82,9 @@
 
     <div class="s-blocks-wrapper s-before-reviews">{% hook 'product.single.before_customer_reviews' %}</div>
     <div class="hn-product-page__tabs" data-hn-tabs>
-      <div class="hn-tabs__nav" role="tablist"><button type="button" class="is-active" data-hn-tab="description" role="tab">{{ trans('common.elements.description') }}</button><button type="button" data-hn-tab="reviews" role="tab">{{ trans('common.elements.reviews') }}</button></div>
+      <div class="hn-tabs__nav" role="tablist"><button type="button" class="is-active" data-hn-tab="description" role="tab">{{ trans('common.elements.description') }}</button>{% if hn_reviews %}<button type="button" data-hn-tab="reviews" role="tab">{{ trans('common.elements.reviews') }}</button>{% endif %}</div>
       <div class="hn-tabs__panel is-active" data-hn-tab-panel="description">{% hook 'product:single.description.start' %}{{ product.description|default('')|raw }}{% hook 'product:single.description.end' %}</div>
-      <div class="hn-tabs__panel" data-hn-tab-panel="reviews"><salla-comments item-id="{{ product.id }}" type="product"></salla-comments></div>
+      {% if hn_reviews %}<div class="hn-tabs__panel" data-hn-tab-panel="reviews"><salla-comments item-id="{{ product.id }}" type="product"></salla-comments></div>{% endif %}
     </div>
   </div>
 </div>

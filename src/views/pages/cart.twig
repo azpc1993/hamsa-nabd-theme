@@ -47,4 +47,4 @@
   {% else %}<div class="hn-cart-page__empty"><i class="sicon-shopping-cart"></i><p>{{ trans('pages.cart.empty_cart') }}</p><a href="{{ link('/') }}" class="hn-btn hn-btn--navy">{{ trans('common.elements.back_home') }}</a></div>{% endif %}
 </div>
 {% endblock %}
-{% block scripts %}<script defer src="{{ 'app.js'|asset }}"></script>{% endblock %}
+{# app.js is already loaded by layouts/master.twig #}
