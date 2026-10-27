@@ -10,7 +10,8 @@
     "build": "node scripts/build.js",
     "watch": "node scripts/watch.js",
     "preview": "salla theme preview",
-    "qa": "node scripts/qa.js"
+    "qa": "node scripts/qa.js",
+    "postinstall": "node -e \"require('fs').mkdirSync('node_modules',{recursive:true})\""
   },
   "license": "UNLICENSED"
 }
