@@ -256,6 +256,11 @@
     },
     "dark_mode": {
       "toggle": "Toggle dark / light mode"
+    },
+    "before_after": {
+      "before": "Before",
+      "after": "After",
+      "handle": "Before and after comparison handle"
     }
   }
 }

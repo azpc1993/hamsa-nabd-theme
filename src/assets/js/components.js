@@ -160,3 +160,40 @@ document.addEventListener('click', function (e) {
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
 })();
+
+/* ---------- v11 · Before / After slider (mouse, touch, keyboard) ---------- */
+(function () {
+    'use strict';
+    function init(root) {
+        var handle = root.querySelector('[data-hn-ba-handle]');
+        if (!handle) return;
+        var rtl = (document.documentElement.getAttribute('dir') || '') === 'rtl';
+        var pos = parseFloat(handle.getAttribute('aria-valuenow')) || 50;
+        function apply(v) {
+            pos = Math.max(0, Math.min(100, v));
+            root.style.setProperty('--hn-ba-pos', pos + '%');
+            handle.setAttribute('aria-valuenow', String(Math.round(pos)));
+            handle.setAttribute('aria-valuetext', Math.round(pos) + '%');
+        }
+        function fromPointer(x) {
+            var r = root.getBoundingClientRect();
+            var p = ((x - r.left) / r.width) * 100;
+            apply(rtl ? 100 - p : p);
+        }
+        var dragging = false;
+        root.addEventListener('pointerdown', function (e) { dragging = true; try { root.setPointerCapture(e.pointerId); } catch (err) {} fromPointer(e.clientX); });
+        root.addEventListener('pointermove', function (e) { if (dragging) fromPointer(e.clientX); });
+        ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (t) { root.addEventListener(t, function () { dragging = false; }); });
+        handle.addEventListener('keydown', function (e) {
+            var step = e.shiftKey ? 10 : 2, k = e.key;
+            if (k === 'ArrowRight' || k === 'ArrowLeft') { e.preventDefault(); var fwd = (k === 'ArrowRight') !== rtl; apply(pos + (fwd ? step : -step)); }
+            else if (k === 'ArrowUp') { e.preventDefault(); apply(pos + step); }
+            else if (k === 'ArrowDown') { e.preventDefault(); apply(pos - step); }
+            else if (k === 'Home') { e.preventDefault(); apply(0); }
+            else if (k === 'End') { e.preventDefault(); apply(100); }
+        });
+        apply(pos);
+    }
+    function boot() { document.querySelectorAll('[data-hn-ba]').forEach(init); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true }); else boot();
+})();

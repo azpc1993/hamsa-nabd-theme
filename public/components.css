@@ -659,3 +659,17 @@ body.hn-theme{ background:var(--hn-bg) !important; }
 .hn-card-badge--pill .s-product-card-promotion-title{ border-radius:999px; padding:3px 10px; }
 .hn-card-badge--square .s-product-card-promotion-title{ border-radius:3px; padding:3px 8px; }
 .hn-card-badge--ribbon .s-product-card-promotion-title{ border-radius:0; border-end-end-radius:10px; padding:4px 12px; }
+
+/* ===== v11 · قبل وبعد (home.before-after) — الصورة 4:3 بعرض أقصى 960px ===== */
+.hn-ba-block__desc{ text-align:center; color:var(--hn-text-muted,#6d6a63); margin:-6px auto 16px; max-width:640px; padding-inline:16px; }
+.hn-ba{ position:relative; max-width:960px; margin:0 auto; aspect-ratio:4/3; overflow:hidden; border-radius:var(--hn-card-radius,12px); background:var(--hn-surface-2,#f7f4ee); touch-action:pan-y; user-select:none; }
+.hn-ba__img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
+.hn-ba__before{ position:absolute; inset:0; clip-path:inset(0 calc(100% - var(--hn-ba-pos,50%)) 0 0); }
+[dir="rtl"] .hn-ba__before{ clip-path:inset(0 0 0 calc(100% - var(--hn-ba-pos,50%))); }
+.hn-ba__label{ position:absolute; top:12px; z-index:2; background:rgba(11,31,58,.78); color:#fff; font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px; }
+.hn-ba__label--before{ inset-inline-start:12px; }
+.hn-ba__label--after{ inset-inline-end:12px; }
+.hn-ba__handle{ position:absolute; top:0; bottom:0; inset-inline-start:var(--hn-ba-pos,50%); width:44px; margin-inline-start:-22px; z-index:3; cursor:ew-resize; display:flex; align-items:center; justify-content:center; touch-action:none; }
+.hn-ba__handle::before{ content:''; position:absolute; top:0; bottom:0; width:3px; background:var(--hn-accent,#C9A24B); }
+.hn-ba__knob{ position:relative; width:42px; height:42px; border-radius:50%; background:var(--hn-accent,#C9A24B); color:#0B1F3A; font-weight:900; display:grid; place-items:center; box-shadow:0 4px 14px rgba(0,0,0,.25); }
+.hn-ba__handle:focus-visible .hn-ba__knob{ outline:3px solid #fff; outline-offset:2px; }
