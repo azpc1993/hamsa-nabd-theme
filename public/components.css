@@ -717,7 +717,7 @@ body.hn-theme{ font-size:var(--hn-font-size,15px); }
 .hn-spotlight.has-image{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
 .hn-spotlight__media img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:var(--hn-card-radius,12px); display:block; }
 .hn-spotlight__eyebrow{ display:inline-block; color:var(--hn-accent,#C9A24B); font-weight:700; font-size:13px; letter-spacing:.02em; margin-bottom:6px; }
-.hn-spotlight__title{ margin:0 0 8px; font-size:clamp(22px,3vw,32px); }
+.hn-spotlight__title{ color:var(--hn-text,#1a1a1a); margin:0 0 8px; font-size:clamp(22px,3vw,32px); }
 .hn-spotlight__desc{ margin:0 0 16px; color:var(--hn-text-muted,#6d6a63); line-height:1.8; }
 .hn-spotlight__card{ max-width:320px; }
 @media (max-width:767px){ .hn-spotlight.has-image{ grid-template-columns:1fr; } .hn-spotlight{ padding:16px; } .hn-spotlight__card{ max-width:none; } }

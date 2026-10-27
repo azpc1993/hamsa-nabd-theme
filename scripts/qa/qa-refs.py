@@ -38,6 +38,22 @@ for p in twig_files():
         if not os.path.exists(os.path.join(ROOT, 'public', a)):
             fail(f'{rel(p)}: asset {a} missing from public/ (run npm run build)')
 
+REQUIRED_HOOKS = {
+    'pages/product/single.twig': ['product.single.before_product_info', 'product.single.before_customer_reviews',
+                                  'product.single.before_product_recommendations', 'product.single.after_product_recommendations'],
+    'pages/product/index.twig': ['product.index.before_products_group_with_filter', 'product.index.after_products_group_with_filter',
+                                 'product.index.after_testimonials'],
+    'pages/page-single.twig': ['information_page.information_page'],
+}
+for f, hooks in REQUIRED_HOOKS.items():
+    src = read(os.path.join(VIEWS, f))
+    for h in hooks:
+        if f"hook '{h}'" not in src:
+            fail(f'required hook {h} missing from {f}')
+cart = read(os.path.join(VIEWS, 'pages/cart.twig'))
+if 'salla-cart-summary-card' not in cart and 'cart:summary-card' not in cart:
+    fail('cart.twig must keep salla-cart-summary-card')
+
 d = load_manifest()
 reachable = {os.path.normpath(component_twig(c['path'])) for c in d['components']} | referenced
 for feat in d.get('features', []):

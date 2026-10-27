@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- Static simulation of the v11 components' rendered markup (no Salla runtime). Used by qa-preview.js. -->
+<html lang="ar" dir="rtl" data-hn-mode-default="system" data-light-palette="ivory" data-dark-palette="navy">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<script>(function(){var m='system',s=null;try{s=localStorage.getItem('hn-theme-mode');}catch(e){}if(s!=='light'&&s!=='dark'){s=m==='dark'||(m==='system'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',s);})();</script>
+<link rel="stylesheet" href="../../../public/style.css">
+<link rel="stylesheet" href="../../../public/components.css">
+<style>:root{--hn-primary:#0B1F3A;--hn-accent:#C9A24B;--hn-font-heading:'Tajawal',sans-serif;--hn-font-body:'Almarai',sans-serif;--hn-container-width:1440px;--hn-card-radius:12px;--hn-button-radius:10px;--hn-logo-h:42px;--hn-font-size:15px}</style>
+</head>
+<body class="hn-theme rtl hn-header--light hn-menu--center hn-footer--columns hn-gallery--auto hn-filters--start hn-bg--dots hn-card--elevated hn-card-btn--navy hn-card-badge--pill hn-card-badge-c--gold hn-card-zoom hn-card-equal">
+<div class="hn-header">
+  <a href="#" class="hn-header__logo"><span class="hn-header__logo-text">همسة نبض</span></a>
+  <div class="hn-header__actions">
+    <button type="button" class="hn-header__icon-link hn-theme-toggle" data-hn-theme-toggle aria-pressed="false" aria-label="التبديل">
+      <svg class="hn-theme-toggle__dark" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="hn-theme-toggle__light" viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="4.5" fill="currentColor"/></svg>
+    </button>
+  </div>
+</div>
+<main>
+<section class="s-block hn-hero hn-hero--pos-start hn-hero--h-compact hn-hero--overlay"><div class="swiper-slide hn-hero__slide"><picture><img src="img.svg" alt=""></picture><div class="hn-hero__content"><h2 class="hn-hero__title">تشكيلتك الجديدة</h2><a class="hn-btn hn-btn--gold" href="#">تسوق الآن</a></div></div></section>
+<section class="s-block hn-ba-block"><div class="s-block__title"><h2>شاهد الفرق بنفسك</h2></div><p class="hn-ba-block__desc">اسحب المقبض</p>
+ <div class="hn-ba" data-hn-ba style="--hn-ba-pos: 50%"><img class="hn-ba__img" src="img2.svg" alt="بعد"><div class="hn-ba__before"><img class="hn-ba__img" src="img.svg" alt=""></div><span class="hn-ba__label hn-ba__label--before">قبل</span><span class="hn-ba__label hn-ba__label--after">بعد</span>
+ <div class="hn-ba__handle" role="slider" tabindex="0" data-hn-ba-handle aria-label="مقبض" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span class="hn-ba__knob">‹ ›</span></div></div></section>
+<section class="s-block hn-spotlight-block"><div class="hn-spotlight has-image"><div class="hn-spotlight__media"><img src="img.svg" alt=""></div><div class="hn-spotlight__body"><span class="hn-spotlight__eyebrow">اختيارنا لك</span><h2 class="hn-spotlight__title">منتج الموسم</h2><p class="hn-spotlight__desc">قطعة مختارة</p><div class="hn-spotlight__card"><div class="s-product-card-entry"><div class="s-product-card-image"><img src="img2.svg" alt="" style="width:100%"></div><div class="s-product-card-content"><h3 class="s-product-card-content-title">منتج</h3><span class="s-product-card-promotion-title">عرض</span><div class="s-product-card-content-footer"><button>أضف للسلة</button></div></div></div></div></div></div></section>
+<section class="s-block hn-articles-block"><div class="container"><div style="display:flex;gap:12px;overflow-x:auto"><div class="hn-articles__slide"><a class="hn-articles__card" href="#"><img src="img.svg" alt=""><div class="hn-articles__body"><h3 class="hn-articles__title">كيف تختار هديتك</h3><p class="hn-articles__excerpt">دليل</p><span class="hn-articles__more">اقرأ المزيد</span></div></a></div><div class="hn-articles__slide"><a class="hn-articles__card" href="#"><img src="img2.svg" alt=""><div class="hn-articles__body"><h3 class="hn-articles__title">مقالة ثانية</h3></div></a></div></div></div></section>
+<section class="s-block hn-dept-grid-block hn-dept--fit-cover hn-dept--slider"><div class="hn-dept-grid hn-dept-grid--3"><button type="button" class="hn-dept-card" data-hn-open-popup="eid"><img src="img.svg" alt=""><div class="hn-dept-card__overlay"><span class="hn-dept-card__name">الرجال</span></div></button><a class="hn-dept-card" href="#"><img src="img2.svg" alt=""></a><a class="hn-dept-card" href="#"><img src="img.svg" alt=""></a></div></section>
+<section class="s-block hn-icon-cats-block hn-icon-cats--rect hn-icon-cats--scroll"><nav class="hn-icon-cats"><a class="hn-icon-cats__item" href="#"><span class="hn-icon-cats__circle"><img src="img.svg" alt=""></span><span class="hn-icon-cats__label">هدايا</span></a><a class="hn-icon-cats__item" href="#"><span class="hn-icon-cats__circle"><img src="img2.svg" alt=""></span><span class="hn-icon-cats__label">عطور</span></a></nav></section>
+<div class="container hn-category-banner"><img src="img.svg" alt=""></div>
+</main>
+<section class="hn-promo-popup" data-hn-promo-popup data-delay="4" data-popup-id="eid" aria-hidden="true"><div class="hn-promo-popup__overlay" data-hn-promo-close></div><div class="hn-promo-popup__card" role="dialog"><button class="hn-promo-popup__close" type="button" data-hn-promo-close>×</button><div class="hn-promo-popup__body"><h2>عرض العيد</h2></div></div></section>
+<script defer src="../../../public/app.js"></script>
+<script defer src="../../../public/components.js"></script>
+</body></html>
