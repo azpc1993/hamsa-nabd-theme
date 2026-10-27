@@ -129,3 +129,34 @@ document.addEventListener('click', function (e) {
     document.querySelectorAll('.hn-tab-trigger[data-hn-group="' + group + '"]').forEach(function (b) { b.classList.toggle('is-active', b === btn); });
     document.querySelectorAll('.hn-tab-panel[data-hn-group="' + group + '"]').forEach(function (p) { p.classList.toggle('is-active', p.id === btn.getAttribute('data-hn-tab')); });
 });
+
+/* ---------- v11 · Dark / light mode toggle ---------- */
+(function () {
+    'use strict';
+    var KEY = 'hn-theme-mode';
+    var root = document.documentElement;
+    function sync() {
+        var dark = root.getAttribute('data-theme') === 'dark';
+        document.querySelectorAll('[data-hn-theme-toggle]').forEach(function (b) { b.setAttribute('aria-pressed', dark ? 'true' : 'false'); });
+    }
+    function set(mode) {
+        root.setAttribute('data-theme', mode);
+        try { localStorage.setItem(KEY, mode); } catch (e) { /* storage blocked: mode still applies for this page */ }
+        sync();
+    }
+    function init() {
+        sync();
+        document.querySelectorAll('[data-hn-theme-toggle]').forEach(function (b) {
+            b.addEventListener('click', function () { set(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); });
+        });
+        /* follow the OS only while the visitor has not chosen explicitly */
+        var stored = null;
+        try { stored = localStorage.getItem(KEY); } catch (e) {}
+        if (!stored && window.matchMedia && root.getAttribute('data-hn-mode-default') === 'system') {
+            var mq = window.matchMedia('(prefers-color-scheme: dark)');
+            var onChange = function (e) { root.setAttribute('data-theme', e.matches ? 'dark' : 'light'); sync(); };
+            if (mq.addEventListener) mq.addEventListener('change', onChange);
+        }
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
+})();

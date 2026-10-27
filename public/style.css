@@ -3,7 +3,7 @@
 body.hn-theme{
     font-family: var(--hn-font-body);
     background: var(--hn-bg);
-    color: #1a1a1a;
+    color: var(--hn-text, #1a1a1a);
 }
 .hn-theme h1, .hn-theme h2, .hn-theme h3, .hn-theme h4{
     font-family: var(--hn-font-heading);

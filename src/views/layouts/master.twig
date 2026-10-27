@@ -11,10 +11,15 @@
 | cart.items_count      | int    |                                                     |
 #}
 <!DOCTYPE html>
-<html lang="{{ language.code }}" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
+<html lang="{{ language.code }}" data-hn-mode-default="{{ theme.settings.get('hn_dark_mode_default', 'system') }}" data-light-palette="{{ theme.settings.get('hn_light_palette', 'ivory') }}" data-dark-palette="{{ theme.settings.get('hn_dark_palette', 'navy') }}" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# v11: يطبّق الوضع (فاتح/داكن) قبل رسم الصفحة لمنع الوميض الأبيض #}
+    {% set hn_mode_default = theme.settings.get('hn_dark_mode_default', 'system') %}
+    <meta name="color-scheme" content="light dark">
+    <script>(function(){var m='{{ hn_mode_default }}',s=null;try{s=localStorage.getItem('hn-theme-mode');}catch(e){}if(s!=='light'&&s!=='dark'){s=m==='dark'||(m==='system'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',s);})();</script>
 
     {% hook 'head:start' %}
     {% block head %}{% endblock %}

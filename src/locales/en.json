@@ -253,6 +253,9 @@
     "v93": {
       "bundle_title": "Curated bundle",
       "view_bundle": "View bundle"
+    },
+    "dark_mode": {
+      "toggle": "Toggle dark / light mode"
     }
   }
 }
