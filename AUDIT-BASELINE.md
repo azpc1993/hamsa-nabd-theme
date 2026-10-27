@@ -6,22 +6,65 @@ Note: `main` had replaced the Twig theme with a React theme (commit bba7f41). On
 
 ### qa-json
 ```
-python3: can't open file '/tmp/tmp.Smbn6PB0I5/scripts/qa/qa-json.py': [Errno 2] No such file or directory
+twilight.json size: 169489 bytes (165.5 KB)
+settings: 34, components: 30
+WARN  setting announcement_text: pre-existing unverified type/format ('string', 'text') (see BLOCKERS.md)
+FAIL  twilight.json is 169489 bytes (limit 153600)
+FAIL  top-level key not allowed: version
+FAIL  top-level key not allowed: theme_name
+FAIL  top-level key not allowed: repo_url
+FAIL  30 reference(s) to forbidden host cdn.jsdelivr.net
+qa-json: FAIL (5 failures, 1 warnings)
 ```
 
 ### qa-fields
 ```
-python3: can't open file '/tmp/tmp.Smbn6PB0I5/scripts/qa/qa-fields.py': [Errno 2] No such file or directory
+components checked: 30/30, settings read in twig: 32
+FAIL  src/views/components/home/brands.twig: theme.settings.get('is_more_button_enabled') not declared in settings
+FAIL  setting show_product_offers is declared but has no effect (not read in twig/css/js)
+FAIL  setting hn_enable_promo_popup is declared but has no effect (not read in twig/css/js)
+qa-fields: FAIL (3 failures, 0 warnings)
 ```
 
 ### qa-trans
 ```
-python3: can't open file '/tmp/tmp.Smbn6PB0I5/scripts/qa/qa-trans.py': [Errno 2] No such file or directory
+trans() calls: 140, raed keys known: 118, theme keys: 179
+FAIL  src/views/components/home/hn-bundle-tiers.twig: blocks.hamsa.best_value is neither a theme-raed key nor a defined hn.* key
+FAIL  src/views/components/home/hn-category-products.twig: blocks.hamsa.view_all is neither a theme-raed key nor a defined hn.* key
+FAIL  src/views/components/home/hn-countdown-offer.twig: blocks.hamsa.offer_ended is neither a theme-raed key nor a defined hn.* key
+FAIL  src/views/components/home/hn-coupon.twig: blocks.hamsa.off is neither a theme-raed key nor a defined hn.* key
+FAIL  src/views/components/home/hn-coupon.twig: blocks.hamsa.copied is neither a theme-raed key nor a defined hn.* key
+FAIL  src/views/components/home/hn-coupon.twig: blocks.hamsa.copy_code is neither a theme-raed key nor a defined hn.* key
+FAIL  src/views/components/home/hn-coupon.twig: blocks.hamsa.offer_ended is neither a theme-raed key nor a defined hn.* key
+FAIL  src/views/components/home/hn-products-tabs.twig: blocks.hamsa.new_arrivals is neither a theme-raed key nor a defined hn.* key
+FAIL  src/views/components/home/smart-bundle.twig: hn.v93.bundle_title missing from ar.json/en.json
+FAIL  src/views/components/home/smart-bundle.twig: hn.v93.view_bundle missing from ar.json/en.json
+qa-trans: FAIL (10 failures, 24 warnings)
 ```
 
 ### qa-refs
 ```
-python3: can't open file '/tmp/tmp.Smbn6PB0I5/scripts/qa/qa-refs.py': [Errno 2] No such file or directory
+references checked: 27
+WARN  src/views/components/home/brands.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/custom-testimonials.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/enhanced-slider.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/enhanced-square-banners.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/hn-bundle-tiers.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/hn-categories.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/hn-category-products.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/hn-countdown-offer.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/hn-coupon.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/hn-join-channel.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/hn-marquee.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/hn-products-tabs.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/hn-promo-banners.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/hn-story.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/latest-products.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/main-links.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/slider-products-with-header.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/smart-bundle.twig: not registered, not feature-backed and not included (orphan)
+WARN  src/views/components/home/v10-presets.twig: not registered, not feature-backed and not included (orphan)
+qa-refs: PASS (0 failures, 19 warnings)
 ```
 
 ### node --check src/assets/js/**/*.js
