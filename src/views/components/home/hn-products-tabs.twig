@@ -22,7 +22,7 @@
 ]|filter(c => c)|join(';') %}
 {% set tabs = [] %}
 {% if component.show_latest %}
-    {% set tabs = tabs|merge([{'id': 'latest', 'name': trans('blocks.hamsa.new_arrivals'), 'source': 'latest', 'value': '', 'url': ''}]) %}
+    {% set tabs = tabs|merge([{'id': 'latest', 'name': trans('hn.blocks.new_arrivals'), 'source': 'latest', 'value': '', 'url': ''}]) %}
 {% endif %}
 {% for cat in component.categories %}
     {% set tabs = tabs|merge([{'id': cat.id, 'name': cat.name, 'source': 'categories', 'value': '[' ~ cat.id ~ ']', 'url': cat.url}]) %}

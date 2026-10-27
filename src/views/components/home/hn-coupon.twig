@@ -33,7 +33,7 @@
             {% if component.discount and o.badge_shape != 'none' %}
                 <div class="sh-coupon__badge" aria-hidden="true">
                     <span class="sh-coupon__value">{{ component.discount }}</span>
-                    <span class="sh-coupon__off">{{ trans('blocks.hamsa.off') }}</span>
+                    <span class="sh-coupon__off">{{ trans('hn.blocks.off') }}</span>
                 </div>
             {% endif %}
 
@@ -46,16 +46,16 @@
                     <div class="sh-coupon__code" dir="ltr">{{ component.code }}</div>
                     <button type="button" class="sh-btn sh-btn--gold sh-copy"
                             data-sh-copy="{{ component.code|e('html_attr') }}"
-                            data-copied-text="{{ trans('blocks.hamsa.copied')|e('html_attr') }}">
+                            data-copied-text="{{ trans('hn.blocks.copied')|e('html_attr') }}">
                         <i class="sicon-page-alt"></i>
-                        <span>{{ trans('blocks.hamsa.copy_code') }}</span>
+                        <span>{{ trans('hn.blocks.copy_code') }}</span>
                     </button>
                 </div>
 
                 <div class="sh-coupon__footer">
                     {% if component.end_date %}
                         <salla-count-down date="{{ component.end_date|trim }}" size="sm" color="dark" labeled
-                                          end-text="{{ trans('blocks.hamsa.offer_ended') }}"></salla-count-down>
+                                          end-text="{{ trans('hn.blocks.offer_ended') }}"></salla-count-down>
                     {% endif %}
                     {% if component.button_text and component.button_url %}
                         <a href="{{ component.button_url }}" class="sh-coupon__link">{{ component.button_text }} <i class="sicon-arrow-left"></i></a>

@@ -44,7 +44,7 @@
                 {% if category and category.id %}source="categories" source-value="{{ category.id }}"{% else %}source="latest"{% endif %}
                 limit="{{ limit }}"></salla-products-list>
             {% if category and category.url and component.show_all_button is not same as(false) %}
-                <div class="text-center mt-8"><a href="{{ category.url }}" class="sh-btn sh-btn--dark">{{ trans('blocks.hamsa.view_all') }} <i class="sicon-arrow-left"></i></a></div>
+                <div class="text-center mt-8"><a href="{{ category.url }}" class="sh-btn sh-btn--dark">{{ trans('hn.blocks.view_all') }} <i class="sicon-arrow-left"></i></a></div>
             {% endif %}
         {% else %}
         <salla-products-slider

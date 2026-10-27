@@ -74,7 +74,7 @@
     <script defer src="{{ 'components.js'|asset }}"></script>
 
     {# Twilight Components #}
-    <salla-offer-modal data-testid="store-offer-modal"></salla-offer-modal>
+    {% if theme.settings.get('show_product_offers', true) %}<salla-offer-modal data-testid="store-offer-modal"></salla-offer-modal>{% endif %}
     <salla-search data-testid="store-search-modal"></salla-search>
     <salla-login-modal data-testid="store-login-modal"></salla-login-modal>
     {% if store.scope %}

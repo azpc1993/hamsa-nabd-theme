@@ -33,7 +33,7 @@
         <div class="sh-tiers__grid sh-tiers__grid--{{ tiers|length > 4 ? 4 : tiers|length }} {{ component.columns ? 'sh-cols' : '' }}">
             {% for tier in tiers %}
                 <div class="sh-tier sh-reveal {{ tier.highlighted ? 'sh-tier--featured' : '' }}">
-                    {% if tier.highlighted %}<span class="sh-tier__flag">{{ trans('blocks.hamsa.best_value') }}</span>{% endif %}
+                    {% if tier.highlighted %}<span class="sh-tier__flag">{{ trans('hn.blocks.best_value') }}</span>{% endif %}
                     <span class="sh-tier__qty">{{ tier.quantity }}</span>
                     <span class="sh-tier__discount">{{ tier.discount }}</span>
                     {% if tier.note %}<span class="sh-tier__note">{{ tier.note }}</span>{% endif %}

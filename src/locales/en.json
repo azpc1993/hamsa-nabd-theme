@@ -240,6 +240,19 @@
       "compare_title": "Compare products",
       "compare_hint": "Choose 2 to 4 products to compare",
       "compare_action": "View comparison"
+    },
+    "blocks": {
+      "best_value": "Best value",
+      "copied": "Copied",
+      "copy_code": "Copy code",
+      "new_arrivals": "New arrivals",
+      "off": "Off",
+      "offer_ended": "Offer ended",
+      "view_all": "View all"
+    },
+    "v93": {
+      "bundle_title": "Curated bundle",
+      "view_bundle": "View bundle"
     }
   }
 }

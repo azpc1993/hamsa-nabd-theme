@@ -240,6 +240,19 @@
       "compare_title": "قارن المنتجات",
       "compare_hint": "اختر من 2 إلى 4 منتجات للمقارنة",
       "compare_action": "عرض المقارنة"
+    },
+    "blocks": {
+      "best_value": "الأوفر",
+      "copied": "تم النسخ",
+      "copy_code": "انسخ الكود",
+      "new_arrivals": "وصل حديثاً",
+      "off": "خصم",
+      "offer_ended": "انتهى العرض",
+      "view_all": "عرض الكل"
+    },
+    "v93": {
+      "bundle_title": "باقة مختارة",
+      "view_bundle": "عرض الباقة"
     }
   }
 }
