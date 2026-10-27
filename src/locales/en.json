@@ -261,6 +261,9 @@
       "before": "Before",
       "after": "After",
       "handle": "Before and after comparison handle"
+    },
+    "articles": {
+      "read_more": "Read more"
     }
   }
 }

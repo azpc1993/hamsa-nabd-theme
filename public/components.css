@@ -721,3 +721,12 @@ body.hn-theme{ font-size:var(--hn-font-size,15px); }
 .hn-spotlight__desc{ margin:0 0 16px; color:var(--hn-text-muted,#6d6a63); line-height:1.8; }
 .hn-spotlight__card{ max-width:320px; }
 @media (max-width:767px){ .hn-spotlight.has-image{ grid-template-columns:1fr; } .hn-spotlight{ padding:16px; } .hn-spotlight__card{ max-width:none; } }
+
+/* ===== v11 · سلايدر المقالات (home.articles-slider) — الصورة 16:10 ===== */
+.hn-articles__slide{ width:min(320px,80vw); }
+.hn-articles__card{ display:flex; flex-direction:column; height:100%; text-decoration:none; color:inherit; background:var(--hn-surface,#fff); border:1px solid var(--hn-border,#e7e3da); border-radius:var(--hn-card-radius,12px); overflow:hidden; }
+.hn-articles__card img{ width:100%; aspect-ratio:16/10; object-fit:cover; display:block; }
+.hn-articles__body{ padding:14px 16px 16px; display:flex; flex-direction:column; gap:6px; flex:1; }
+.hn-articles__title{ margin:0; font-size:16px; line-height:1.5; }
+.hn-articles__excerpt{ margin:0; color:var(--hn-text-muted,#6d6a63); font-size:13px; line-height:1.7; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.hn-articles__more{ margin-top:auto; color:var(--hn-accent,#C9A24B); font-weight:700; font-size:13px; }
