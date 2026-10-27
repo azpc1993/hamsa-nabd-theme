@@ -730,3 +730,8 @@ body.hn-theme{ font-size:var(--hn-font-size,15px); }
 .hn-articles__title{ margin:0; font-size:16px; line-height:1.5; }
 .hn-articles__excerpt{ margin:0; color:var(--hn-text-muted,#6d6a63); font-size:13px; line-height:1.7; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 .hn-articles__more{ margin-top:auto; color:var(--hn-accent,#C9A24B); font-weight:700; font-size:13px; }
+
+/* ===== v11 · department-grid: سلايدر + بطاقة تفتح نافذة عرض ===== */
+button.hn-dept-card{ border:0; padding:0; width:100%; cursor:pointer; font:inherit; text-align:inherit; background:none; }
+.hn-dept--slider .hn-dept-grid{ display:flex !important; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+.hn-dept--slider .hn-dept-card{ flex:0 0 min(260px,70vw); scroll-snap-align:start; }

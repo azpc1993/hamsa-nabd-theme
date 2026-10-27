@@ -1,6 +1,6 @@
 {% set component = component|default({}) %}
-{% set o = {} %}{% for k in ['image_fit', 'columns'] %}{% set v = attribute(component, k) %}{% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}{% set o = o|merge({(k): v}) %}{% endfor %}
-{% set hn_mod = ['hn-dept--fit-' ~ (o.image_fit ?: 'cover'), o.columns ? 'hn-dept--cols-' ~ o.columns : '']|filter(c => c)|join(' ') %}
+{% set o = {} %}{% for k in ['image_fit', 'columns', 'display'] %}{% set v = attribute(component, k) %}{% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}{% set o = o|merge({(k): v}) %}{% endfor %}
+{% set hn_mod = ['hn-dept--fit-' ~ (o.image_fit ?: 'cover'), o.columns ? 'hn-dept--cols-' ~ o.columns : '', 'hn-dept--' ~ (o.display ?: 'grid')]|filter(c => c)|join(' ') %}
 {#
 | Variable                          | Type    | Description                                    |
 |------------------------------------|---------|------------------------------------------------|
@@ -9,6 +9,9 @@
 | component.departments[].name      | string  |                                                |
 | component.departments[].tag       | ?string | كلمة صغيرة أعلى الصورة مثل "جديد" أو "الأكثر طلباً" |
 | component.departments[].url       | string  |                                                |
+| component.departments[].popup_id  | ?string | يفتح home.promo-popup بنفس popup_id بدل الرابط     |
+| component.display                 | string  | grid (شبكة) أو slider (تمرير أفقي)               |
+| component.image_fit / .columns    | string  |                                                |
 | position                          | int     |                                                |
 #}
 {% set departments = component.departments|default([]) %}
@@ -20,14 +23,15 @@
 
     <div class="hn-dept-grid hn-dept-grid--{{ departments|length }}">
         {% for dept in departments %}
-        <a href="{{ dept.url }}" class="hn-dept-card">
+        {% set hn_pid = dept.popup_id|default('')|trim %}
+        {% if hn_pid %}<button type="button" class="hn-dept-card" data-hn-open-popup="{{ hn_pid }}" aria-haspopup="dialog">{% else %}<a href="{{ dept.url }}" class="hn-dept-card">{% endif %}
             <img src="{{ dept.image }}" alt="{{ dept.name }}" loading="lazy">
             <div class="hn-dept-card__overlay">
                 {% if dept.tag %}<span class="hn-dept-card__tag">{{ dept.tag }}</span>{% endif %}
                 <span class="hn-dept-card__name">{{ dept.name }}</span>
                 <span class="hn-dept-card__cta">{{ trans('common.actions.view_all') }} <i class="sicon-keyboard_arrow_left"></i></span>
             </div>
-        </a>
+        {% if hn_pid %}</button>{% else %}</a>{% endif %}
         {% endfor %}
     </div>
 </section>
