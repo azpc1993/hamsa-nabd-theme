@@ -1,0 +1,14 @@
+{#- One category bubble — used by home.hn-categories (entry: name, url, image, icon; hidden_copy: duplicate in the marquee loop) -#}
+<a href="{{ entry.url }}" class="sh-cats__item" {% if hidden_copy %}tabindex="-1"{% endif %}>
+    <span class="sh-cats__ring">
+        <span class="sh-cats__img">
+            {% if entry.image %}
+                <img src="{{ entry.image }}" alt="{{ hidden_copy ? '' : entry.name|e('html_attr') }}" loading="lazy" decoding="async" width="190" height="190">
+            {% else %}
+                <i class="{{ entry.icon ?: 'sicon-store2' }}"></i>
+            {% endif %}
+            <span class="sh-cats__name sh-cats__name--overlay" aria-hidden="true">{{ entry.name }}</span>
+        </span>
+    </span>
+    <span class="sh-cats__name sh-cats__name--below">{{ entry.name }}</span>
+</a>

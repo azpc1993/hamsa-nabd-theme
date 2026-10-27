@@ -1,0 +1,94 @@
+{# Hamsa Nabd 9.1 — native Twilight product page #}
+{% extends "layouts.master" %}
+{% block content %}
+{% if theme.settings.get('product_show_breadcrumbs', true) %}
+<nav class="breadcrumbs container"><salla-breadcrumb></salla-breadcrumb></nav>
+{% endif %}
+<div class="s-blocks-wrapper s-before-product-info">{% hook 'product.single.before_product_info' %}</div>
+<div class="hn-product-page container" id="product-{{ product.id }}" data-hn-current-product="{{ product.id }}">
+  <div class="hn-product-page__gallery">
+    {% set has_many_images = product.images|length > 1 %}
+    <salla-slider id="details-slider-{{ product.id }}" class="hn-gallery details-slider image-slider" data-images='{{ product.images|json_encode }}' type="thumbs" loop="false" auto-height listen-to-thumbnails-option show-thumbs-controls="false">
+      {% if product.promotion_title %}<div class="hn-badge hn-badge--gold">{{ product.promotion_title }}</div>{% endif %}
+      <salla-button class="hn-gallery__wishlist" data-hn-wishlist="{{ product.id }}" shape="icon" fill="outline" color="light" aria-label="{{ trans('hn.accessibility.wishlist_add') }}"><i class="sicon-heart"></i></salla-button>
+      <div slot="items">
+        {% for image in product.images %}
+          {% if image.three_d_image_url %}
+            <model-viewer class="hn-gallery__media swiper-slide" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt|default(product.name) }}"></model-viewer>
+          {% else %}
+            <a class="swiper-slide hn-gallery__media {{ image.video_url ? 'video-entry' : '' }}" href="{{ image.video_url|default(image.url) }}" data-video-src="{{ image.video_url|default('') }}" data-caption="{{ image.alt|default(product.name) }}">
+              <img src="{{ image.url }}" alt="{{ image.alt|default(product.name) }}" loading="{{ loop.first ? 'eager' : 'lazy' }}" fetchpriority="{{ loop.first ? 'high' : 'auto' }}">
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% if has_many_images %}
+      <div slot="thumbs" data-testid="store-product-thumbnails">
+        {% for image in product.images %}
+          <div class="slide--one-fourth"><img src="{{ image.url }}" loading="{{ loop.index <= 4 ? 'eager' : 'lazy' }}" alt="{{ image.alt|default(product.name) }}"></div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </salla-slider>
+  </div>
+
+  <div class="hn-product-page__info">
+    {% if product.brand and product.brand.name %}<a class="hn-product-brand" href="{{ product.brand.url }}"><img src="{{ product.brand.logo }}" alt="{{ product.brand.name }}">{{ product.brand.name }}</a>{% endif %}
+    {% if product.category %}<a href="{{ product.category.url }}" class="hn-product-page__category">{{ product.category.name }}</a>{% endif %}
+    <h1 class="hn-product-page__title">{{ product.name }}</h1>
+    {% if product.subtitle %}<p class="hn-product-page__subtitle">{{ product.subtitle }}</p>{% endif %}
+    {% set hn_reviews = theme.settings.get('product_show_reviews', true) %}
+    {% if hn_reviews and product.rating %}<div class="hn-rating-wrap"><salla-rating-stars value="{{ product.rating.stars }}" reviews="{{ product.rating.count }}" readonly></salla-rating-stars><span>({{ product.rating.count }})</span></div>{% endif %}
+    {% if hn_reviews %}<salla-reviews-summary item-id="{{ product.id }}" class="hn-product-reviews-summary"></salla-reviews-summary>{% endif %}
+    {% if product.is_taxable %}<small class="hn-tax-note">{{ trans('common.elements.tax_included') }}</small>{% endif %}
+
+    <div class="hn-product-page__price">
+      {% if product.is_on_sale %}<span class="hn-price hn-price--sale">{{ product.sale_price|money }}</span><span class="hn-price hn-price--old">{{ product.regular_price|money }}</span>{% if product.discount_percentage %}<span class="hn-badge hn-badge--sale-inline">{{ product.discount_percentage }}</span>{% endif %}
+      {% else %}<span class="hn-price">{{ product.starting_price ? product.starting_price|money : product.price|money }}</span>{% endif %}
+    </div>
+
+    {% if product.sold_quantity or product.can_show_remained_quantity %}
+    <div class="hn-stock-summary">{% if product.sold_quantity %}<span><i class="sicon-fire"></i>{{ trans('hn.product.sold') }} {{ product.sold_quantity }}</span>{% endif %}{% if product.can_show_remained_quantity %}<span><i class="sicon-box-bankers"></i>{{ trans('hn.product.remaining') }} {{ product.quantity }}</span>{% endif %}</div>
+    {% endif %}
+
+    {% if product.sku or product.barcode %}<div class="hn-product-meta-line">{% if product.sku %}<span>{{ trans('hn.product.sku') }}: {{ product.sku }}</span>{% endif %}{% if product.barcode %}<span>{{ trans('hn.product.barcode') }}: {{ product.barcode }}</span>{% endif %}</div>{% endif %}
+
+    {% set hn_excerpt = product.description|default('')|striptags|trim %}{% if hn_excerpt %}<p class="hn-product-page__intro">{{ hn_excerpt|length > 220 ? hn_excerpt|slice(0, 220) ~ '…' : hn_excerpt }}</p>{% endif %}
+
+    {% if theme.settings.get('product_show_installments', true) and product.is_available %}<div class="hn-product-service-card"><salla-installment price="{{ product.base_currency_price|default(product.price) }}"></salla-installment></div>{% endif %}
+    {% if product.has_metadata and theme.settings.get('product_show_metadata', true) %}<div class="hn-product-service-card"><salla-metadata entity="product" entity-id="{{ product.id }}"></salla-metadata></div>{% endif %}
+
+    <salla-add-product-button-wrapper>
+      <form id="hn-product-form" class="hn-product-form" data-hn-product-form>
+        <input type="hidden" name="id" value="{{ product.id }}">
+        {% hook 'product:single.form.start' %}
+        {% include 'pages.partials.product.options' %}
+        {% if not product.is_hidden_quantity and product.is_available %}<div class="hn-product-page__option"><label>{{ trans('pages.products.quantity') }}</label><salla-quantity-input max="{{ product.max_quantity }}" value="1" name="quantity" aria-label="{{ trans('pages.products.quantity') }}"></salla-quantity-input></div>{% endif %}
+        {% hook 'product:single.form.end' %}
+        <salla-add-product-button data-testid="store-product-add-to-cart" data-hn-main-cta product-id="{{ product.id }}" product-status="{{ product.status }}" product-type="{{ product.type }}" amount="{{ product.base_currency_price|default(product.price) }}" {% if product.is_require_shipping %}required-shipping{% endif %} {% if product.can_quick_buy and theme.settings.get('product_show_quick_buy', true) %}quick-buy{% endif %} support-sticky-bar channels="{{ product.notify_availability.channels|default([])|join(',') }}" {% if product.notify_availability and product.notify_availability.subscribed %}is-subscribed{% endif %} {% if product.notify_availability and product.notify_availability.subscribed_options %}subscribed-options='{{ product.notify_availability.subscribed_options|json_encode }}'{% endif %}>{{ product.add_to_cart_label }}</salla-add-product-button>
+      </form>
+    </salla-add-product-button-wrapper>
+
+    {% if product.is_out_of_stock and product.notify_availability %}<salla-product-availability product-id="{{ product.id }}" channels="{{ product.notify_availability.channels|default([])|join(',') }}" {% if product.notify_availability.subscribed %}is-subscribed{% endif %}></salla-product-availability>{% endif %}
+
+    <div class="hn-product-actions">
+      {% if theme.settings.get('product_show_quick_buy', true) and product.can_quick_buy and product.is_available %}<salla-quick-buy product-id="{{ product.id }}" amount="{{ product.base_currency_price|default(product.price) }}" currency="{{ product.currency|default('SAR') }}" type="buy" is-require-shipping="{{ product.is_require_shipping ? 'true' : 'false' }}"></salla-quick-buy>{% endif %}
+      {% if theme.settings.get('product_show_gifting', true) and product.is_giftable %}<salla-gifting product-id="{{ product.id }}" widget-title="{{ trans('hn.product.gift') }}" widget-subtitle="{{ product.name }}"></salla-gifting>{% endif %}
+      {% if theme.settings.get('product_show_social_share', true) %}<salla-social-share url="{{ product.url }}" url-name="{{ product.name }}" platforms="whatsapp,email,copy_link"></salla-social-share>{% endif %}
+    </div>
+
+    {% if theme.settings.get('product_show_quick_order', true) %}<salla-quick-order class="hn-product-service-card"></salla-quick-order>{% endif %}
+    {% if theme.settings.get('product_show_offer', true) %}<div class="hn-product-service-card"><salla-offer data-testid="store-product-offer"></salla-offer></div>{% endif %}
+
+    <div class="s-blocks-wrapper s-before-reviews">{% hook 'product.single.before_customer_reviews' %}</div>
+    <div class="hn-product-page__tabs" data-hn-tabs>
+      <div class="hn-tabs__nav" role="tablist"><button type="button" class="is-active" data-hn-tab="description" role="tab">{{ trans('common.elements.description') }}</button>{% if hn_reviews %}<button type="button" data-hn-tab="reviews" role="tab">{{ trans('common.elements.reviews') }}</button>{% endif %}</div>
+      <div class="hn-tabs__panel is-active" data-hn-tab-panel="description">{% hook 'product:single.description.start' %}{{ product.description|default('')|raw }}{% hook 'product:single.description.end' %}</div>
+      {% if hn_reviews %}<div class="hn-tabs__panel" data-hn-tab-panel="reviews"><salla-comments item-id="{{ product.id }}" type="product"></salla-comments></div>{% endif %}
+    </div>
+  </div>
+</div>
+{% if theme.settings.get('show_sticky_cart', true) %}{% include 'components.product.sticky-add-to-cart' %}{% endif %}
+<div class="s-blocks-wrapper s-before-related">{% hook 'product.single.before_product_recommendations' %}</div><div class="container hn-related-products"><salla-products-slider source="related" source-value="{{ product.id }}" block-title="{{ trans('pages.products.similar_products') }}" display-all-url></salla-products-slider></div><div class="s-blocks-wrapper s-after-related">{% hook 'product.single.after_product_recommendations' %}</div>
+{% endblock %}
+{% block scripts %}<script defer src="{{ 'product.js'|asset }}"></script>{% if product.has_3d_image %}<script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>{% endif %}{% endblock %}

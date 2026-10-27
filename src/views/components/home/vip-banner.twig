@@ -1,0 +1,23 @@
+{% set component = component|default({}) %}
+{#
+| Variable                | Type    | Description                                  |
+|--------------------------|---------|------------------------------------------------|
+| component.title          | ?string |                                                |
+| component.subtitle       | ?string |                                                |
+| component.button_text    | ?string |                                                |
+| component.url            | string  |                                                |
+| component.background     | ?string | صورة خلفية اختيارية                            |
+| position                 | int     |                                                |
+#}
+<section component-id="{{ componentId }}" class="s-block hn-vip-banner" {% if component.background %}style="background-image:url('{{ component.background }}')"{% endif %}>
+    <div class="hn-vip-banner__content">
+        <span class="hn-badge hn-badge--gold">VIP</span>
+        <h2>{{ component.title|default(trans('hn.components.vip_title')) }}</h2>
+        {% if component.subtitle %}<p>{{ component.subtitle }}</p>{% endif %}
+        {% if component.url %}
+        <a href="{{ component.url }}" class="hn-btn hn-btn--gold">
+            {{ component.button_text|default(trans('hn.components.vip_button')) }}
+        </a>
+        {% endif %}
+    </div>
+</section>

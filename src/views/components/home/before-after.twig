@@ -1,0 +1,32 @@
+{#
+| Variable                 | Type    | Description                                          |
+|--------------------------|---------|------------------------------------------------------|
+| component.title          | ?string | عنوان القسم                                           |
+| component.description    | ?string | وصف قصير أسفل العنوان                                  |
+| component.before_image   | string  | صورة "قبل" (1200×900 بكسل، نسبة 4:3)                   |
+| component.after_image    | string  | صورة "بعد" بنفس المقاس                                 |
+| component.before_label   | ?string | ملصق صورة قبل                                          |
+| component.after_label    | ?string | ملصق صورة بعد                                          |
+| component.start_position | ?int    | موضع المقبض الابتدائي بالنسبة المئوية (0–100)           |
+| position                 | int     | ترتيب العنصر في الصفحة، يبدأ من صفر                     |
+#}
+{% set start = component.start_position|default(50) %}
+{% set start = start < 0 ? 0 : (start > 100 ? 100 : start) %}
+{% if component.before_image and component.after_image %}
+<section component-id="{{ componentId }}" class="s-block hn-ba-block" data-testid="hn-before-after">
+    {% if component.title %}<div class="s-block__title"><h2>{{ component.title }}</h2></div>{% endif %}
+    {% if component.description %}<p class="hn-ba-block__desc">{{ component.description }}</p>{% endif %}
+    <div class="hn-ba" data-hn-ba style="--hn-ba-pos: {{ start }}%">
+        <img class="hn-ba__img" src="{{ component.after_image }}" alt="{{ component.after_label|default(trans('hn.before_after.after')) }}" loading="lazy" width="1200" height="900">
+        <div class="hn-ba__before" aria-hidden="true">
+            <img class="hn-ba__img" src="{{ component.before_image }}" alt="" loading="lazy" width="1200" height="900">
+        </div>
+        <span class="hn-ba__label hn-ba__label--before">{{ component.before_label|default(trans('hn.before_after.before')) }}</span>
+        <span class="hn-ba__label hn-ba__label--after">{{ component.after_label|default(trans('hn.before_after.after')) }}</span>
+        <div class="hn-ba__handle" role="slider" tabindex="0" data-hn-ba-handle
+             aria-label="{{ trans('hn.before_after.handle') }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ start }}" aria-valuetext="{{ start }}%">
+            <span class="hn-ba__knob" aria-hidden="true">‹ ›</span>
+        </div>
+    </div>
+</section>
+{% endif %}

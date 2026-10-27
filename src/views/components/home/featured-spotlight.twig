@@ -1,0 +1,28 @@
+{#
+| Variable              | Type                  | Description                                                  |
+|-----------------------|-----------------------|--------------------------------------------------------------|
+| component.products    | Product[] *Collection | منتج واحد (حقل products من سلة، نفس نوع slider-products-with-header) |
+| component.eyebrow     | ?string               | كلمة صغيرة أعلى العنوان                                        |
+| component.title       | ?string               |                                                              |
+| component.description | ?string               |                                                              |
+| component.image       | ?string               | صورة جانبية للمنتج (900×900 بكسل، 1:1)                          |
+| position              | int                   | ترتيب العنصر في الصفحة، يبدأ من صفر                             |
+#}
+{% set product = component.products|default([])|first %}
+{% if product %}
+<section component-id="{{ componentId }}" class="s-block hn-spotlight-block" data-testid="hn-featured-spotlight">
+    <div class="hn-spotlight{{ component.image ? ' has-image' : '' }}">
+        {% if component.image %}
+        <div class="hn-spotlight__media"><img src="{{ component.image }}" alt="{{ component.title|default(product.name) }}" loading="lazy" width="900" height="900"></div>
+        {% endif %}
+        <div class="hn-spotlight__body">
+            {% if component.eyebrow %}<span class="hn-spotlight__eyebrow">{{ component.eyebrow }}</span>{% endif %}
+            {% if component.title %}<h2 class="hn-spotlight__title">{{ component.title }}</h2>{% endif %}
+            {% if component.description %}<p class="hn-spotlight__desc">{{ component.description }}</p>{% endif %}
+            <div class="hn-spotlight__card">
+                <salla-product-card shadow-on-hover product="{{ product }}"></salla-product-card>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

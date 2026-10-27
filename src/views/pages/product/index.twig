@@ -1,0 +1,117 @@
+{#
+| Variable                   | Type        | Description                                   |
+|----------------------------|-------------|-----------------------------------------------|
+| page.title                 | string      | *could be html                                |
+| page.slug                  | string      | ex: "cat.show"                                |
+| page.id                    | int         |                                               |
+| category.name / .url       | ?Category   |                                               |
+| category.sub_categories    | ?Category[] | كل عنصر Category: .name .url .image           |
+| category.image             | ?string     | صورة التصنيف من لوحة سلة (بنر أعلى الصفحة)       |
+| filters                    | bool        | هل الفلاتر مفعّلة لهذه الصفحة                   |
+| sort_options[]             | SortList[]  | .id .name .is_selected                        |
+| search_query               | ?string     |                                               |
+
+ملاحظة معمارية مهمة:
+المنتجات والفلاتر في صفحة التصنيف تُجلب من سلة عبر مكوّنَي الويب
+<salla-products-list> و <salla-filters> (تحميل تدريجي + فلترة حيّة)،
+ولا تتوفّر كمصفوفة يمكن المرور عليها بـ for-loop في القالب.
+لذلك نتحكّم في شكلها عبر CSS/الأنماط بدل بناء شبكة منتجات يدوية.
+#}
+{% extends "layouts.master" %}
+{% block content %}
+
+    {% if theme.settings.get('product_index_show_breadcrumbs', true) %}
+    <nav class="breadcrumbs container"><salla-breadcrumb></salla-breadcrumb></nav>
+    {% endif %}
+
+    {#
+        Hook: product.index.before_products_group_with_filter
+        Fires before the products grid and filter sidebar wrapper.
+        Use this hook to inject content above the products listing area.
+    #}
+    <div class="s-blocks-wrapper s-before-products-list">{% hook 'product.index.before_products_group_with_filter' %}</div>
+
+    {% if theme.settings.get('hn_category_banner', true) and category and category.image %}
+    <div class="container hn-category-banner">
+        <img src="{{ category.image }}" alt="{{ category.name }}" width="1440" height="360" fetchpriority="high">
+    </div>
+    {% endif %}
+
+    <div class="hn-category-page container">
+
+        {% if filters %}
+        <button class="btn--close-sm close-filters sicon-cancel hidden"></button>
+        <salla-filters id="filters-menu" class="hn-filters"></salla-filters>
+        {% endif %}
+
+        <div class="hn-category-page__main">
+            <div class="hn-category-toolbar">
+                <h1 class="hn-category-toolbar__title">{{ page.title }}</h1>
+
+                <div class="hn-category-toolbar__right">
+                    {% if filters %}
+                    <a href="#filters-menu" class="hn-category-toolbar__filters-btn filters-trigger">
+                        <i class="sicon-filter"></i> تصفية
+                    </a>
+                    {% endif %}
+
+                    {% if theme.settings.get('hn_listing_show_sort', true) and sort_options|length %}
+                    <select id="product-filter" class="hn-select">
+                        {% for sort in sort_options %}
+                        <option value="{{ sort.id }}" {{ sort.is_selected ? 'selected' : '' }}>{{ sort.name }}</option>
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if theme.settings.get('hn_listing_show_subcategories', true) and category.sub_categories|length %}
+            <nav class="hn-subcats">
+                {% for sub in category.sub_categories %}
+                <a href="{{ sub.url }}" class="hn-subcats__chip{{ theme.settings.get('hn_subcat_images', true) and sub.image ? ' has-image' : '' }}">{% if theme.settings.get('hn_subcat_images', true) and sub.image %}<img src="{{ sub.image }}" alt="" width="56" height="56" loading="lazy">{% endif %}<span>{{ sub.name }}</span></a>
+                {% endfor %}
+            </nav>
+            {% endif %}
+
+            {% hook 'product:index.items.start' %}
+
+            {% set sort_list = sort_options|default([]) %}
+            {% set first_sort = sort_list|first %}
+            {% set has_selected_sort = sort_list|filter(sort => sort.is_selected)|length %}
+            {% set fallback_sort = (sort_list|length and not has_selected_sort and first_sort.id != 'ourSuggest') ? first_sort.id : '' %}
+
+            <salla-products-list
+                class="hn-products-list"
+                source="{{ page.slug }}"
+                source-value="{{ page.id }}"
+                sort-by="{{ fallback_sort }}"
+                {{ filters ? 'filters-Results' : '' }}>
+            </salla-products-list>
+
+            {% hook 'product:index.items.end' %}
+        </div>
+    </div>
+
+    {#
+        Hook: product.index.after_products_group_with_filter
+        Fires after the products grid and filter sidebar wrapper.
+        Use this hook to inject content below the products listing area.
+    #}
+    <div class="s-blocks-wrapper s-after-products-list">{% hook 'product.index.after_products_group_with_filter' %}</div>
+
+    {% if store.settings.category.testimonial_enabled %}
+        {% component 'home.testimonials' %}
+    {% endif %}
+
+    {#
+        Hook: product.index.after_testimonials
+        Fires after the testimonials (store reviews) section.
+        Use this hook to inject content below the testimonials area.
+    #}
+    <div class="s-blocks-wrapper s-after-testimonials">{% hook 'product.index.after_testimonials' %}</div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script defer src="{{ 'category.js' | asset }}"></script>
+{% endblock %}

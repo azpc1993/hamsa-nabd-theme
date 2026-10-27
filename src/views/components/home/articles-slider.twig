@@ -1,0 +1,40 @@
+{#
+لا يوفّر Twilight قائمة مقالات المدونة لمكوّنات الصفحة الرئيسية (المقالات متاحة فقط في
+pages/blog/*). لذلك يختار التاجر المقالات يدوياً: صورة + عنوان + مقتطف + رابط من نوع
+"مقالة" (blog_articles) عبر حقل variable-list نفسه المستخدم في theme-raed.
+
+| Variable                       | Type    | Description                                  |
+|--------------------------------|---------|----------------------------------------------|
+| component.title                | ?string | عنوان القسم                                   |
+| component.articles[].image     | string  | صورة المقالة (800×500 بكسل، 16:10)             |
+| component.articles[].title     | string  |                                              |
+| component.articles[].excerpt   | ?string | مقتطف قصير                                    |
+| component.articles[].url       | ?string | رابط المقالة                                   |
+| component.display_all_url      | ?string | رابط "كل المقالات" (المدونة)                    |
+| position                       | int     | ترتيب العنصر في الصفحة، يبدأ من صفر             |
+#}
+{% set articles = component.articles|default([]) %}
+{% if articles|length %}
+<section component-id="{{ componentId }}" class="s-block hn-articles-block" data-testid="hn-articles-slider">
+    <div class="container">
+        <salla-slider type="carousel" controls-outer {% if component.title %}block-title="{{ component.title }}"{% endif %}
+            {% if component.display_all_url and component.display_all_url != '#' %}display-all-url="{{ component.display_all_url }}"{% endif %}
+            id="hn-articles-{{ position }}">
+            <div slot="items">
+                {% for article in articles %}
+                <div class="swiper-slide hn-articles__slide">
+                    <a href="{{ article.url|default('#') }}" class="hn-articles__card">
+                        {% if article.image %}<img src="{{ article.image }}" alt="{{ article.title }}" loading="lazy" width="800" height="500">{% endif %}
+                        <div class="hn-articles__body">
+                            <h3 class="hn-articles__title">{{ article.title }}</h3>
+                            {% if article.excerpt %}<p class="hn-articles__excerpt">{{ article.excerpt }}</p>{% endif %}
+                            <span class="hn-articles__more">{{ trans('hn.articles.read_more') }}</span>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </salla-slider>
+    </div>
+</section>
+{% endif %}

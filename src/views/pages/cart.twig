@@ -1,0 +1,50 @@
+{% extends "layouts.master" %}
+{% block content %}
+<div class="container hn-cart-page">
+  <nav class="breadcrumbs"><salla-breadcrumb></salla-breadcrumb></nav>
+  <h1 class="hn-cart-page__title">{{ trans('blocks.header.cart') }}</h1>
+  <salla-conditional-offer data-testid="store-cart-conditional-offer"></salla-conditional-offer>
+  {% if cart.items|length %}
+  <div class="hn-cart-page__grid">
+    <div class="hn-cart-page__items">
+      {% hook 'cart:items.start' %}
+      {% for item in cart.items %}
+      <form data-hn-cart-form id="item-{{ item.id }}">
+        <input type="hidden" name="id" value="{{ item.id }}">
+        <section data-testid="store-cart-item-{{ item.id }}" class="hn-cart-line hn-cart-line--page {{ item.is_available ? '' : 'is-unavailable' }}">
+          <a href="{{ item.url }}"><img src="{{ item.product_image }}" alt="{{ item.product_name }}" loading="{{ loop.first ? 'eager' : 'lazy' }}"></a>
+          <div class="hn-cart-line__body"><a href="{{ item.url }}" class="hn-cart-line__name">{{ item.product_name }}</a>{% if item.offer and item.offer.names %}<span class="hn-badge hn-badge--gold-outline">{{ item.offer.names }}</span>{% endif %}{% if not item.is_available %}<span class="hn-cart-line__unavailable">{{ trans('pages.cart.out_of_stock') }}</span>{% endif %}<salla-cart-item-offers quantity="{{ item.quantity }}" item-id="{{ item.id }}" product-price="{{ item.product_price }}" offers='{{ item.detailed_offers|json_encode }}'></salla-cart-item-offers>{% if item.can_add_note %}<textarea class="hn-cart-line__note" name="notes" placeholder="{{ trans('hn.cart.add_note') }}">{{ item.notes }}</textarea>{% endif %}{% if item.can_upload_file %}<salla-file-upload item-id="{{ item.id }}"></salla-file-upload>{% endif %}</div>
+          {% if not item.is_hidden_quantity %}<salla-quantity-input cart-item-id="{{ item.id }}" max="{{ item.max_quantity|default(99) }}" value="{{ item.quantity }}" name="quantity" aria-label="{{ trans('pages.products.quantity') }}"></salla-quantity-input>{% else %}<span class="hn-cart-line__qty-static">{{ item.quantity }}</span>{% endif %}
+          <div class="hn-cart-line__price">{{ item.total|money }}</div>
+          <salla-button class="hn-cart-line__remove" type="button" shape="icon" fill="none" color="danger" data-hn-cart-delete="{{ item.id }}" aria-label="{{ trans('hn.accessibility.delete') }}"><i class="sicon-trash"></i></salla-button>
+        </section>
+      </form>
+      {% endfor %}
+      {% if cart.options|length %}{% for product_option in cart.options %}<form data-hn-cart-form id="item-{{ product_option.id }}"><input type="hidden" name="id" value="{{ product_option.id }}"><input type="hidden" name="quantity" value="{{ product_option.quantity }}">{% include 'pages.partials.product.options' with {product: product_option} %}</form>{% endfor %}{% endif %}
+      <salla-offer data-testid="store-cart-offer"></salla-offer>
+      {% hook 'cart:items.end' %}
+      <a href="{{ link('/') }}" class="hn-cart-page__continue">{{ trans('common.actions.continue_shopping') }}</a>
+    </div>
+    {% hook 'cart:summary.start' %}
+    <aside class="hn-cart-page__summary">
+      {% if cart.free_shipping_bar %}<div class="hn-cart-page__shipping-bar"><div class="hn-cart-drawer__shipping-track"><div class="hn-cart-drawer__shipping-fill" style="width:{{ cart.free_shipping_bar.percent }}%"></div></div><p>{% if cart.free_shipping_bar.has_free_shipping %}{{ trans('hn.cart.free_shipping_achieved') }}{% else %}{{ trans('hn.cart.free_shipping_remaining', {amount: cart.free_shipping_bar.remaining|money}) }}{% endif %}</p></div>{% endif %}
+      {% if loyalty %}<div class="hn-cart-loyalty"><salla-loyalty customer-points="{{ user.loyalty_points }}"></salla-loyalty><salla-loyalty-panel prize-points="{{ loyalty.prize.points }}" prize-title="{{ loyalty.prize.title }}"></salla-loyalty-panel></div>{% endif %}
+      {% if gift.enabled %}<salla-gifting id="salla-gifting" widget-title="{{ trans('pages.cart.gift_widget_title') }}" widget-subtitle="{{ gift.text }}" {{ gift.type }}-products vertical></salla-gifting>{% endif %}
+      {% if store.settings.cart.apply_coupon_enabled %}
+      {% hook 'cart:coupon.start' %}
+      <salla-cart-coupons data-testid="store-cart-coupons"></salla-cart-coupons>
+      {% hook 'cart:coupon.end' %}
+      {% endif %}
+      {% hook 'cart:summary-card.start' %}
+      <salla-cart-summary-card data-testid="store-cart-summary"></salla-cart-summary-card>
+      {% hook 'cart:summary-card.end' %}
+      <salla-tiered-offer data-testid="store-cart-tiered-offer"></salla-tiered-offer>
+      {% if cart.taxes and cart.taxes.included %}<p class="hn-tax-note">{{ trans('common.elements.tax_included') }}</p>{% elseif cart.is_tax_included %}<p class="hn-tax-note">{{ trans('common.elements.tax_included') }}</p>{% endif %}
+      <salla-button class="hn-btn hn-btn--navy hn-btn--block" data-hn-cart-submit type="button">{{ trans('common.actions.checkout') }}</salla-button>
+    </aside>
+    {% hook 'cart:summary.end' %}
+  </div>
+  {% else %}<div class="hn-cart-page__empty"><i class="sicon-shopping-cart"></i><p>{{ trans('pages.cart.empty_cart') }}</p><a href="{{ link('/') }}" class="hn-btn hn-btn--navy">{{ trans('common.elements.back_home') }}</a></div>{% endif %}
+</div>
+{% endblock %}
+{# app.js is already loaded by layouts/master.twig #}

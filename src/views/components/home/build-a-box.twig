@@ -1,0 +1,39 @@
+{% set component = component|default({}) %}
+{#
+| Variable                     | Type    | Description                                  |
+|-------------------------------|---------|------------------------------------------------|
+| component.title              | ?string |                                                |
+| component.subtitle           | ?string |                                                |
+| component.steps[].icon        | string  |                                                |
+| component.steps[].label       | string  | مثال: "اختر الصندوق"، "اختر المحتوى"، "أضف بطاقة تهنئة" |
+| component.image              | string  | صورة تعريفية لصندوق الهدايا                     |
+| component.url                | string  | رابط لصفحة/تصنيف صناديق الهدايا                 |
+| component.button_text        | ?string |                                                |
+| position                     | int     |                                                |
+#}
+{% if component.steps|length %}
+<section component-id="{{ componentId }}" class="s-block hn-build-box">
+    <div class="hn-build-box__media">
+        <img src="{{ component.image }}" alt="{{ component.title }}" loading="lazy">
+    </div>
+    <div class="hn-build-box__body">
+        <span class="hn-badge hn-badge--gold">{{ trans('common.actions.exclusive') }}</span>
+        <h2>{{ component.title|default(trans('hn.components.box_title')) }}</h2>
+        {% if component.subtitle %}<p>{{ component.subtitle }}</p>{% endif %}
+
+        <ol class="hn-build-box__steps">
+            {% for step in component.steps %}
+            <li>
+                <span class="hn-build-box__step-num">{{ loop.index }}</span>
+                {% if step.icon %}<img src="{{ step.icon }}" alt="">{% endif %}
+                <span>{{ step.label }}</span>
+            </li>
+            {% endfor %}
+        </ol>
+
+        <a href="{{ component.url }}" class="hn-btn hn-btn--navy">
+            {{ component.button_text|default(trans('hn.components.box_button')) }}
+        </a>
+    </div>
+</section>
+{% endif %}

@@ -1,0 +1,15 @@
+{# مكوّن سلة الأساسي: "صور مربعة" (feature: component-square-photos) — title, items[].image.url, items[].url, items[].text #}
+{% set hn_items = items|default([]) %}
+{% if hn_items|length %}
+<section component-id="{{ componentId }}" class="s-block hn-builtin hn-square-photos container">
+  {% if title|default('') %}<div class="hn-block-title"><h2>{{ title }}</h2></div>{% endif %}
+  <div class="hn-square-photos__grid hn-square-photos__grid--{{ hn_items|length > 3 ? 4 : hn_items|length }}">
+    {% for item in hn_items %}
+      <a class="hn-square-photos__item" href="{{ item.url|default('#') }}" {% if item.link_type|default('') == 'external_link' %}target="_blank" rel="noopener"{% endif %}>
+        <img src="{{ item.image.url|default('') }}" loading="lazy" alt="{{ item.text|default(store.name) }}">
+        {% if item.text|default('') %}<span>{{ item.text }}</span>{% endif %}
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

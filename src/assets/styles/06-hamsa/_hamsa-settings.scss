@@ -1,0 +1,98 @@
+/* ==========================================================================
+   Hamsa Nabd — store-wide settings (twilight.json › settings)
+   ========================================================================== */
+
+/* fonts: body font (hn_body_font) */
+.hn-body-font {
+  font-family: var(--font-body);
+
+  .font-primary,
+  input, select, textarea, button { font-family: var(--font-body); }
+}
+
+/* content width (hn_home_container_width) */
+.hn-container-custom .container {
+  @screen xl { max-width: var(--hn-container); }
+}
+
+/* buttons radius (hn_button_radius) */
+.sh-btn,
+.hn-btn,
+.s-button-element { border-radius: var(--hn-button-radius) !important; }
+
+/* card shadows (hn_card_shadow) */
+.hn-shadow--none .s-product-card-entry {
+  box-shadow: none !important;
+
+  &:hover { box-shadow: none !important; }
+}
+
+.hn-shadow--strong .s-product-card-entry {
+  box-shadow: 0 18px 40px -22px rgba(7, 27, 45, .45);
+
+  &:hover { box-shadow: 0 26px 50px -22px rgba(7, 27, 45, .55); }
+}
+
+/* product images (hn_product_image_fit) */
+.hn-fit--contain .s-product-card-image img,
+.hn-fit--contain .s-product-card-image-cover {
+  object-fit: contain !important;
+  background: #fff;
+}
+
+/* reduce motion (hn_reduce_motion) */
+.hn-reduce-motion *,
+.hn-reduce-motion *::before,
+.hn-reduce-motion *::after {
+  animation-duration: .001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important;
+  scroll-behavior: auto !important;
+}
+
+.hn-reduce-motion .sh-reveal { opacity: 1; transform: none; }
+.hn-reduce-motion .sh-loop { overflow-x: auto; }
+
+/* header: wishlist icon (hn_show_header_wishlist) */
+.hn-header-icon {
+  @apply inline-flex items-center justify-center w-10 h-10 rounded-full text-xl transition;
+  color: inherit;
+
+  &:hover { color: var(--sh-gold); }
+}
+
+.sh-dark-header .hn-header-icon { color: #fff; }
+
+/* trust strip under the header (show_trust_badges) */
+.hn-trust-strip {
+  background: var(--sh-ivory);
+  border-bottom: 1px solid rgba(201, 162, 75, .25);
+
+  &__inner {
+    @apply flex items-center justify-center gap-4 md:gap-10 py-2 text-xs md:text-sm font-bold overflow-x-auto whitespace-nowrap;
+    color: var(--sh-ink);
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  span { @apply inline-flex items-center gap-2; }
+  i { color: var(--sh-gold-dark); }
+}
+
+/* listing: sub-category chips (hn_listing_show_subcategories) */
+.hn-subcats {
+  @apply flex gap-2 overflow-x-auto pb-3 mb-4;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+
+  &__chip {
+    @apply shrink-0 px-4 py-2 text-sm font-bold whitespace-nowrap transition;
+    border: 1px solid rgba(7, 27, 45, .15);
+    border-radius: 999px;
+    color: var(--sh-ink);
+
+    &:hover { border-color: var(--sh-gold); background: var(--sh-ivory); }
+  }
+}

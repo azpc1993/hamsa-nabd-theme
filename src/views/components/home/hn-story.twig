@@ -1,0 +1,47 @@
+{#
+| Variable                 | Type     | Description                                                   |
+|--------------------------|----------|---------------------------------------------------------------|
+| component                | object   | Merchant settings for fields from twilight.json `components`  |
+| component.image          | string   | Side image (900×1100)                                         |
+| component.eyebrow        | ?string  |                                                               |
+| component.title          | ?string  |                                                               |
+| component.description    | ?string  |                                                               |
+| component.button_text    | ?string  |                                                               |
+| component.button_url     | ?string  |                                                               |
+| component.reverse        | bool     | Put the image on the other side                               |
+| position                 | int      | Sorting number start from zero                                |
+#}
+{% set o = {} %}
+{% for k in ['image_shape', 'image_ratio', 'text_align'] %}
+    {% set v = attribute(component, k) %}
+    {% if v is iterable %}{% set v = v.value ?? (v|first).value ?? null %}{% endif %}
+    {% set o = o|merge({(k): v}) %}
+{% endfor %}
+{% set hn_mod = [
+    'sh-story--img-' ~ (o.image_shape ?: 'rounded'),
+    'sh-story--ratio-' ~ (o.image_ratio ?: 'portrait'),
+    o.text_align == 'center' ? 'sh-story--center' : ''
+]|filter(c => c)|join(' ') %}
+{% set hn_style = [
+    ''
+]|filter(c => c)|join(';') %}
+<section component-id="{{ componentId }}" data-testid="hn-story" style="{{ hn_style }}" class="s-block sh-story {{ hn_mod }} {% include 'components.hamsa.section-classes' %}">
+    <div class="container">
+        <div class="sh-story__grid {{ component.reverse ? 'sh-story__grid--reverse' : '' }}">
+            <div class="sh-story__media sh-reveal">
+                {% if component.image %}
+                    <img src="{{ component.image }}" alt="{{ (component.title ?: store.name)|e('html_attr') }}" loading="lazy" width="900" height="1100">
+                {% endif %}
+                {% if component.show_frame is not same as(false) %}<span class="sh-story__frame" aria-hidden="true"></span>{% endif %}
+            </div>
+            <div class="sh-story__text sh-reveal">
+                {% if component.eyebrow %}<span class="sh-eyebrow">{{ component.eyebrow }}</span>{% endif %}
+                {% if component.title %}<h2 class="sh-story__title">{{ component.title }}</h2>{% endif %}
+                {% if component.description %}<p class="sh-story__desc">{{ component.description|nl2br }}</p>{% endif %}
+                {% if component.button_text and component.button_url %}
+                    <a href="{{ component.button_url }}" class="sh-btn sh-btn--dark mt-8">{{ component.button_text }} <i class="sicon-arrow-left"></i></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

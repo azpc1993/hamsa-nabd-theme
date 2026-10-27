@@ -1,0 +1,13 @@
+{#
+| Variable               | Type    | Description                                                      |
+|------------------------|---------|------------------------------------------------------------------|
+| component.image        | ?string | 1040×600 بكسل                                                     |
+| component.title / text | ?string |                                                                  |
+| component.coupon       | ?string |                                                                  |
+| component.button_text  | ?string |                                                                  |
+| component.url          | ?string |                                                                  |
+| component.delay        | ?int    | ثوانٍ قبل الظهور التلقائي                                          |
+| component.popup_id     | ?string | إن وُجد: لا تظهر تلقائياً، وتُفتح من department-grid بنفس المعرّف      |
+#}
+{% set component = component|default({}) %}
+{% if theme.settings.get('hn_enable_promo_popup', true) and (component.title or component.image) %}<section component-id="{{ componentId }}" class="hn-promo-popup" data-hn-promo-popup data-delay="{{ component.delay|default(4) }}"{% if component.popup_id|default('')|trim %} data-popup-id="{{ component.popup_id|trim }}"{% endif %} aria-hidden="true"><div class="hn-promo-popup__overlay" data-hn-promo-close></div><div class="hn-promo-popup__card" role="dialog" aria-modal="true"> <button class="hn-promo-popup__close" type="button" data-hn-promo-close aria-label="{{ trans('hn.features.close') }}">×</button>{% if component.image %}<img src="{{ component.image }}" alt="{{ component.title }}" loading="lazy">{% endif %}<div class="hn-promo-popup__body"><h2>{{ component.title }}</h2>{% if component.text %}<p>{{ component.text }}</p>{% endif %}{% if component.coupon %}<code>{{ component.coupon }}</code>{% endif %}{% if component.url %}<a href="{{ component.url }}" class="hn-btn hn-btn--gold">{{ component.button_text|default(trans('hn.features.shop_now')) }}</a>{% endif %}</div></div></section>{% endif %}

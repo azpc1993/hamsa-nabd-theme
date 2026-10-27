@@ -1,0 +1,48 @@
+{#
+| Variable       | Type   | Description                                              |
+|----------------|--------|----------------------------------------------------------|
+| store.social   | object | instagram, snapchat, twitter, youtube, facebook, maroof  |
+| store.contacts | object | mobile, phone, email, whatsapp, telegram                 |
+#}
+<div class="hn-footer-main">
+    <div class="hn-footer-col hn-footer-col--brand">
+        {% if store.logo %}<img src="{{ store.logo }}" alt="{{ store.name }}" class="hn-footer-logo">{% endif %}
+        <p>{{ store.description }}</p>
+
+        <div class="hn-footer-social">
+            {% for name, url in store.social %}
+                {% if url %}
+                <a href="{{ url }}" target="_blank" rel="noopener" aria-label="{{ name }}">
+                    <i class="sicon-{{ name }}"></i>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {# السجل التجاري / سجل العمل الحر — يعرضها سلة تلقائياً عند توفرها بالمتجر، بدون أي خيار لإخفائها #}
+        <div class="hn-footer-trust">
+            <salla-trust-badges {% if theme.settings.get('footer_is_dark') %}dark{% endif %}></salla-trust-badges>
+        </div>
+    </div>
+
+    {# قوائم روابط المتجر الحقيقية التي رتّبها التاجر #}
+    <div class="hn-footer-col">
+        <salla-menu source="footer"></salla-menu>
+    </div>
+
+    <div class="hn-footer-col">
+        <h2>{{ trans('common.titles.contact_us') }}</h2>
+        <ul>
+            {% if store.contacts.whatsapp %}<li><a href="{{ store.contacts.whatsapp }}">{{ trans('common.elements.whatsapp') }}</a></li>{% endif %}
+            {% if store.contacts.email %}<li><a href="mailto:{{ store.contacts.email }}">{{ store.contacts.email }}</a></li>{% endif %}
+            {% if store.contacts.mobile %}<li><a href="tel:{{ store.contacts.mobile }}">{{ store.contacts.mobile }}</a></li>{% endif %}
+        </ul>
+    </div>
+</div>
+
+<div class="hn-footer-bottom">
+    <span>© {{ "now"|date("Y") }} {{ store.name }}</span>
+    {% if store.settings.tax.number %}
+        <span>{{ trans('common.elements.tax_number') }}: {{ store.settings.tax.number }}</span>
+    {% endif %}
+</div>

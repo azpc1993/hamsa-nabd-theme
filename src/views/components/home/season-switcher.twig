@@ -1,0 +1,37 @@
+{% set component = component|default({}) %}
+{#
+| Variable                           | Type    | Description                                       |
+|-------------------------------------|---------|----------------------------------------------------|
+| component.tabs[].label             | string  | مثال: "صيفي"، "شتوي"، "عيد"، "العودة للمدارس"        |
+| component.tabs[].image             | string  |                                                    |
+| component.tabs[].title             | string  |                                                    |
+| component.tabs[].subtitle          | ?string |                                                    |
+| component.tabs[].url               | string  |                                                    |
+| component.tabs[].button_text       | ?string |                                                    |
+| position                           | int     |                                                    |
+#}
+{% set tabs = component.tabs|default([]) %}
+{% if tabs|length %}
+<section component-id="{{ componentId }}" class="s-block hn-season" data-hn-season-switcher>
+    <div class="hn-season__tabs">
+        {% for tab in tabs %}
+        <button class="hn-season__tab {{ loop.first ? 'is-active' : '' }}" data-hn-season-tab="{{ loop.index0 }}">
+            {{ tab.label }}
+        </button>
+        {% endfor %}
+    </div>
+
+    <div class="hn-season__panels">
+        {% for tab in tabs %}
+        <div class="hn-season__panel {{ loop.first ? 'is-active' : '' }}" data-hn-season-panel="{{ loop.index0 }}">
+            <img src="{{ tab.image }}" alt="{{ tab.title }}" loading="{{ loop.first ? 'eager' : 'lazy' }}">
+            <div class="hn-season__content">
+                <h3>{{ tab.title }}</h3>
+                {% if tab.subtitle %}<p>{{ tab.subtitle }}</p>{% endif %}
+                <a href="{{ tab.url }}" class="hn-btn hn-btn--gold">{{ tab.button_text|default(trans('hn.components.shop_now')) }}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
